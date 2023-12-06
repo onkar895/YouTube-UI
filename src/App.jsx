@@ -14,7 +14,6 @@ function App() {
         <div>
           <Header />
           <Body />
-
           {
             /* HEADER
             BODY

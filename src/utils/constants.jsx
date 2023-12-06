@@ -7,6 +7,7 @@ import { SiYoutubegaming } from "react-icons/si";
 import { PiStudentFill } from "react-icons/pi";
 import { SiShopify } from "react-icons/si";
 import { GiTrophy } from "react-icons/gi";
+import { SiGooglenews } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
 import { SiYoutubestudio } from "react-icons/si";
 import { SiYoutubemusic } from "react-icons/si";
@@ -38,6 +39,14 @@ export const Explore = [
     name: "Live"
   },
   {
+    icon: <GiTrophy className='w-6 h-10' />,
+    name: "Sports"
+  },
+  {
+    icon: <SiGooglenews className='w-6 h-10' />,
+    name: "News"
+  },
+  {
     icon: <SiYoutubegaming className='w-6 h-10' />,
     name: "Gaming"
   },
@@ -48,10 +57,6 @@ export const Explore = [
   {
     icon: <SiShopify className='w-6 h-10' />,
     name: "Fashion & Beauty"
-  },
-  {
-    icon: <GiTrophy className='w-6 h-10' />,
-    name: "Sports"
   },
 ]
 
