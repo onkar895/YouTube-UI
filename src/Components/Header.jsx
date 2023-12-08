@@ -5,6 +5,7 @@ import { FiMenu } from "react-icons/fi";
 import { FaUserCircle } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
+import { RiVideoAddLine } from "react-icons/ri";
 import YouTubeLogo from '../assets/YouTube_Logo.png'
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
@@ -31,8 +32,9 @@ const Header = () => {
         </button>
       </div>
       <div className='flex items-center gap-4'>
-        <IoNotificationsOutline className='w-9 h-7' />
-        <FaUserCircle className='w-10 h-8' />
+        <RiVideoAddLine className='hover:cursor-pointer w-9 h-7' />
+        <IoNotificationsOutline className='hover:cursor-pointer w-9 h-7' />
+        <FaUserCircle className='hover:cursor-pointer w-10 h-8' />
       </div>
     </div>
   )
