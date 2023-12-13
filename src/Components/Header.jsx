@@ -18,7 +18,7 @@ const Header = () => {
   }
 
   return (
-    <div className='flex justify-between items-center px-3 py-2'>
+    <div className='flex justify-between items-center px-3 py-3'>
       <div className='flex'>
         <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer' onClick={() => toggleMenuHandler()} />
