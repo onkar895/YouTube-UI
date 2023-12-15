@@ -19,27 +19,27 @@ const SideBar = () => {
 
   return !isMenuOpen
     ?
-    <div className='sticky mt-2 ml-2 text-sm'>
-      <div className='hover:bg-gray-100 hover:rounded-lg hover:w-16 cursor-pointer pl-4 mb-3'>
-        <IoMdHome className='w-6 h-10' />
+    <div className='sticky text-xs space-y-6 mt-3'>
+      <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
+        <IoMdHome className='w-6 h-7' />
         <span>Home</span>
       </div>
-      <div className='hover:bg-gray-100 hover:rounded-lg hover:w-16 cursor-pointer pl-4 mb-3'>
-        <SiYoutubeshorts className='w-6 h-10' />
+      <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
+        <SiYoutubeshorts className='w-6 h-8' />
         <span>Shorts</span>
       </div>
-      <div className='hover:bg-gray-100 hover:rounded-lg hover:w-28 cursor-pointer pl-4 mb-3'>
-        <MdSubscriptions className='w-6 h-10' />
+      <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
+        <MdSubscriptions className='w-6 h-8 ' />
         <span>Subscriptions</span>
       </div>
-      <div className='hover:bg-gray-100 hover:rounded-lg hover:w-16 cursor-pointer pl-4 mb-3'>
-        <FaSquareYoutube className='w-6 h-10' />
+      <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
+        <FaSquareYoutube className='w-5 h-8' />
         <span>You</span>
       </div>
     </div>
     : (
       <>
-        <div className='sticky shadow-2xl overflow-y-auto h-screen'>
+        <div className='sticky shadow-2xl overflow-y-auto h-screen w-1/5'>
           <ul className='ml-3 mt-2'>
             <li className='flex items-center gap-5 bg-gray-100 w-52 pl-3 rounded-lg cursor-pointer'>
               <IoMdHome className='w-6 h-10' />
