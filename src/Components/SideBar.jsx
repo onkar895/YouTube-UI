@@ -19,7 +19,7 @@ const SideBar = () => {
 
   return !isMenuOpen
     ?
-    <div className='sticky text-xs space-y-6 mt-3'>
+    <div className='sticky text-xs space-y-6 mt-3 ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <IoMdHome className='w-5 h-7' />
         <span>Home</span>
@@ -39,8 +39,8 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='sticky shadow-2xl overflow-y-auto h-screen w-1/5'>
-          <ul className='ml-3 mt-2'>
+        <div className='fixed shadow-2xl h-screen hover:overflow-y-auto w-60 z-10 bg-white'>
+          <ul className='ml-4 mt-2'>
             <li className='flex items-center gap-5 bg-gray-100 w-52 pl-3 rounded-lg cursor-pointer'>
               <IoMdHome className='w-5 h-10' />
               <span className='font-bold'>Home</span>
@@ -58,7 +58,7 @@ const SideBar = () => {
             <hr />
           </div>
 
-          <div className='ml-3 my-4'>
+          <div className='ml-4 my-4'>
             <h1 className='font-bold ml-3 mb-2'>Explore</h1>
             <ul>
               {
@@ -80,7 +80,7 @@ const SideBar = () => {
             <hr />
           </div>
 
-          <div className='ml-3 my-4'>
+          <div className='ml-4 my-4'>
             <h1 className='font-bold ml-3 mb-2'>More from YouTube</h1>
             <ul>
               {
@@ -102,7 +102,7 @@ const SideBar = () => {
             <hr />
           </div>
 
-          <div className='ml-3 my-4'>
+          <div className='ml-4 my-4'>
             <ul>
               {
                 Setting.map(({ icon, name }) => {

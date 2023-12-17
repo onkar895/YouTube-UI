@@ -18,7 +18,7 @@ const Header = () => {
   }
 
   return (
-    <div className='flex justify-between items-center px-3 py-3'>
+    <div className='flex justify-between items-center px-4 py-2'>
       <div className='flex'>
         <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer' onClick={() => toggleMenuHandler()} />
@@ -31,11 +31,12 @@ const Header = () => {
           <IoSearchOutline className='w-10 h-6' />
         </button>
       </div>
-      <div className='flex items-center gap-4 text-2xl'>
+
+      <div className='flex items-center gap-8 text-2xl'>
         <RiVideoAddLine className='hover:cursor-pointer' />
-        <div>
+        <div className='relative'>
           <IoNotificationsOutline className='hover:cursor-pointerrelative' />
-          <span className='absolute'></span>
+          <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white'>9+</span>
         </div>
         <FaUserCircle className='hover:cursor-pointer' />
       </div>
