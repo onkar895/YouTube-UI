@@ -19,7 +19,7 @@ const SideBar = () => {
 
   return !isMenuOpen
     ?
-    <div className='sticky text-xs space-y-6 mt-3 ml-1'>
+    <div className='sticky text-xs space-y-6 mt-4 ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <IoMdHome className='w-5 h-7' />
         <span>Home</span>
@@ -40,7 +40,7 @@ const SideBar = () => {
     : (
       <>
         <div className='fixed shadow-2xl h-screen hover:overflow-y-auto w-60 z-10 bg-white'>
-          <ul className='ml-4 mt-2'>
+          <ul className='ml-4 mt-3'>
             <li className='flex items-center gap-5 bg-gray-100 w-52 pl-3 rounded-lg cursor-pointer'>
               <IoMdHome className='w-5 h-10' />
               <span className='font-bold'>Home</span>
