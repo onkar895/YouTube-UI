@@ -31,10 +31,13 @@ const Header = () => {
           <IoSearchOutline className='w-10 h-6' />
         </button>
       </div>
-      <div className='flex items-center gap-4'>
-        <RiVideoAddLine className='hover:cursor-pointer w-9 h-7' />
-        <IoNotificationsOutline className='hover:cursor-pointer w-9 h-7' />
-        <FaUserCircle className='hover:cursor-pointer w-10 h-8' />
+      <div className='flex items-center gap-4 text-2xl'>
+        <RiVideoAddLine className='hover:cursor-pointer' />
+        <div>
+          <IoNotificationsOutline className='hover:cursor-pointerrelative' />
+          <span className='absolute'></span>
+        </div>
+        <FaUserCircle className='hover:cursor-pointer' />
       </div>
     </div>
   )

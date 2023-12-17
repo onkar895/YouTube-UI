@@ -19,43 +19,43 @@ import { MdFeedback } from "react-icons/md";
 
 export const Explore = [
   {
-    icon: <IoMdTrendingUp className='w-6 h-10' />,
+    icon: <IoMdTrendingUp className='w-5 h-10' />,
     name: "Trending"
   },
   {
-    icon: <HiShoppingBag className='w-6 h-10' />,
+    icon: <HiShoppingBag className='w-5 h-10' />,
     name: "Shopping"
   },
   {
-    icon: <MdMusicNote className='w-6 h-10' />,
+    icon: <MdMusicNote className='w-5 h-10' />,
     name: "Music"
   },
   {
-    icon: <BiSolidMoviePlay className='w-6 h-10' />,
+    icon: <BiSolidMoviePlay className='w-5 h-10' />,
     name: "Movies"
   },
   {
-    icon: <RiLiveFill className='w-6 h-10' />,
+    icon: <RiLiveFill className='w-5 h-10' />,
     name: "Live"
   },
   {
-    icon: <GiTrophy className='w-6 h-10' />,
+    icon: <GiTrophy className='w-5 h-10' />,
     name: "Sports"
   },
   {
-    icon: <SiGooglenews className='w-6 h-10' />,
+    icon: <SiGooglenews className='w-5 h-10' />,
     name: "News"
   },
   {
-    icon: <SiYoutubegaming className='w-6 h-10' />,
+    icon: <SiYoutubegaming className='w-5 h-10' />,
     name: "Gaming"
   },
   {
-    icon: <PiStudentFill className='w-6 h-10' />,
+    icon: <PiStudentFill className='w-5 h-10' />,
     name: "Learning"
   },
   {
-    icon: <SiShopify className='w-6 h-10' />,
+    icon: <SiShopify className='w-5 h-10' />,
     name: "Fashion & Beauty"
   },
 ]
@@ -63,38 +63,38 @@ export const Explore = [
 
 export const Premium = [
   {
-    icon: <FaYoutube className='w-6 h-10' />,
+    icon: <FaYoutube className='w-5 h-10' />,
     name: "YouTube Premium"
   },
   {
-    icon: <SiYoutubestudio className='w-6 h-10' />,
+    icon: <SiYoutubestudio className='w-5 h-10' />,
     name: "YouTube Studio"
   },
   {
-    icon: <SiYoutubemusic className='w-6 h-10' />,
+    icon: <SiYoutubemusic className='w-5 h-10' />,
     name: "YouTube Music"
   },
   {
-    icon: <ImYoutube2 className='w-6 h-10' />,
+    icon: <ImYoutube2 className='w-5 h-10' />,
     name: "YouTube Kids"
   },
 ]
 
 export const Setting = [
   {
-    icon: <IoSettingsSharp className='w-6 h-10' />,
+    icon: <IoSettingsSharp className='w-5 h-10' />,
     name: "Settings"
   },
   {
-    icon: <RiChatHistoryFill className='w-6 h-10' />,
+    icon: <RiChatHistoryFill className='w-5 h-10' />,
     name: "Report History"
   },
   {
-    icon: <IoMdHelpCircle className='w-6 h-10' />,
+    icon: <IoMdHelpCircle className='w-5 h-10' />,
     name: "Help"
   },
   {
-    icon: <MdFeedback className='w-6 h-10' />,
+    icon: <MdFeedback className='w-5 h-10' />,
     name: "Send Feedback"
   },
 ]

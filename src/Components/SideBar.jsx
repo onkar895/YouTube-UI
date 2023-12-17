@@ -21,19 +21,19 @@ const SideBar = () => {
     ?
     <div className='sticky text-xs space-y-6 mt-3'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <IoMdHome className='w-6 h-7' />
+        <IoMdHome className='w-5 h-7' />
         <span>Home</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <SiYoutubeshorts className='w-6 h-8' />
+        <SiYoutubeshorts className='w-5 h-8' />
         <span>Shorts</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <MdSubscriptions className='w-6 h-8 ' />
+        <MdSubscriptions className='w-5 h-8 ' />
         <span>Subscriptions</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <FaSquareYoutube className='w-5 h-8' />
+        <FaSquareYoutube className='w-4 h-8' />
         <span>You</span>
       </div>
     </div>
@@ -42,19 +42,19 @@ const SideBar = () => {
         <div className='sticky shadow-2xl overflow-y-auto h-screen w-1/5'>
           <ul className='ml-3 mt-2'>
             <li className='flex items-center gap-5 bg-gray-100 w-52 pl-3 rounded-lg cursor-pointer'>
-              <IoMdHome className='w-6 h-10' />
+              <IoMdHome className='w-5 h-10' />
               <span className='font-bold'>Home</span>
             </li>
             <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52 cursor-pointer'>
-              <SiYoutubeshorts className='w-6 h-10' />
+              <SiYoutubeshorts className='w-5 h-10' />
               Shorts
             </li>
             <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52  cursor-pointer'>
-              <MdSubscriptions className='w-6 h-10' />
+              <MdSubscriptions className='w-5 h-10' />
               Subscriptions
             </li>
           </ul>
-          <div className='mt-3 pl-3 w-60'>
+          <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
@@ -65,7 +65,7 @@ const SideBar = () => {
                 Explore.map(({ icon, name }) => {
                   return (
                     <a href='#' key={name}>
-                      <li className='flex items-center gap-5 pl-3 w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
+                      <li className='flex items-center gap-5 pl-3 w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52'>
                         {icon}
                         <span>{name}</span>
                       </li>
