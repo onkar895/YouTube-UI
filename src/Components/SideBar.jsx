@@ -8,6 +8,7 @@ import { FaSquareYoutube } from "react-icons/fa6";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 
 const SideBar = () => {
