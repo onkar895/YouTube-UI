@@ -1,34 +1,24 @@
-import "../src/index.css"
-import Body from "./Components/Body"
-import Header from "./Components/Header"
-import { Provider } from "react-redux"
-import store from "./utils/store"
-
+import "../src/index.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Body from "./Components/Body";
+import Header from "./Components/Header";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 function App() {
-
   return (
     <>
-      <Provider store={store}
-      >
-        <div>
+      <Provider store={store}>
+        <Router>
           <Header />
           <Body />
-          {
-            /* HEADER
-            BODY
-              Sidebar
-                MenuItems
-            MainContainer
-              ButtonList
-              VideoContainer
-                VideoCard */
-          }
-        </div>
+          <Routes>
+            <Route path="/" />
+          </Routes>
+        </Router>
       </Provider>
-
     </>
-  )
+  );
 }
 
-export default App
+export default App;

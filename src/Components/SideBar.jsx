@@ -42,9 +42,11 @@ const SideBar = () => {
       <>
         <div className='fixed shadow-2xl h-screen hover:overflow-y-auto w-60 z-10 bg-white'>
           <ul className='ml-4 mt-3'>
-            <li className='flex items-center gap-5 bg-gray-100 w-52 pl-3 rounded-lg cursor-pointer'>
-              <IoMdHome className='w-5 h-10' />
-              <span className='font-bold'>Home</span>
+            <li className=' bg-gray-100 w-52 pl-3 rounded-lg'>
+              <Link className='flex items-center gap-5'>
+                <IoMdHome className='w-5 h-10' />
+                <span className='font-bold'>Home</span>
+              </Link>
             </li>
             <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52 cursor-pointer'>
               <SiYoutubeshorts className='w-5 h-10' />
