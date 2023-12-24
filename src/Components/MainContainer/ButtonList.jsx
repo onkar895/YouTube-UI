@@ -1,10 +1,19 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import Button from './Button'
+import { ButtonNames } from '../../utils/constants'
 
 const ButtonList = () => {
+
   return (
-    <div>
-      <h2>ButtonList</h2>
+    <div className='mt-20 overflow-hidden'>
+      <div className='flex gap-4'>
+        {
+          ButtonNames.map((name) => (
+            <Button key={name} name={name} />
+          ))
+        }
+      </div>
     </div>
   )
 }

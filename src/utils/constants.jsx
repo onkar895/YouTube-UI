@@ -98,3 +98,20 @@ export const Setting = [
     name: "Send Feedback"
   },
 ]
+
+export const ButtonNames = [
+  "All",
+  "Gaming",
+  "Music",
+  "IPL",
+  "Live",
+  "Akshay Saini",
+  "Comedy",
+  "Watched",
+  "Cricket",
+  "Football",
+  "T-series",
+  "Movies",
+  "Wickets",
+  "Programming"
+];
