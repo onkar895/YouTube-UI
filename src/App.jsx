@@ -13,7 +13,7 @@ function App() {
           <Header />
           <Body />
           <Routes>
-            <Route path="/" />
+            <Route exact path="/" />
           </Routes>
         </Router>
       </Provider>

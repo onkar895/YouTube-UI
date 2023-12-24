@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { Explore } from '../utils/constants';
-import { Premium } from '../utils/constants';
-import { Setting } from '../utils/constants';
+import { Explore, Premium, Setting } from '../utils/constants';
 import { IoMdHome } from "react-icons/io";
 import { FaSquareYoutube } from "react-icons/fa6";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const SideBar = () => {
@@ -23,7 +21,7 @@ const SideBar = () => {
     <div className='sticky text-xs space-y-6 mt-20 ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <IoMdHome className='w-5 h-7' />
-        <span>Home</span>
+        <span className='font-bold'>Home</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <SiYoutubeshorts className='w-5 h-8' />
@@ -40,13 +38,13 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='fixed shadow-2xl max-h-screen overflow-hidden hover:overflow-y-scroll w-60 bg-white mt-16'>
+        <div className='fixed shadow-2xl max-h-screen hover:overflow-y-scroll w-60 bg-white mt-16'>
           <ul className='ml-4 mt-3'>
             <li className=' bg-gray-100 w-52 pl-3 rounded-lg'>
-              <Link className='flex items-center gap-5'>
+              <NavLink to='/' className='flex items-center gap-5'>
                 <IoMdHome className='w-5 h-10' />
                 <span className='font-bold'>Home</span>
-              </Link>
+              </NavLink>
             </li>
             <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52 cursor-pointer'>
               <SiYoutubeshorts className='w-5 h-10' />
