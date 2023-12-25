@@ -7,6 +7,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { RiVideoAddLine } from "react-icons/ri";
 import YouTubeLogo from '../assets/YouTube_Logo.png'
+import MyPic from '../assets/MyPic.jpg'
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
 
@@ -38,7 +39,9 @@ const Header = () => {
           <IoNotificationsOutline className='hover:cursor-pointer relative' />
           <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer '>9+</span>
         </div>
-        <FaUserCircle className='hover:cursor-pointer' />
+        <div className='w-7 hover:cursor-pointer'>
+          <img className='rounded-full' src={MyPic} alt="Mypic" />
+        </div>
       </div>
     </div>
   )

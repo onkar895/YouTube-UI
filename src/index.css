@@ -9,8 +9,21 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* ::-webkit-scrollbar {
-    width: 0;
-} */
+::-webkit-scrollbar-track {
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: darkgray;
+    border-radius: 12px;
+    height: 50px !important;
+}

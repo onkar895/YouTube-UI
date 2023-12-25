@@ -38,19 +38,19 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='fixed shadow-2xl hover:overflow-y-scroll overscroll-y-contain w-60 max-h-screen bg-white mt-16 text-sm'>
+        <div className='fixed shadow-2xl hover:overflow-y-auto w-60 h-full bg-white z-50 text-sm hover:overflow-x-hidden top-[62px]'>
           <ul className='ml-4 mt-3'>
-            <li className=' bg-gray-100 w-52 pl-3 rounded-lg'>
+            <li className=' bg-gray-100 w-52 pl-[13px] rounded-lg'>
               <NavLink to='/' className='flex items-center gap-5'>
                 <IoMdHome className='w-5 h-10' />
                 <span className='font-bold'>Home</span>
               </NavLink>
             </li>
-            <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52 cursor-pointer'>
+            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg hover:w-52 cursor-pointer'>
               <SiYoutubeshorts className='w-5 h-10' />
               Shorts
             </li>
-            <li className='flex items-center gap-5 pl-3 hover:bg-gray-100 hover:rounded-lg hover:w-52  cursor-pointer'>
+            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg hover:w-52  cursor-pointer'>
               <MdSubscriptions className='w-5 h-10' />
               Subscriptions
             </li>
