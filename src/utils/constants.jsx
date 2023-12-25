@@ -102,16 +102,15 @@ export const Setting = [
 export const ButtonNames = [
   "All",
   "Gaming",
+  "Mixes",
   "Music",
-  "IPL",
   "Live",
   "Akshay Saini",
   "Comedy",
-  "Watched",
+  "Freecodecamp",
   "Cricket",
   "Football",
   "T-series",
   "Movies",
-  "Wickets",
-  "Programming"
+  "Programming",
 ];

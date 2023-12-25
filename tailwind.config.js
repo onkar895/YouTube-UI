@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -7,5 +8,5 @@ export default {
   theme: {
     extend: {}
   },
-  plugins: []
+  plugins: [ require('tailwind-scrollbar')]
 }

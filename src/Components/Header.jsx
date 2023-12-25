@@ -32,11 +32,11 @@ const Header = () => {
         </button>
       </div>
 
-      <div className='flex items-center gap-8 text-2xl'>
+      <div className='flex items-center gap-8 text-2xl mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer' />
         <div className='relative'>
           <IoNotificationsOutline className='hover:cursor-pointer relative' />
-          <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white'>9+</span>
+          <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer '>9+</span>
         </div>
         <FaUserCircle className='hover:cursor-pointer' />
       </div>

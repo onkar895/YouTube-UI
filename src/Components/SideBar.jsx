@@ -18,7 +18,7 @@ const SideBar = () => {
 
   return !isMenuOpen
     ?
-    <div className='sticky text-xs space-y-6 mt-20 ml-1'>
+    <div className='fixed text-xs space-y-6 mt-20 ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <IoMdHome className='w-5 h-7' />
         <span className='font-bold'>Home</span>
@@ -38,7 +38,7 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='fixed shadow-2xl max-h-screen hover:overflow-y-scroll w-60 bg-white mt-16'>
+        <div className='fixed shadow-2xl hover:overflow-y-scroll overscroll-y-contain w-60 max-h-screen bg-white mt-16 text-sm'>
           <ul className='ml-4 mt-3'>
             <li className=' bg-gray-100 w-52 pl-3 rounded-lg'>
               <NavLink to='/' className='flex items-center gap-5'>

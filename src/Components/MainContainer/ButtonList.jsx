@@ -6,7 +6,8 @@ import { ButtonNames } from '../../utils/constants'
 const ButtonList = () => {
 
   return (
-    <div className='mt-20 overflow-hidden'>
+
+    <div className='mt-20'>
       <div className='flex gap-4'>
         {
           ButtonNames.map((name) => (
