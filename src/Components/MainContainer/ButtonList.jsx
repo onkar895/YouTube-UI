@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { ButtonNames } from '../../utils/constants';
 
 const ButtonList = () => {
+
   return (
-    <div className='flex mt-20 gap-4'>
+    <div className='flex mt-20 gap-4 overflow-x-scroll no-scrollbar'>
       {
         ButtonNames.map((name, index) => (
           <div key={index}>
@@ -22,6 +23,5 @@ const ButtonList = () => {
     </div>
   );
 };
-
 
 export default ButtonList;
