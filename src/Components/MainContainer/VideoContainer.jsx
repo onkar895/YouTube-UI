@@ -4,9 +4,9 @@ import React from 'react'
 const VideoContainer = () => {
   return (
     <div>
-      <h2>VideoContainer</h2>
+      <h1>VideoContainer</h1>
     </div>
   )
 }
 
-export default VideoContainer
+export default VideoContainer 
