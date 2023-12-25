@@ -65,12 +65,14 @@ const SideBar = () => {
               {
                 Explore.map(({ icon, name }) => {
                   return (
-                    <a href='#' key={name}>
-                      <li className='flex items-center gap-5 pl-3 w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52'>
-                        {icon}
-                        <span>{name}</span>
+                    <div key={name}>
+                      <li className='pl-[13px]  w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52'>
+                        <NavLink className='flex items-center gap-5'>
+                          {icon}
+                          <span>{name}</span>
+                        </NavLink>
                       </li>
-                    </a>
+                    </div>
                   )
                 })
               }
@@ -87,12 +89,14 @@ const SideBar = () => {
               {
                 Premium.map(({ icon, name }) => {
                   return (
-                    <a href='#' key={name}>
-                      <li className='flex items-center gap-5 pl-3 w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
-                        {icon}
-                        <span>{name}</span>
+                    <div key={name}>
+                      <li className='pl-[13px]  w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
+                        <NavLink className='flex items-center gap-5'>
+                          {icon}
+                          <span>{name}</span>
+                        </NavLink>
                       </li>
-                    </a>
+                    </div>
                   )
                 })
               }
@@ -108,12 +112,14 @@ const SideBar = () => {
               {
                 Setting.map(({ icon, name }) => {
                   return (
-                    <a href='#' key={name}>
-                      <li className='flex items-center gap-5 pl-3 w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
-                        {icon}
-                        <span>{name}</span>
+                    <div key={name}>
+                      <li className='pl-[13px]  w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
+                        <NavLink className='flex items-center gap-5'>
+                          {icon}
+                          <span>{name}</span>
+                        </NavLink>
                       </li>
-                    </a>
+                    </div>
                   )
                 })
               }
