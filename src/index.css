@@ -28,6 +28,10 @@ body {
 }
 
 .scrollBar::-webkit-scrollbar {
-    width: 0.5vw;
-    height: 1.2vh;
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+    display: none;
 }
