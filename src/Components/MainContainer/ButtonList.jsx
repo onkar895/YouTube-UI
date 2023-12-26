@@ -7,10 +7,10 @@ const ButtonList = () => {
 
   return (
     <div className='mt-20 w-[90vw]'>
-      <ul className='flex text-sm gap-4 overflow-x-scroll scrollBar whitespace-nowrap'>
+      <ul className='flex text-sm gap-4 overflow-x-scroll scrollBar whitespace-nowrap cursor-pointer'>
         {
           ButtonNames.map((name, index) => (
-            <li key={index} className={`bg-gray-100 hover:bg-black hover:text-white px-[12px] py-[6px] rounded-lg ${name === "All" ? "bg-black text-white" : " "}`}>
+            <li key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white px-[12px] py-[6px] rounded-lg ${name === "All" ? "bg-gray-900 text-white" : " "}`}>
               <NavLink>
                 <span>
                   {name}
