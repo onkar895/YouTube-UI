@@ -113,4 +113,9 @@ export const ButtonNames = [
   "T-series",
   "Movies",
   "Programming",
+  "Cricket",
+  "Football",
+  "T-series",
+  "Movies",
+  "Programming",
 ];

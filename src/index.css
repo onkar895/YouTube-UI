@@ -2,21 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    @variants responsive {
-        /* Hide scrollbar for Chrome, Safari and Opera */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Hide scrollbar for IE, Edge and Firefox */
-        .no-scrollbar {
-            -ms-overflow-style: none; /* IE and Edge */
-            scrollbar-width: none; /* Firefox */
-        }
-    }
-}
-
 body {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
     /* background-color: black;
@@ -40,4 +25,9 @@ body {
     background: darkgray;
     border-radius: 12px;
     height: 50px !important;
+}
+
+.scrollBar::-webkit-scrollbar {
+    width: 0.5vw;
+    height: 1.2vh;
 }

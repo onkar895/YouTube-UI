@@ -6,20 +6,20 @@ import { ButtonNames } from '../../utils/constants';
 const ButtonList = () => {
 
   return (
-    <div className='flex mt-20 gap-4 overflow-x-scroll no-scrollbar'>
-      {
-        ButtonNames.map((name, index) => (
-          <div key={index}>
-            <li className='list-none bg-gray-100 px-[12px] py-[6px] rounded-lg hover:bg-black hover:text-white text-sm'>
+    <div className='mt-20 w-[90vw]'>
+      <ul className='flex text-sm gap-4 overflow-x-scroll scrollBar whitespace-nowrap'>
+        {
+          ButtonNames.map((name, index) => (
+            <li key={index} className={`bg-gray-100 hover:bg-black hover:text-white px-[12px] py-[6px] rounded-lg ${name === "All" ? "bg-black text-white" : " "}`}>
               <NavLink>
                 <span>
                   {name}
                 </span>
               </NavLink>
             </li>
-          </div>
-        ))
-      }
+          ))
+        }
+      </ul>
     </div>
   );
 };
