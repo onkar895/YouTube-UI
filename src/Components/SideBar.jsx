@@ -18,7 +18,7 @@ const SideBar = () => {
 
   return !isMenuOpen
     ?
-    <div className='fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-20 ml-1'>
+    <div className='fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[78px] ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
         <IoMdHome className='w-5 h-7' />
         <span className='font-bold'>Home</span>
@@ -38,7 +38,7 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='fixed shadow-2xl hover:overflow-y-scroll w-60 h-full bg-white z-50 text-sm hover:overflow-x-hidden top-[62px] '>
+        <div className='fixed shadow-2xl hover:overflow-y-scroll w-60 h-full bg-white z-50 text-sm hover:overflow-x-hidden top-[60px] '>
           <ul className='ml-4 mt-3'>
             <li className=' bg-gray-100 w-52 pl-[13px] rounded-lg'>
               <NavLink to='/' className='flex items-center gap-5'>
