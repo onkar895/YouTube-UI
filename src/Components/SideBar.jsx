@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import { Explore, Premium, Setting } from '../utils/constants';
-import { IoMdHome } from "react-icons/io";
+import { MdHomeFilled } from "react-icons/md";
 import { FaSquareYoutube } from "react-icons/fa6";
 import { SiYoutubeshorts } from "react-icons/si";
 import { MdSubscriptions } from "react-icons/md";
@@ -20,7 +20,7 @@ const SideBar = () => {
     ?
     <div className='fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1'>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <IoMdHome className='w-5 h-7' />
+        <MdHomeFilled className='w-5 h-7' />
         <span className='font-bold'>Home</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
@@ -38,11 +38,11 @@ const SideBar = () => {
     </div>
     : (
       <>
-        <div className='fixed shadow-2xl hover:overflow-y-scroll w-60 h-full bg-white z-50 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-300'>
+        <div className='fixed shadow-2xl hover:overflow-y-scroll w-[19vw] h-full bg-white z-10 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-300'>
           <ul className='ml-4 mt-3'>
             <li className=' bg-gray-100 w-52 pl-[13px] rounded-lg'>
               <NavLink to='/' className='flex items-center gap-5'>
-                <IoMdHome className='w-5 h-10' />
+                <MdHomeFilled className='w-5 h-10' />
                 <span className='font-bold'>Home</span>
               </NavLink>
             </li>
@@ -60,7 +60,7 @@ const SideBar = () => {
           </div>
 
           <div className='ml-4 my-4'>
-            <h1 className='font-bold ml-3 mb-2'>Explore</h1>
+            <h1 className='font-bold ml-3 mb-2 text-lg'>Explore</h1>
             <ul>
               {
                 Explore.map(({ icon, name }) => {
@@ -84,7 +84,7 @@ const SideBar = () => {
           </div>
 
           <div className='ml-4 my-4'>
-            <h1 className='font-bold ml-3 mb-2'>More from YouTube</h1>
+            <h1 className='font-bold ml-3 mb-2 text-lg'>More from YouTube</h1>
             <ul>
               {
                 Premium.map(({ icon, name }) => {
@@ -92,7 +92,7 @@ const SideBar = () => {
                     <div key={name}>
                       <li className='pl-[13px]  w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
                         <NavLink className='flex items-center gap-5'>
-                          {icon}
+                          <span className='text-red-600'>{icon}</span>
                           <span>{name}</span>
                         </NavLink>
                       </li>
@@ -113,7 +113,7 @@ const SideBar = () => {
                 Setting.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px]  w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
+                      <li className='pl-[13px] w-60 rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg hover:w-52 '>
                         <NavLink className='flex items-center gap-5'>
                           {icon}
                           <span>{name}</span>

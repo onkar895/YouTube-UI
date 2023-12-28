@@ -26,7 +26,7 @@ const Header = () => {
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
       </div>
-      <div className='hidden md:flex'>
+      <div className='hidden md:flex w-1/2'>
         <input
           type="text"
           placeholder='Search'
