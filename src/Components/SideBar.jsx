@@ -32,13 +32,14 @@ const SideBar = () => {
         <span>Subscriptions</span>
       </div>
       <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-        <FaSquareYoutube className='w-4 h-8' />
+        <FaSquareYoutube className='w-4 h-8 text-black' />
         <span>You</span>
       </div>
     </div>
     : (
       <>
         <div className='fixed shadow-2xl hover:overflow-y-scroll w-[19vw] h-full bg-white z-10 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-300'>
+
           <ul className='ml-4 mt-3'>
             <li className=' bg-gray-100 w-52 pl-[13px] rounded-lg'>
               <NavLink to='/' className='flex items-center gap-5'>
@@ -55,6 +56,7 @@ const SideBar = () => {
               Subscriptions
             </li>
           </ul>
+
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>

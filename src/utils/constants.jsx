@@ -11,7 +11,7 @@ import { SiGooglenews } from "react-icons/si";
 import { FaYoutube } from "react-icons/fa";
 import { SiYoutubestudio } from "react-icons/si";
 import { SiYoutubemusic } from "react-icons/si";
-import { ImYoutube2 } from "react-icons/im";
+import { TfiYoutube } from "react-icons/tfi";
 import { IoSettingsSharp } from "react-icons/io5";
 import { RiChatHistoryFill } from "react-icons/ri";
 import { IoMdHelpCircle } from "react-icons/io";
@@ -75,7 +75,7 @@ export const Premium = [
     name: "YouTube Music"
   },
   {
-    icon: <ImYoutube2 className='w-5 h-10' />,
+    icon: <TfiYoutube className='w-5 h-10' />,
     name: "YouTube Kids"
   },
 ]

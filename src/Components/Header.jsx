@@ -20,12 +20,14 @@ const Header = () => {
 
   return (
     <div className='flex justify-between items-center px-4 py-2 bg-white fixed w-full z-20'>
+
       <div className='flex items-center'>
         <div className='p-1 hover:bg-gray-200 rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer' onClick={() => toggleMenuHandler()} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
       </div>
+
       <div className='hidden md:flex w-1/2'>
         <input
           type="text"
