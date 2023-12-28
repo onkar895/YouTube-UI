@@ -26,7 +26,7 @@ const Header = () => {
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
       </div>
-      <div className='hidden md:flex w-1/2'>
+      <div className='hidden md:flex'>
         <input
           type="text"
           placeholder='Search'
@@ -38,7 +38,7 @@ const Header = () => {
       </div>
 
       <div className='flex items-center gap-8 text-2xl mr-3'>
-        <RiVideoAddLine className='hover:cursor-pointer' />
+        <RiVideoAddLine className='hover:cursor-pointer md:flex hidden' />
         <div className='relative'>
           <IoNotificationsOutline className='hover:cursor-pointer relative' />
           <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer'>
