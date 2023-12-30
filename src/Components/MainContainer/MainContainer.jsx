@@ -5,7 +5,7 @@ import VideoContainer from '../MainContainer/VideoContainer'
 
 const MainContainer = () => {
   return (
-    <div className='mx-4 lg:mx-24 md:mx-24'>
+    <div className='mx-auto lg:mx-24 md:mx-24'>
       <ButtonList />
       <VideoContainer />
     </div>

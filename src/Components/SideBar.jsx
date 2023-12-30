@@ -80,7 +80,7 @@ const SideBar = () => {
           </ul>
         </div>
 
-        <div className='mt-3 pl-3 w-60'>
+        <div className='mt-3 pl-3 w-56'>
           <hr />
         </div>
 
@@ -104,7 +104,7 @@ const SideBar = () => {
           </ul>
         </div>
 
-        <div className='mt-3 pl-3 w-60'>
+        <div className='mt-3 pl-3 w-56'>
           <hr />
         </div>
 
