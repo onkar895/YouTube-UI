@@ -19,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center px-4 py-2 bg-white fixed w-full z-20'>
+    <div className='flex justify-between items-center md:px-4 px-2 pr-4 py-2 bg-white fixed w-full z-20'>
 
       <div className='flex items-center'>
         <div className='p-1 hover:bg-gray-200 rounded-full'>
@@ -39,7 +39,7 @@ const Header = () => {
         </button>
       </div>
 
-      <div className='flex items-center gap-8 text-2xl mr-3'>
+      <div className='flex items-center gap-8 text-2xl md:mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden' />
         <div className='relative'>
           <IoNotificationsOutline className='hover:cursor-pointer relative' />
