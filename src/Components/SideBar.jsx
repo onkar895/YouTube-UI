@@ -38,7 +38,7 @@ const SideBar = () => {
 
   return (
     <>
-      <div className='fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] w-[52vw] h-full bg-white z-10 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-300'>
+      <div className='fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] w-[52vw] h-full bg-white z-10 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-500'>
         <ul className='ml-2 md:ml-4 mt-3'>
           <li className=' bg-gray-100 md:w-52 w-[47vw] pl-[13px] rounded-lg'>
             <NavLink to='/' className='flex items-center gap-5'>
