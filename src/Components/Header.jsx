@@ -22,12 +22,12 @@ const Header = () => {
   };
 
   // Function to handle the search input focus
-  const handleSearchFocus = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth <= 768 && !showSearch) {
-      setShowSearch(true);
-    }
-  };
+  // const handleSearchFocus = () => {
+  //   const screenWidth = window.innerWidth;
+  //   if (screenWidth < 768 && !showSearch) {
+  //     setShowSearch(true);
+  //   }
+  // };
 
   // Function to handle the arrow left button click in the search
   const handleArrowLeftClick = () => {
@@ -37,7 +37,7 @@ const Header = () => {
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
     const screenWidth = window.innerWidth;
-    if (screenWidth <= 768 && !showSearch) {
+    if (screenWidth < 768 && !showSearch) {
       setShowSearch(true);
     }
   };
@@ -68,14 +68,13 @@ const Header = () => {
         <input
           type="text"
           placeholder='Search'
-          className={`${showSearch ? 'w-[60vw]' : 'max-sm:hidden'} md:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5`}
-          onFocus={handleSearchFocus}
+          className={`${showSearch ? 'w-[60vw] focus:outline-blue-800' : 'max-sm:hidden'} md:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5`}
         />
         <button
-          className={`border border-gray-400 ${!showSearch ? 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-10' : ''} rounded-r-full md:py-2 px-2 md:px-5 flex justify-center items-center  hover:bg-gray-100`}
+          className={`border border-gray-400 ${!showSearch ? 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-10' : ''} rounded-r-full md:py-2 px-2 md:px-4 flex justify-center items-center  hover:bg-gray-100`}
           onClick={handleSearchButtonClick}
         >
-          <IoSearchOutline className='md:w-10 md:h-6' />
+          <IoSearchOutline className='md:w-10 h-6' />
         </button>
       </div>
 
