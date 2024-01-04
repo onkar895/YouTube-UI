@@ -59,7 +59,7 @@ const Header = () => {
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center`}>
         <div className='p-1 hover:bg-gray-200 rounded-full'>
-          <FiMenu className='w-10 h-6 cursor-pointer' onClick={toggleMenuHandler} />
+          <FiMenu className='w-10 h-6 cursor-pointer text-black' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
       </div>
@@ -81,14 +81,14 @@ const Header = () => {
 
       {/* Notification and User Icons */}
       <div className='flex items-center gap-8 text-2xl md:mr-3'>
-        <RiVideoAddLine className='hover:cursor-pointer md:flex hidden' />
+        <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
         <div className={`${showSearch ? 'max-sm:hidden' : ''} relative`}>
-          <IoNotificationsOutline className='hover:cursor-pointer relative' />
+          <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
           <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer'>
             9+
           </span>
         </div>
-        <div className='w-7 hover:cursor-pointer'>
+        <div className='w-8 h-9 hover:cursor-pointer'>
           <img className='rounded-full' src={MyPic} alt="Mypic" />
         </div>
       </div>
