@@ -37,7 +37,7 @@ const Header = () => {
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
     const screenWidth = window.innerWidth;
-    console.log(`Window inner width: ${screenWidth}`);
+    // console.log(`Window inner width: ${screenWidth}`);
     if (screenWidth < 768 && !showSearch) {
       setShowSearch(true);
     }
@@ -72,7 +72,7 @@ const Header = () => {
           className={`${showSearch ? 'w-[60vw] focus:outline-red-600' : 'max-sm:hidden'} md:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5`}
         />
         <button
-          className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-2 md:px-4 flex justify-center items-center  hover:bg-gray-100`}
+          className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-2 md:px-4 flex justify-center items-center  hover:bg-zinc-100`}
           onClick={handleSearchButtonClick}
         >
           <IoSearchOutline className='md:w-10 h-6' />
