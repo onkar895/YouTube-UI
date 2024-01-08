@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import { YOUTUBE_VIDEO_API } from '../../utils/APIList';
+import VideoCard from './VideoCard';
 
 const VideoContainer = () => {
 
@@ -31,7 +32,7 @@ const VideoContainer = () => {
 
   return (
     <div>
-      <h1>VideoContainer</h1>
+      <VideoCard info={videos[0]} />
     </div>
   )
 }
