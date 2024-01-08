@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import SideBar from './SideBar'
-import MainContainer from './MainContainer/MainContainer'
+import MainContainer from './HomePageContainer/MainContainer'
 
 const Body = () => {
   return (
