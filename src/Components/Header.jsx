@@ -65,11 +65,13 @@ const Header = () => {
       </div>
 
       {/* Search Input */}
-      <div className='flex max-sm:mr-5'>
+      <div className='flex max-sm:mr-5 '>
         <input
           type="text"
           placeholder='Search'
-          className={`${showSearch ? 'w-[60vw] focus:outline-red-800' : 'max-sm:hidden'} md:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800`}
+          className={`${showSearch
+            ? 'w-[60vw] focus:outline-red-800 transition-all duration-500'
+            : 'max-sm:hidden'} md:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
         />
         <button
           className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-2 md:px-4 flex justify-center items-center  hover:bg-zinc-100`}
