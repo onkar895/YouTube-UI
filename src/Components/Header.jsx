@@ -70,11 +70,11 @@ const Header = () => {
           type="text"
           placeholder='Search'
           className={`${showSearch
-            ? 'w-[60vw] focus:outline-red-800 transition-all duration-500'
-            : 'max-sm:hidden'} md:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
+            ? 'w-[56vw] py-2 bg-gray-200 focus:outline-red-800 transition-all duration-500'
+            : 'max-sm:hidden'} md:w-[40vw] lg:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
         />
         <button
-          className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-2 md:px-4 flex justify-center items-center  hover:bg-zinc-100`}
+          className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-3 md:px-4 flex justify-center items-center  hover:bg-zinc-100`}
           onClick={handleSearchButtonClick}
         >
           <IoSearchOutline className='md:w-10 h-6' />
