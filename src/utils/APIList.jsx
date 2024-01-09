@@ -6,3 +6,17 @@ if (!API_KEY) {
 }
 
 export const YOUTUBE_VIDEO_API = "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=" + API_KEY;
+
+
+export const CHANNEL_PROFILE_PICTURE = async (channelId) => {
+  try {
+    const res = await fetch(
+      `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${API_KEY}`
+    );
+    const data = await res?.json();
+    const profilePictureUrl = data?.items[0]?.snippet?.thumbnails?.default?.url;
+    return profilePictureUrl;
+  } catch (error) {
+    console.log("coudnt fetch channel profile picture", error);
+  }
+};
