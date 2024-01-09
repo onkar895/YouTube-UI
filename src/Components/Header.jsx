@@ -70,7 +70,7 @@ const Header = () => {
           type="text"
           placeholder='Search'
           className={`${showSearch
-            ? 'w-[56vw] py-2 bg-gray-200 focus:outline-red-800 transition-all duration-500'
+            ? 'w-[56vw] py-1 bg-gray-100 focus:outline-red-800 transition-all duration-500'
             : 'max-sm:hidden'} md:w-[40vw] lg:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
         />
         <button

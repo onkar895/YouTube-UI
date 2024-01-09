@@ -17,6 +17,6 @@ export const CHANNEL_PROFILE_PICTURE = async (channelId) => {
     const profilePictureUrl = data?.items[0]?.snippet?.thumbnails?.default?.url;
     return profilePictureUrl;
   } catch (error) {
-    console.log("coudnt fetch channel profile picture", error);
+    console.log("couldn't fetch channel profile picture", error);
   }
 };
