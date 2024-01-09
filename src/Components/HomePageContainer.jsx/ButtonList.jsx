@@ -6,7 +6,7 @@ import { ButtonNames } from '../../utils/constants';
 const ButtonList = () => {
 
   return (
-    <div className='md:w-[83vw] lg:w-[88vw] w-[90vw] max-sm:mx-auto sticky md:top-[3.6rem] max-sm:top-[3.25rem] bg-white pt-4'>
+    <div className='md:w-[83vw] lg:w-[89.5vw] w-[90vw] max-sm:mx-auto sticky md:top-[3.6rem] max-sm:top-[3.25rem] bg-white pt-4'>
       <ul className='flex text-sm gap-4 overflow-y-auto scrollBar whitespace-nowrap cursor-pointer'>
         {
           ButtonNames.map((name, index) => (
