@@ -13,6 +13,20 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* body::-webkit-scrollbar-track {
+    cursor: pointer;
+} */
+
+body::-webkit-scrollbar {
+    width: 8px;
+    cursor: pointer;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgb(92, 90, 90);
+    height: 50px !important;
+}
+
 ::-webkit-scrollbar-track {
     border-radius: 12px;
 }
