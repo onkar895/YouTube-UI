@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { YOUTUBE_VIDEO_API } from '../../utils/APIList';
-import VideoCard from './VideoCard';
-
+import { YOUTUBE_VIDEO_API } from '../utils/APIList'
+import VideoCard from '../Components/VideoCard'
 
 const VideoContainer = () => {
 

@@ -4,8 +4,6 @@
 
 body {
     font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
-    /* background-color: black;
-    color: white; */
     margin: 0;
     padding: 0;
     overflow-x: hidden;
@@ -32,11 +30,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: darkgray;
+    background: rgb(125, 123, 123);
     border-radius: 12px;
     height: 50px !important;
 }

@@ -1,23 +1,29 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './utils/store';
 import "../src/index.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Body from "./Components/Body";
-import Header from "./Components/Header";
-import { Provider } from "react-redux";
-import store from "./utils/store";
+import Header from './Components/Header'
+import Body from './HomePageContainer/Body'
+import MainContainer from './HomePageContainer/MainContainer'
+import WatchPage from './HomePageContainer/WatchPage'
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Provider store={store}>
+    <Provider store={store}>
+      <div>
         <Router>
           <Header />
-          <Body />
           <Routes>
-            <Route />
+            <Route exact path="/" element={<Body />}>
+              <Route index element={<MainContainer />} />
+              <Route exact path="/watch" element={<WatchPage />} />
+            </Route>
           </Routes>
         </Router>
-      </Provider>
-    </>
+      </div>
+    </Provider>
   );
 }
 

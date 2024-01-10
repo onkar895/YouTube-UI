@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
-import { CHANNEL_PROFILE_PICTURE } from '../../utils/APIList';
+import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics } = info;

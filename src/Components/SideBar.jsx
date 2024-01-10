@@ -22,8 +22,10 @@ const SideBar = () => {
     return (
       <div className={SideBarStyle}>
         <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-          <MdHomeFilled className='w-5 h-7' />
-          <span className='font-bold'>Home</span>
+          <NavLink to='/' exact className='flex flex-col items-center'>
+            <MdHomeFilled className='w-5 h-7' />
+            <span className='font-bold'>Home</span>
+          </NavLink>
         </div>
         <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
           <SiYoutubeshorts className='w-5 h-8' />
@@ -45,7 +47,7 @@ const SideBar = () => {
       <div className={SideBarStyle}>
         <ul className='ml-2 md:ml-4 mt-3'>
           <li className=' bg-gray-100 md:w-52 w-[47vw] pl-[13px] rounded-lg'>
-            <NavLink to='/' className='flex items-center gap-5'>
+            <NavLink to='/' exact className='flex items-center gap-5'>
               <MdHomeFilled className='w-5 h-10' />
               <span className='font-bold'>Home</span>
             </NavLink>
