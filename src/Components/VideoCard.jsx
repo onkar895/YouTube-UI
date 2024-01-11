@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
+import { GoDotFill } from "react-icons/go";
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
 import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
 import { timeDuration } from '../utils/constants';
@@ -47,10 +48,10 @@ const VideoCard = ({ info }) => {
           {duration}
         </div>
       </div>
-      <ul className='pt-3 space-y-2 md:mx-auto mx-[1.2rem]'>
-        <div className='flex gap-2 items-center font-bold text-[14.6px]'>
+      <ul className='pt-3 space-y-2 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
+        <div className='flex gap-2 items-center font-bold text-[14.6px] '>
           <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10' />
-          <li>{title}</li>
+          <li className='mr-2'>{title}</li>
         </div>
         <div className='text-gray-500 md:text-sm text-xs ml-12 tracking-wider space-y-1'>
           <div className='flex items-center justify-between mr-2'>
@@ -80,7 +81,6 @@ const VideoCard = ({ info }) => {
                 <span>{Math.ceil(days)} days ago</span>
               )}
             </div>
-
           </div>
         </div>
       </ul>
