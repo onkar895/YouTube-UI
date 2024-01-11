@@ -4,10 +4,26 @@ import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
 import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
+import { timeDuration } from '../utils/constants';
+import { formatTime } from '../utils/constants';
+import { formatNumberWithSuffix } from '../utils/constants';
 
 const VideoCard = ({ info }) => {
-  const { snippet, statistics } = info;
-  const { title, channelTitle, thumbnails, channelId } = snippet;
+  const { snippet, statistics, contentDetails } = info;
+  let duration = timeDuration(contentDetails.duration);
+  // console.log(contentDetails.duration)
+  const { title, channelTitle, thumbnails, channelId, publishedAt } = snippet;
+  let days = formatTime(publishedAt);
+
+  let viewCount = 0;
+  if (info?.statistics?.viewCount) {
+    viewCount = formatNumberWithSuffix(statistics.viewCount);
+  }
+
+  let likeCount = 0;
+  if (info?.statistics?.likeCount) {
+    likeCount = formatNumberWithSuffix(statistics.likeCount);
+  }
 
   const [profilePicture, setProfilePicture] = useState("");
 
@@ -22,20 +38,49 @@ const VideoCard = ({ info }) => {
 
   return (
     <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] md:mx-auto'>
-      <img src={thumbnails?.medium.url} alt="thumbnail" className='rounded-2xl w-[90vw] mx-auto lg:w-[28.5vw] md:w-[40.4]' />
-      <ul className='pt-3 space-y-1 md:mx-auto mx-[1.2rem]'>
+      <div className='relative'>
+        <img
+          src={thumbnails?.medium.url} alt="thumbnail"
+          className='rounded-2xl w-[90vw] mx-auto lg:w-[28.5vw] md:w-[40.4]'
+        />
+        <div className="absolute max-sm:bottom-1 max-sm:right-6 md:bottom-1 md:right-1 bg-black text-white px-2 py-1 rounded-lg text-xs">
+          {duration}
+        </div>
+      </div>
+      <ul className='pt-3 space-y-2 md:mx-auto mx-[1.2rem]'>
         <div className='flex gap-2 items-center font-bold text-[14.6px]'>
           <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10' />
           <li>{title}</li>
         </div>
-        <div className='text-gray-500 md:text-sm text-xs ml-12'>
-          <li>{channelTitle}</li>
-          <div className='flex items-center space-x-2'>
-            <li>{statistics?.viewCount} Views</li>
-            <LuEye className='text-gray-600' />
-            <li className='text-black'>|</li>
-            <li>{statistics?.likeCount} Likes</li>
-            <MdOutlineThumbUpOffAlt className='text-gray-600' />
+        <div className='text-gray-500 md:text-sm text-xs ml-12 tracking-wider space-y-1'>
+          <div className='flex items-center justify-between mr-2'>
+            <div>
+              <li>{channelTitle}</li>
+            </div>
+            <div className='flex items-center space-x-1'>
+              <li>{likeCount} Likes</li>
+              <MdOutlineThumbUpOffAlt className='text-gray-600' />
+            </div>
+          </div>
+          <div className='flex items-center justify-between mr-2'>
+            <div className='flex items-center space-x-1'>
+              <li>{viewCount} Views</li>
+              <LuEye className='text-gray-600' />
+            </div>
+            <div className='text-black'>
+              {days > 30 ? (
+                Math.ceil(days / 30.44) === 1 ? (
+                  <span>{Math.ceil(days / 30.44)} Month ago</span>
+                ) : (
+                  <span>{Math.ceil(days / 30.44)} Months ago</span>
+                )
+              ) : Math.ceil(days) === 1 ? (
+                <span>{Math.ceil(days)} day ago</span>
+              ) : (
+                <span>{Math.ceil(days)} days ago</span>
+              )}
+            </div>
+
           </div>
         </div>
       </ul>
