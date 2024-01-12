@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center md:px-4 px-1 pr-4 py-2 bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center lg:px-3 md:px-4 px-1 pr-4 py-2 bg-white fixed w-full z-30'>
 
       {/* Arrow Left In sm Search To Move to normal Screen */}
       {
