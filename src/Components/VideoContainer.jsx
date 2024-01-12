@@ -7,6 +7,8 @@ import Error from '../HomePageContainer/Error';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     getVideos();
@@ -19,21 +21,25 @@ const VideoContainer = () => {
       if (!response.ok) {
         throw new Error(`Failed to fetch videos. Status: ${response.status}`);
       }
+
       const data = await response.json();
       setVideos(data.items);
     } catch (error) {
       console.error('Error while fetching the videos:', error);
+      setError('Failed to fetch videos. Please try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (!videos || videos.length === 0) {
-    return <Error />
+  if (error) {
+    return <Error />;
   }
 
   return (
     <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 mt-12'>
-      {videos.length === 0 ? (
-        <VideoShimmer itemCount={50} />
+      {loading ? (
+        <VideoShimmer />
       ) : (
         videos.map((video) => <VideoCard key={video.id} info={video} />)
       )}
@@ -42,4 +48,3 @@ const VideoContainer = () => {
 };
 
 export default VideoContainer;
-
