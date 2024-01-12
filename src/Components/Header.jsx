@@ -44,12 +44,12 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center lg:px-3 md:px-4 px-1 pr-4 py-2 bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center lg:px-4 md:px-4 px-2 pr-4 py-2 bg-white fixed w-full z-30'>
 
       {/* Arrow Left In sm Search To Move to normal Screen */}
       {
         showSearch &&
-        <div className='flex items-center mx-2'>
+        <div className='flex items-center mx-1'>
           <button onClick={handleArrowLeftClick}>
             <BsArrowLeftShort className='text-4xl' />
           </button>
@@ -58,7 +58,7 @@ const Header = () => {
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>
-        <div className='p-2 hover:bg-gray-200 rounded-full'>
+        <div className='pl-1 hover:bg-gray-200 rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer text-black' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
@@ -70,7 +70,7 @@ const Header = () => {
           type="text"
           placeholder='Search'
           className={`${showSearch
-            ? 'w-[57vw] py-2 bg-gray-100 focus:outline-red-800 transition-all duration-500'
+            ? 'w-[57vw] py-1 bg-gray-100 focus:outline-red-800 transition-all duration-500'
             : 'max-sm:hidden'} md:w-[40vw] lg:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
         />
         <button
