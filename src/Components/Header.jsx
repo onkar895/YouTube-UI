@@ -44,7 +44,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center md:px-4 px-2 pr-4 py-2 bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center md:px-4 px-1 pr-3 py-2 bg-white fixed w-full z-30'>
 
       {/* Arrow Left In sm Search To Move to normal Screen */}
       {
@@ -70,7 +70,7 @@ const Header = () => {
           type="text"
           placeholder='Search'
           className={`${showSearch
-            ? 'w-[56vw] py-1 bg-gray-100 focus:outline-red-800 transition-all duration-500'
+            ? 'w-[59.5vw] py-1 bg-gray-100 focus:outline-red-800 transition-all duration-500'
             : 'max-sm:hidden'} md:w-[40vw] lg:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
         />
         <button
