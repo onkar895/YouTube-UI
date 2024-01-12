@@ -1,22 +1,17 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React from 'react';
 
-const VideoShimmer = () => {
+const VideoShimmer = ({ itemCount }) => {
   return (
     <div>
-      {
-        // creating a new Array instance using Array() constructor and map through every element of array 
-        Array(50)
-          .fill("")
-          .map((_, index) => (
-            <div key={index}>
-
-
-            </div>
-          ))
-      }
+      {[...Array(itemCount)].map((_, index) => (
+        <div key={index} style={{ width: '100px', height: '120px' }}>
+          <div className='bg-gray-300 mt-4 mx-4' />
+        </div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default VideoShimmer
+export default VideoShimmer;

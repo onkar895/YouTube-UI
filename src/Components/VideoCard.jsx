@@ -8,6 +8,7 @@ import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
 import { timeDuration } from '../utils/constants';
 import { formatTime } from '../utils/constants';
 import { formatNumberWithSuffix } from '../utils/constants';
+import VideoShimmer from './ShimmerUI/VideoShimmer';
 
 const VideoCard = ({ info }) => {
   const { snippet, statistics, contentDetails } = info;
@@ -36,6 +37,12 @@ const VideoCard = ({ info }) => {
 
     fetchProfilePicture();
   }, [channelId]);
+
+
+  if (!info) return (
+    <VideoShimmer />
+  )
+
 
   return (
     <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] md:mx-auto'>
