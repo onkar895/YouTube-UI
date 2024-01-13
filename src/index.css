@@ -47,3 +47,8 @@ body::-webkit-scrollbar-thumb {
 .scrollBar::-webkit-scrollbar-thumb {
     display: none;
 }
+
+.blinkk {
+    /* transform: translateX(-50%); */
+    animation: blink 0.5s infinite alternate;
+}
