@@ -14,9 +14,15 @@ const VideoShimmer = () => {
                 <div className='bg-gray-200 rounded-2xl max-sm:w-[90vw] md:h-[25vw] lg:h-[15vw] max-sm:h-[50vw] mx-auto lg:w-[28.5vw] md:w-[40.4vw]'>
                 </div>
               </div>
-              <div className='flex max-sm:ml-6 mt-5 gap-2 items-center font-bold text-[14.6px] '>
+              <div className='flex max-sm:ml-6 mt-5 gap-2 items-center font-bold text-[14.6px]'>
                 <div className='rounded-full w-10 h-10 bg-gray-200' ></div>
                 <div className='mr-2 bg-gray-200 h-12 lg:w-[24.5vw] md:w-[33vw] max-sm:w-[75vw] rounded-lg'></div>
+              </div>
+              <div className=' bg-gray-200 ml-12 lg:w-[24.5vw] md:w-[33vw] max-sm:w-[75vw] h-5 mt-2'>
+
+              </div>
+              <div className=' bg-gray-200 ml-12 lg:w-[24.5vw] md:w-[33vw] max-sm:w-[75vw] h-5 mt-2'>
+
               </div>
             </div>
           ))

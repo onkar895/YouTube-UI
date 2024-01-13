@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { YOUTUBE_VIDEO_API } from '../utils/APIList';
 import VideoCard from '../Components/VideoCard';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
-import Error from '../HomePageContainer/Error';
+import CustomError from '../HomePageContainer/CustomError'
+
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
@@ -33,7 +34,7 @@ const VideoContainer = () => {
   };
 
   if (error) {
-    return <Error />;
+    return <CustomError />;
   }
 
   return (
