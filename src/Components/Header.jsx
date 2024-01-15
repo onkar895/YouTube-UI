@@ -41,6 +41,8 @@ const Header = () => {
     setShowSearch(false);
   };
 
+  const handleInput = `${showSearch ? 'w-[58vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`
+
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
     const screenWidth = window.innerWidth;
@@ -77,9 +79,7 @@ const Header = () => {
           <input
             type="text"
             placeholder='Search'
-            className={`${showSearch
-              ? 'w-[58vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500'
-              : 'max-sm:hidden'} md:w-[36vw] lg:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
+            className={handleInput}
           />
           <button
             className={`border border-gray-400 ${showSearch ? 'px-3' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:py-2  md:px-4 flex justify-center items-center md:bg-zinc-100  hover:bg-zinc-200`}

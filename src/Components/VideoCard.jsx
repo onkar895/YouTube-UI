@@ -44,7 +44,7 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
+    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[110vw] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
       <div className='relative'>
         <img
           src={thumbnails?.medium.url} alt="thumbnail"

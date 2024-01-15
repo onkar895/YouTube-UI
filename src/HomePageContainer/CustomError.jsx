@@ -14,7 +14,7 @@ const Error = () => {
     <>
       <div className={`w-[100%] ${classNameString} flex flex-col gap-2 text-lg justify-between overflow-hidden top-24 hover:scale-105`}>
         <div className="py-1">
-          <h1 className="text-2xl text-red-600 text-center animate-pulse">Unable to fetch the request for now! 🙄</h1>
+          <h1 className="text-2xl text-red-600 animate-pulse">Unable to fetch the request for now! 🙄</h1>
         </div>
         <h3> - This service, powered by free APIs with limitations, may experience interruptions.</h3>
         <p> - The API key has reached the maximum number of allowed requests. So, it breaks anytime! Sorry for the inconvenience.</p>
