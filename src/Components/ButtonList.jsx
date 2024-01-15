@@ -11,7 +11,7 @@ const ButtonList = () => {
         {
           ButtonNames.map((name, index) => (
             <li key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${name === "All" ? "bg-gray-900 text-white" : " "}`}>
-              <NavLink>
+              <NavLink to={`/${name.toLowerCase()}`}>
                 <span>
                   {name}
                 </span>
