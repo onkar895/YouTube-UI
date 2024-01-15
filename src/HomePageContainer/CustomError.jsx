@@ -16,9 +16,9 @@ const Error = () => {
         <div className="py-1">
           <h1 className="text-2xl text-red-600 text-center animate-pulse">Unable to fetch the request for now! 🙄</h1>
         </div>
-        <h3>- This service, powered by free APIs with limitations, may experience interruptions.</h3>
-        <p>- So, it breaks anytime! Sorry for the inconvenience.</p>
-        <h3>- For a more reliable experience, kindly consider using the original YouTube platform.</h3>
+        <h3> - This service, powered by free APIs with limitations, may experience interruptions.</h3>
+        <p> - The API key has reached the maximum number of allowed requests. So, it breaks anytime! Sorry for the inconvenience.</p>
+        <h3> - For a more reliable experience, kindly consider using the original YouTube platform.</h3>
       </div>
     </>
   );

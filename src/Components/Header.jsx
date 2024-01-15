@@ -9,6 +9,7 @@ import YouTubeLogo from '../assets/YouTube_Logo.png';
 import MyPic from '../assets/MyPic.jpg';
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
+import { AiFillAudio } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -71,24 +72,29 @@ const Header = () => {
       </div>
 
       {/* Search Input */}
-      <div className='flex max-sm:mr-5 '>
-        <input
-          type="text"
-          placeholder='Search'
-          className={`${showSearch
-            ? 'w-[57vw] py-1 bg-gray-100 focus:outline-red-800 transition-all duration-500'
-            : 'max-sm:hidden'} md:w-[40vw] lg:w-[44vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
-        />
-        <button
-          className={`border border-gray-400 ${showSearch ? '' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-20'} rounded-r-full md:py-2 px-3 md:px-4 flex justify-center items-center  hover:bg-zinc-100`}
-          onClick={handleSearchButtonClick}
-        >
-          <IoSearchOutline className='md:w-10 h-6' />
-        </button>
+      <div className='flex items-center lg:gap-6 md:gap-3 max-sm:mr-5 '>
+        <div className='flex'>
+          <input
+            type="text"
+            placeholder='Search'
+            className={`${showSearch
+              ? 'w-[58vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500'
+              : 'max-sm:hidden'} md:w-[36vw] lg:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`}
+          />
+          <button
+            className={`border border-gray-400 ${showSearch ? 'px-3' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:py-2  md:px-4 flex justify-center items-center md:bg-zinc-100  hover:bg-zinc-200`}
+            onClick={handleSearchButtonClick}
+          >
+            <IoSearchOutline className='md:w-10 h-6' />
+          </button>
+        </div>
+        <div className=' bg-gray-200 cursor-pointer hover:bg-gray-300 rounded-full p-[9.5px] max-sm:hidden '>
+          <AiFillAudio className='text-xl' />
+        </div>
       </div>
 
       {/* Notification and User Icons */}
-      <div className='flex items-center gap-8 text-[22px] md:mr-3'>
+      <div className='flex items-center gap-6 text-[22px] md:mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
         <div className={`${showSearch ? 'max-sm:hidden' : ''} relative`}>
           <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
