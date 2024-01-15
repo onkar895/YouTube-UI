@@ -10,8 +10,8 @@ const VideoShimmer = () => {
           .fill("")
           .map((_, index) => (
             <div key={index}>
-              <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw]'>
-                <div className='bg-gradient-to-r from-gray-200 to-zinc-200 rounded-2xl max-sm:w-[90vw] md:h-[25vw] lg:h-[16vw] max-sm:h-[50vw] lg:w-[28.5vw] md:w-[40.4vw]'>
+              <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] animation:spin 2s linear infinite'>
+                <div className='bg-gray-200 rounded-2xl max-sm:w-[90vw] md:h-[25vw] lg:h-[16vw] max-sm:h-[50vw] lg:w-[28.5vw] md:w-[40.4vw]'>
                 </div>
               </div>
               <div className='flex max-sm:ml-6 mt-4 gap-2 items-center font-bold text-[14.6px]'>
