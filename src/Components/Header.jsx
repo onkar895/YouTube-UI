@@ -9,12 +9,18 @@ import YouTubeLogo from '../assets/YouTube_Logo.png';
 import MyPic from '../assets/MyPic.jpg';
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
   const dispatch = useDispatch();
   const [showSearch, setShowSearch] = useState(false);
+
+  const navigate = useNavigate()
+
+  function handleClick() {
+    navigate("/");
+  }
 
   // Function to toggle the side menu
   const toggleMenuHandler = () => {
@@ -58,10 +64,10 @@ const Header = () => {
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>
-        <div className='pl-1 hover:bg-gray-200 rounded-full'>
+        <div className='md:ml-1 max-sm:ml-1 py-2 hover:bg-gray-200 hover:rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer text-black' onClick={toggleMenuHandler} />
         </div>
-        <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' />
+        <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
       </div>
 
       {/* Search Input */}
