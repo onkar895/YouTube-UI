@@ -44,11 +44,11 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[110vw] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
+    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
       <div className='relative'>
         <img
           src={thumbnails?.medium.url} alt="thumbnail"
-          className='rounded-2xl w-[90vw] mx-auto lg:w-[28.5vw] md:w-[40.4] object-cover object-center'
+          className='rounded-2xl w-[90vw] mx-auto lg:w-[28.5vw] md:w-[40.4]'
         />
         <div className="absolute max-sm:bottom-1 max-sm:right-6 md:bottom-1 md:right-1 bg-black text-white px-2 py-1 rounded-lg text-xs">
           {duration}
@@ -56,7 +56,7 @@ const VideoCard = ({ info }) => {
       </div>
       <ul className='pt-3 space-y-2 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
         <div className='flex gap-2 items-center font-bold text-[14.6px] '>
-          <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10 object-cover object-center' />
+          <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10' />
           <li className='mr-2 overflow-hidden'>{title}...</li>
         </div>
         <div className='text-gray-500 md:text-sm text-xs ml-12 tracking-wider space-y-1'>
