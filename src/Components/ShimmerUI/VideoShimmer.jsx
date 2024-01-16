@@ -3,7 +3,7 @@ import React from 'react'
 
 const VideoShimmer = () => {
   return (
-    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 lg:ml-1 max-sm:ml-4'>
+    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-4 lg:ml-1 max-sm:ml-4'>
       {
         // creating a new Array instance using Array() constructor and map through every element of array 
         Array(50)

@@ -41,7 +41,7 @@ const Header = () => {
     setShowSearch(false);
   };
 
-  const handleInput = `${showSearch ? 'w-[58vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[40vw] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`
+  const handleInput = `${showSearch ? 'w-[57vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] border md:py-[7px] lg:py-[7px] border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`
 
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
@@ -82,13 +82,13 @@ const Header = () => {
             className={handleInput}
           />
           <button
-            className={`border border-gray-400 ${showSearch ? 'px-3' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:py-2  md:px-4 flex justify-center items-center md:bg-zinc-100  hover:bg-zinc-200`}
+            className={`border border-gray-300 ${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100  hover:bg-gray-200`}
             onClick={handleSearchButtonClick}
           >
-            <IoSearchOutline className='md:w-10 h-6' />
+            <IoSearchOutline className='md:w-10 md:h-5' />
           </button>
         </div>
-        <div className=' bg-gray-200 cursor-pointer hover:bg-gray-300 rounded-full p-[9.5px] max-sm:hidden '>
+        <div className=' bg-gray-100 cursor-pointer hover:bg-gray-200 rounded-full p-[9.5px] max-sm:hidden '>
           <AiFillAudio className='text-xl' />
         </div>
       </div>
