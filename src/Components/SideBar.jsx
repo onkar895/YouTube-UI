@@ -17,11 +17,13 @@ const SideBar = () => {
     : 'fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1';
 
   // Early return pattern
+  // If the menu is closed and the location is '/watch', hide the first sidebar
   if (!isMenuOpen) {
     if (location.pathname === '/watch') {
       return null;
     }
 
+    // Render the first sidebar with four sections when the menu is closed
     return (
       <div className={SideBarStyle}>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
@@ -46,6 +48,7 @@ const SideBar = () => {
     );
   }
 
+  // If the menu is open, render the toggle sidebar with all sections.
   return (
     <>
       <div className={SideBarStyle}>
