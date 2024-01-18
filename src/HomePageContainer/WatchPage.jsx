@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const WatchPage = () => {
-  console.log('WatchPage rendered');
+
   return (
-    <div className='mt-24 mx-28'>
+    <div className='mt-20 mx-16'>
       WatchPage
     </div>
   )

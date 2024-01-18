@@ -1,46 +1,50 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React from 'react';
 import { Explore, Premium, Setting } from '../utils/constants';
-import { MdHomeFilled } from "react-icons/md";
-import { FaSquareYoutube } from "react-icons/fa6";
-import { SiYoutubeshorts } from "react-icons/si";
-import { MdSubscriptions } from "react-icons/md";
+import { MdHomeFilled } from 'react-icons/md';
+import { FaSquareYoutube } from 'react-icons/fa6';
+import { SiYoutubeshorts } from 'react-icons/si';
+import { MdSubscriptions } from 'react-icons/md';
 import { useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom'
-
+import { NavLink, useLocation } from 'react-router-dom';
 
 const SideBar = () => {
-
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const location = useLocation();
 
   const SideBarStyle = isMenuOpen
     ? 'fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-20 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-500'
-    : 'fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1'
+    : 'fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1';
 
   // Early return pattern
-  if (!isMenuOpen)
+  if (!isMenuOpen) {
+    if (location.pathname === '/watch') {
+      return null;
+    }
+
     return (
       <div className={SideBarStyle}>
-        <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-          <NavLink to='/' exact='true' className='flex flex-col items-center'>
-            <MdHomeFilled className='w-5 h-7' />
-            <span className='font-bold'>Home</span>
+        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
+          <NavLink to="/" exact={true} className="flex flex-col items-center">
+            <MdHomeFilled className="w-5 h-7" />
+            <span className="font-bold">Home</span>
           </NavLink>
         </div>
-        <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-          <SiYoutubeshorts className='w-5 h-8' />
+        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
+          <SiYoutubeshorts className="w-5 h-8" />
           <span>Shorts</span>
         </div>
-        <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-          <MdSubscriptions className='w-5 h-8 ' />
+        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
+          <MdSubscriptions className="w-5 h-8 " />
           <span>Subscriptions</span>
         </div>
-        <div className='hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1'>
-          <FaSquareYoutube className='w-4 h-8 text-black' />
+        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
+          <FaSquareYoutube className="w-4 h-8 text-black" />
           <span>You</span>
         </div>
       </div>
     );
+  }
 
   return (
     <>
@@ -134,7 +138,7 @@ const SideBar = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SideBar
+export default SideBar;
