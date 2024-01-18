@@ -44,13 +44,13 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[28.5vw] max-sm:w-[100vw] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
+    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
       <div className='relative'>
         <img
           src={thumbnails?.medium.url} alt="thumbnail"
-          className='rounded-2xl w-[90vw] mx-auto lg:w-[28.5vw] md:w-[40.4]'
+          className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4]'
         />
-        <div className="absolute max-sm:bottom-1 max-sm:right-6 md:bottom-1 md:right-1 bg-black text-white px-2 py-1 rounded-lg text-xs">
+        <div className="absolute max-sm:bottom-1 max-sm:right-6 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
           {duration}
         </div>
       </div>

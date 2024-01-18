@@ -4,6 +4,7 @@ import { YOUTUBE_VIDEO_API } from '../utils/APIList';
 import VideoCard from '../Components/VideoCard';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
 import CustomError from '../HomePageContainer/CustomError'
+import { NavLink } from 'react-router-dom'
 
 
 const VideoContainer = () => {
@@ -42,9 +43,14 @@ const VideoContainer = () => {
       {loading ? (
         <VideoShimmer />
       ) : (
-        videos.map((video) => <VideoCard key={video.id} info={video} />)
+        videos.map((video) => (
+          <NavLink to={'/watch?v=' + video.id} key={video.id}>
+            <VideoCard info={video} />
+          </NavLink>
+        )
+        )
       )}
-    </div>
+    </div >
   );
 };
 

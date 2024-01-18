@@ -94,7 +94,7 @@ const Header = () => {
       </div>
 
       {/* Notification and User Icons */}
-      <div className='flex items-center gap-6 text-[22px] md:mr-3'>
+      <div className='flex items-center gap-6 text-[22px] lg:mr-3 md:mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
         <div className={`${showSearch ? 'max-sm:hidden' : ''} relative`}>
           <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
