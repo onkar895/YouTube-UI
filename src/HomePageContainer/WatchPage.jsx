@@ -8,20 +8,13 @@ const WatchPage = () => {
   // The useParams hook is part of the react-router-dom library, and it allows you to access the parameters from the URL in a React component. Parameters in a URL are often used to pass information between different components in a single-page application.
 
   // useSearchParams is used for accessing and manipulating URL parameters.
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
   console.log(searchParams.get("v"))
 
   return (
-    <div className='mx-0 mt-12'>
-      <iframe
-        width="1280"
-        height="490"
-        src="https://www.youtube.com/embed/oIrYUc7GK-Y?si=L2ozgl1guWrRXi9e"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen>
-      </iframe>
-    </div>
+    <div className='md:mx-7 md:mt-14 max-sm:mt-20 max-sm:mx-3'>
+      <iframe className='rounded-2xl max-sm:w-[94vw] max-sm:h-[35vh] md:w-[92.5vw] md:h-[50vh] lg:w-[60vw] lg:h-[80vh]' src={"https://www.youtube.com/embed/" + searchParams.get("v")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    </div >
   )
 }
 
