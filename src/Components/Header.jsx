@@ -43,6 +43,8 @@ const Header = () => {
 
   const handleInput = `${showSearch ? 'w-[57vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] border md:py-[7px] lg:py-[7px] border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`
 
+  const handleSearchButton = `border border-gray-300 ${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100  hover:bg-gray-200`
+
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
     const screenWidth = window.innerWidth;
@@ -82,7 +84,7 @@ const Header = () => {
             className={handleInput}
           />
           <button
-            className={`border border-gray-300 ${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100  hover:bg-gray-200`}
+            className={handleSearchButton}
             onClick={handleSearchButtonClick}
           >
             <IoSearchOutline className='md:w-10 md:h-5' />

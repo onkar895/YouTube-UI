@@ -23,7 +23,7 @@ const SideBar = () => {
       return null;
     }
 
-    // Render the first sidebar with four sections when the menu is closed
+    // Render the first sidebar with four sections when the menu is closed.
     return (
       <div className={SideBarStyle}>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
