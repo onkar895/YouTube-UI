@@ -98,7 +98,7 @@ const Header = () => {
       {/* Notification and User Icons */}
       <div className='flex items-center gap-6 text-[22px] lg:mr-3 md:mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
-        <div className={`${showSearch ? 'max-sm:hidden' : ''} relative`}>
+        <div className={`${showSearch ? 'max-sm:hidden' : ''} relative hover:rounded-full hover:bg:gray-200`}>
           <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
           <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer'>
             9+
