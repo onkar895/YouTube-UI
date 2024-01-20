@@ -46,7 +46,8 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500' onMouseEnter={() => setIsHovered(true)}
+    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500'
+      onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}>
       <div className='relative'>
         <img
@@ -57,24 +58,26 @@ const VideoCard = ({ info }) => {
           {duration}
         </div>
 
-        {isHovered && (
-          // Render the YouTube video iframe when hovered
-          <div className={`absolute top-0 left-0 w-full h-full ${isHovered ? '' : 'hidden'}`}>
-            {isHovered && (
-              // Render the YouTube video iframe when hovered
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${info.id}?autoplay=1&mute=1`}
-                title={info.snippet.title}
-                frameBorder="0"
-                allowFullScreen
-                autoPlay
-                className="rounded-2xl"
-              ></iframe>
-            )}
-          </div>
-        )}
+        {
+          isHovered && (
+            // Render the YouTube video iframe when hovered
+            <div className={`absolute top-0 left-0 w-full h-full ${isHovered ? '' : 'hidden'}`}>
+              {isHovered && (
+                // Render the YouTube video iframe when hovered
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${info.id}?autoplay=1&mute=1`}
+                  title={info.snippet.title}
+                  frameBorder="0"
+                  allowFullScreen
+                  autoPlay
+                  className="rounded-2xl"
+                ></iframe>
+              )}
+            </div>
+          )
+        }
 
       </div>
       <ul className='pt-3 space-y-2 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
