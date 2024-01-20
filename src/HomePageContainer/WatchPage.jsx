@@ -12,8 +12,14 @@ const WatchPage = () => {
   console.log(searchParams.get("v"))
 
   return (
-    <div className='md:mx-auto lg:mx-7 md:mt-14 max-sm:mt-20 max-sm:mx-auto'>
-      <iframe className='rounded-2xl max-sm:w-[95vw] max-sm:h-[32vh] md:w-[92.5vw] md:h-[40vh] lg:w-[60vw] lg:h-[80vh]' src={"https://www.youtube.com/embed/" + searchParams.get("v")} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-20 max-sm:mx-auto'>
+      <iframe
+        className='rounded-sm max-sm:w-[95vw] max-sm:h-[32vh] md:w-[92.5vw] md:h-[40vh] lg:w-[64.3vw] lg:h-[75vh]'
+        src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+        title="YouTube video player"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen>
+      </iframe>
     </div >
   )
 }
