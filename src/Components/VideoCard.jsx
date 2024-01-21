@@ -118,7 +118,7 @@ const VideoCard = ({ info }) => {
   );
 };
 
-// Higer Order Component :
+// Higher Order Component :
 // export const RedBorderedVideoCard = ({ info }) => {
 //   return (
 //     <div className='border border-red-800 p-1 m-1'>

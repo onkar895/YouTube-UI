@@ -2,15 +2,15 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
-import { IoSearchOutline, IoNotificationsOutline } from 'react-icons/io5';
+import { IoNotificationsOutline } from 'react-icons/io5';
 import { RiVideoAddLine } from 'react-icons/ri';
-import { BsArrowLeftShort } from "react-icons/bs";
 import YouTubeLogo from '../assets/YouTube_Logo.png';
 import MyPic from '../assets/MyPic.jpg';
 import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
 import { AiFillAudio } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
+import SearchBar from './SearchBar';
 
 
 const Header = () => {
@@ -28,44 +28,8 @@ const Header = () => {
     dispatch(toggleMenu());
   };
 
-  // Function to handle the search input focus
-  // const handleSearchFocus = () => {
-  //   const screenWidth = window.innerWidth;
-  //   if (screenWidth < 768 && !showSearch) {
-  //     setShowSearch(true);
-  //   }
-  // };
-
-  // Function to handle the arrow left button click in the search
-  const handleArrowLeftClick = () => {
-    setShowSearch(false);
-  };
-
-  const handleInput = `${showSearch ? 'w-[57vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] border md:py-[7px] lg:py-[7px] border-gray-400 rounded-l-full py-1 pl-3 md:pl-5 focus:outline-red-800 transition-all duration-500`
-
-  const handleSearchButton = `border border-gray-300 ${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100  hover:bg-gray-200`
-
-  // Function to handle the search button click
-  const handleSearchButtonClick = () => {
-    const screenWidth = window.innerWidth;
-    // console.log(`Window inner width: ${screenWidth}`);
-    if (screenWidth < 768 && !showSearch) {
-      setShowSearch(true);
-    }
-  };
-
   return (
     <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-2 max-sm:pr-3 py-2 bg-white fixed w-full z-30 '>
-
-      {/* Arrow Left In sm Search To Move to normal Screen */}
-      {
-        showSearch &&
-        <div className='flex items-center mx-1'>
-          <button onClick={handleArrowLeftClick}>
-            <BsArrowLeftShort className='text-4xl' />
-          </button>
-        </div>
-      }
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>
@@ -75,21 +39,12 @@ const Header = () => {
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
       </div>
 
-      {/* Search Input */}
+      {/* Search Bar Component */}
       <div className='flex items-center lg:gap-6 md:gap-3 max-sm:mr-5 '>
-        <div className='flex'>
-          <input
-            type="text"
-            placeholder='Search'
-            className={handleInput}
-          />
-          <button
-            className={handleSearchButton}
-            onClick={handleSearchButtonClick}
-          >
-            <IoSearchOutline className='md:w-10 md:h-5' />
-          </button>
-        </div>
+        <SearchBar
+          showSearch={showSearch}
+          setShowSearch={setShowSearch}
+        />
         <div className=' bg-gray-100 cursor-pointer hover:bg-gray-200 rounded-full p-[9.5px] max-sm:hidden '>
           <AiFillAudio className='text-xl' />
         </div>

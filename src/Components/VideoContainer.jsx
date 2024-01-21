@@ -46,10 +46,7 @@ const VideoContainer = () => {
         <VideoShimmer />
       ) : (
         videos.map((video) => (
-          <NavLink
-            to={'/watch?v=' + video.id}
-            key={video.id}
-          >
+          <NavLink to={'/watch?v=' + video.id} key={video.id}>
             <VideoCard info={video} />
           </NavLink>
         ))
