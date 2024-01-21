@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
-import { GoDotFill } from "react-icons/go";
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
 import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
 import { timeDuration } from '../utils/constants';

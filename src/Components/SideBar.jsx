@@ -27,7 +27,7 @@ const SideBar = () => {
     return (
       <div className={SideBarStyle}>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
-          <NavLink to="/" exact={true} className="flex flex-col items-center">
+          <NavLink to="/" exact="true" className="flex flex-col items-center">
             <MdHomeFilled className="w-5 h-7" />
             <span className="font-bold">Home</span>
           </NavLink>
