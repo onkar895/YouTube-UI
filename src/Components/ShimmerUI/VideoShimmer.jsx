@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 const VideoShimmer = () => {
   return (
-    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-8 max-sm:mx-3'>
+    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-16 max-sm:mx-3 max-sm:gap-y-10'>
       {
         // creating a new Array instance using Array() constructor and map through every element of array 
         Array(50)
@@ -12,7 +12,7 @@ const VideoShimmer = () => {
           .map((_, index) => (
 
             <NavLink key={index}>
-              <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100vw] animate-pulse shadow-lg'>
+              <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100vw] animate-pulse shadow-lg'>
                 <div className='bg-gray-300 rounded-2xl max-sm:w-[94vw] md:h-[25vw] lg:h-[16vw] max-sm:h-[50vw] lg:w-[29vw] md:w-[40.4vw] animate-pulse'>
                 </div>
               </div>

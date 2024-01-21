@@ -38,7 +38,10 @@ const VideoContainer = () => {
   }
 
   return (
-    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-4 mt-12'>
+    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 max-sm:gap-y-10 md:mt-[4.3rem] max-sm:mt-[4rem]'>
+      {/* {
+        videos[0] && <RedBorderedVideoCard info={videos[0]} />
+      } */}
       {loading ? (
         <VideoShimmer />
       ) : (

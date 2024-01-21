@@ -45,7 +45,7 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='mt-8 cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
+    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
       <div
         className='relative'
         onMouseOver={() => setIsHovered(true)}
@@ -117,5 +117,14 @@ const VideoCard = ({ info }) => {
     </div>
   );
 };
+
+// Higer Order Component :
+// export const RedBorderedVideoCard = ({ info }) => {
+//   return (
+//     <div className='border border-red-800 p-1 m-1'>
+//       <VideoCard info={info} />
+//     </div>
+//   )
+// }
 
 export default VideoCard;
