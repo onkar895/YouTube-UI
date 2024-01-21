@@ -39,7 +39,7 @@ const Header = () => {
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
       </div>
 
-      {/* Search Bar Component */}
+      {/* SearchBar Component */}
       <div className='flex items-center lg:gap-6 md:gap-3 max-sm:mr-5 '>
         <SearchBar
           showSearch={showSearch}

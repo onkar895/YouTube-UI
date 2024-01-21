@@ -10,9 +10,9 @@ const WatchPage = () => {
   const videoSrc = `https://www.youtube.com/embed/${videoId}`;
 
   return (
-    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-14 max-sm:mx-auto'>
+    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-16 max-sm:mx-auto'>
       <iframe
-        className='rounded-sm max-sm:w-[95vw] max-sm:h-[32vh] md:w-[92.5vw] md:h-[40vh] lg:w-[64.3vw] lg:h-[75vh] object-cover'
+        className='rounded-lg max-sm:w-[95vw] max-sm:h-[32vh] md:w-[92.5vw] md:h-[40vh] lg:w-[64.3vw] lg:h-[75vh] object-cover'
         src={videoSrc}
         title='YouTube video player'
         frameBorder='0'
