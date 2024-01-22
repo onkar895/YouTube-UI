@@ -45,7 +45,7 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto hover:scale-95 hover:transition-all duration-500'>
+    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto'>
       <div
         className='relative'
         onMouseOver={() => setIsHovered(true)}
@@ -71,7 +71,7 @@ const VideoCard = ({ info }) => {
                 frameBorder="0"
                 allowFullScreen
                 autoPlay
-                className="rounded-2xl"
+                className='rounded-2xl'
               ></iframe>
             </div>
           )
