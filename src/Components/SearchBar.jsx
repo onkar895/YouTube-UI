@@ -12,6 +12,8 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
   const [suggestions, setSuggestions] = useState([])
 
+  const [isInputFocused, setIsInputFocused] = useState(false);
+
   useEffect(() => {
 
     const timer = setTimeout(() => {
@@ -37,9 +39,11 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     }
   };
 
-  const handleInput = `${showSearch ? 'w-[57vw] py-[7px] bg-gray-100 focus:outline-red-800 transition-all duration-500' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] border md:py-[7px] lg:py-[7px] border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-red-800 transition-all duration-500`
+  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[98%]" : "max-sm:hidden"}  fixed mt-10 py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
 
-  const handleSearchButton = `${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} border border-gray-300 rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100 hover:bg-gray-200`
+  const handleInput = `${showSearch ? 'w-[58.5vw] py-[8px] border-none bg-gray-200 transition-all duration-500 ml-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-gray-300 transition-all duration-500 ${isInputFocused ? 'max-sm:w-[75vw] max-sm:mx-auto' : ''}`
+
+  const handleSearchButton = `${showSearch ? 'px-3 text-lg max-sm:bg-gray-200' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} border border-gray-300 rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100`
 
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
@@ -61,7 +65,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
       {/* Left Arrow Button In sm Search To Move to normal Screen */}
       {
         showSearch &&
-        <div className='flex items-center mx-1'>
+        <div className='flex items-center'>
           <button onClick={handleArrowLeftClick}>
             <BsArrowLeftShort className='text-4xl' />
           </button>
@@ -75,6 +79,8 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
           className={handleInput}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={() => setIsInputFocused(false)}
         />
         <button
           className={handleSearchButton}
@@ -85,12 +91,12 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
       </div>
       {
         searchQuery && (
-          <div className='fixed mt-10 py-5 bg-white shadow-2xl rounded-2xl lg:w-[42.3vw] lg:h-[75vh] border border-gray-100'>
+          <div className={handleSearchSuggestionBar}>
             <ul className='space-y-2 font-bold'>
               {
                 suggestions.map((suggestion) => (
-                  <li key={suggestion} className='flex items-center hover:bg-gray-200 px-[0.7rem] py-1'>
-                    <IoSearchOutline className='md:w-10 md:h-5 mt-1' />
+                  <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-3`}>
+                    <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
                     {suggestion}
                   </li>
                 ))

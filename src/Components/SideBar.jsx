@@ -13,7 +13,7 @@ const SideBar = () => {
   const location = useLocation();
 
   const SideBarStyle = isMenuOpen
-    ? 'fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-20 text-sm hover:overflow-x-hidden top-[55px] transition-shadow duration-500'
+    ? 'fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-20 text-sm hover:overflow-x-hidden md:top-[55px] max-sm:top-[50px] transition-shadow duration-500'
     : 'fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1';
 
   // Early return pattern
@@ -52,8 +52,8 @@ const SideBar = () => {
   return (
     <>
       <div className={SideBarStyle}>
-        <ul className='max-sm:ml-2 md:ml-4 mt-3'>
-          <li className=' bg-gray-100 md:w-52 w-[47vw] pl-[13px] rounded-lg'>
+        <ul className='md:ml-4 mt-3'>
+          <li className=' bg-gray-100 md:w-52 w-[50.5vw] pl-[13px] rounded-lg'>
             <NavLink to='/' exact='true' className='flex items-center gap-5'>
               <MdHomeFilled className='w-5 h-10' />
               <span className='font-bold'>Home</span>
@@ -73,14 +73,14 @@ const SideBar = () => {
           <hr />
         </div>
 
-        <div className='ml-2 md:ml-4 my-4'>
+        <div className='md:ml-4 my-4'>
           <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>Explore</h1>
           <ul>
             {
               Explore.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[47vw]'>
+                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[50.5vw]'>
                       <NavLink className='flex items-center gap-5'>
                         {icon}
                         <span>{name}</span>
@@ -97,14 +97,14 @@ const SideBar = () => {
           <hr />
         </div>
 
-        <div className='ml-2 md:ml-4 my-4'>
+        <div className='md:ml-4 my-4'>
           <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>More from YouTube</h1>
           <ul>
             {
               Premium.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[47vw]'>
+                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[50.5vw]'>
                       <NavLink className='flex items-center gap-5'>
                         <span className='text-red-600'>{icon}</span>
                         <span>{name}</span>
@@ -121,13 +121,13 @@ const SideBar = () => {
           <hr />
         </div>
 
-        <div className='ml-2 md:ml-4 my-4'>
+        <div className='md:ml-4 my-4'>
           <ul>
             {
               Setting.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[45vw}'>
+                    <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg md:hover:w-52 hover:w-[50.5vw}'>
                       <NavLink className='flex items-center gap-5'>
                         {icon}
                         <span>{name}</span>
