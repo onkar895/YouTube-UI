@@ -39,9 +39,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     }
   };
 
-  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[98%]" : "max-sm:hidden"}  fixed mt-10 py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
+  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[98%]" : ""}  fixed mt-10 py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
 
-  const handleInput = `${showSearch ? 'w-[58.5vw] py-[8px] border-none bg-gray-200 transition-all duration-500 ml-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-gray-300 transition-all duration-500 ${isInputFocused ? 'max-sm:w-[75vw] max-sm:mx-auto' : ''}`
+  const handleInput = `${showSearch ? 'w-[62.5vw] mx-auto py-[8px] border-none bg-gray-200 transition-all duration-500 ml-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-gray-300 transition-all duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto' : ''}`
 
   const handleSearchButton = `${showSearch ? 'px-3 text-lg max-sm:bg-gray-200' : 'max-sm:border-none max-sm:rounded-full max-sm:text-2xl max-sm:ml-28'} border border-gray-300 rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100`
 
