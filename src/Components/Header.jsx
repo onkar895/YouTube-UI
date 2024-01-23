@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 py-[15px] bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 py-[12px] max-sm:[15px] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>

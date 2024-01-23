@@ -33,9 +33,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   // Styles stored in variables for better readability and maintainability
   const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl' : 'max-sm:hidden'} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[44.5vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 ${isMenuOpen ? 'md:ml-20 md:w-[38vw] lg:ml-0' : ''}`;
 
-  const inputStyles = `${showSearch ? 'w-[62.5vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full py-1 pl-3 md:pl-6 transition-all focus:outline-0 duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-700 max-sm:border max-sm:border-blue-700 ' : ''} ${isMenuOpen ? 'md:w-[29vw] md:ml-20 lg:ml-0' : ''}`;
+  const inputStyles = `${showSearch ? 'w-[62.5vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-xl py-1 pl-3 md:pl-6 transition-all focus:outline-0 duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-700 max-sm:border max-sm:border-blue-700 ' : ''} ${isMenuOpen ? 'md:w-[29vw] md:ml-20 lg:ml-0' : ''}`;
 
-  const searchButtonStyles = `${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:text-2xl max-sm:ml-[7.5rem]'} border border-gray-300 hover:bg-gray-200 rounded-r-full md:px-3 flex justify-center items-center md:bg-gray-100 ${isInputFocused ? 'md:border md:border-blue-700 max-sm:border max-sm:border-blue-700 ' : ''}`;
+  const searchButtonStyles = `${showSearch ? 'px-3 text-lg' : 'max-sm:border-none max-sm:text-2xl max-sm:ml-[7.5rem]'} border border-gray-300 hover:bg-gray-200 rounded-r-xl md:px-3 flex justify-center items-center md:bg-gray-100 ${isInputFocused ? 'md:border md:border-blue-700 max-sm:border max-sm:border-blue-700 ' : ''}`;
 
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
