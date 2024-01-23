@@ -41,7 +41,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     }
   };
 
-  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[95vw]" : "max-sm:hidden"} absolute z-50 mt-10 py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
+  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[98%]" : "max-sm:hidden"}  fixed py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
 
   const handleInput = `${showSearch ? 'w-[62.5vw] mx-auto py-[8px] border-none bg-gray-200 transition-all duration-500 ml-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-gray-300 transition-all duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto' : ''}`
 
@@ -62,61 +62,66 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   };
 
   return (
-    <div className='flex'>
+    <>
+      <div>
+        <div className='flex'>
+          {/* Left Arrow Button In sm Search To Move to normal Screen */}
+          {
+            showSearch &&
+            <div className='flex items-center'>
+              <button onClick={handleArrowLeftClick}>
+                <BsArrowLeftShort className='text-4xl' />
+              </button>
+            </div>
+          }
 
-      {/* Left Arrow Button In sm Search To Move to normal Screen */}
-      {
-        showSearch &&
-        <div className='flex items-center'>
-          <button onClick={handleArrowLeftClick}>
-            <BsArrowLeftShort className='text-4xl' />
+          <input
+            type="text"
+            placeholder='Search'
+            className={handleInput}
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            onFocus={() => {
+              setIsInputFocused(true)
+              setShowSuggestions(true)
+            }
+            }
+            onBlur={() => {
+              setIsInputFocused(false);
+              setTimeout(() => setShowSuggestions(false), 200);
+            }}
+          />
+          <button
+            className={handleSearchButton}
+            onClick={handleSearchButtonClick}
+          >
+            <IoSearchOutline className='md:w-10 md:h-5' />
           </button>
         </div>
-      }
 
-      <div className='flex'>
-        <input
-          type="text"
-          placeholder='Search'
-          className={handleInput}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          onFocus={() => {
-            setIsInputFocused(true)
-            setShowSuggestions(true)
+        <div>
+          {
+            searchQuery && showSuggestions && (
+              <div className={handleSearchSuggestionBar}>
+                <ul className='space-y-2 font-bold'>
+                  {
+                    suggestions.map((suggestion) => (
+                      <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-3`}>
+                        <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
+                        {suggestion}
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+            )
           }
-          }
-          onBlur={() => {
-            setIsInputFocused(false);
-            setTimeout(() => setShowSuggestions(false), 200);
-          }}
-        />
-        <button
-          className={handleSearchButton}
-          onClick={handleSearchButtonClick}
-        >
-          <IoSearchOutline className='md:w-10 md:h-5' />
-        </button>
-
-        {
-          searchQuery && showSuggestions && (
-            <div className={handleSearchSuggestionBar}>
-              <ul className='space-y-2 font-bold'>
-                {
-                  suggestions.map((suggestion) => (
-                    <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-3`}>
-                      <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
-                      {suggestion}
-                    </li>
-                  ))
-                }
-              </ul>
-            </div>
-          )
-        }
+        </div>
       </div>
-    </div>
+    </>
+
   )
+
 }
 
 export default SearchBar
