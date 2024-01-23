@@ -41,7 +41,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     }
   };
 
-  const handleSearchSuggestionBar = `${showSearch ? "max-sm:w-[98%]" : "max-sm:hidden"}  fixed py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
+  const handleSearchSuggestionBar = `fixed py-5 bg-white shadow-2xl rounded-2xl md:w-[44vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100`
+
+  // {showSearch ? "max-sm:w-[98%]" : "max-sm:hidden"} 
 
   const handleInput = `${showSearch ? 'w-[62.5vw] mx-auto py-[8px] border-none bg-gray-200 transition-all duration-500 ml-2' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-400 rounded-l-full py-1 pl-3 md:pl-6 focus:outline-gray-300 transition-all duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto' : ''}`
 
@@ -65,6 +67,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     <>
       <div>
         <div className='flex'>
+
           {/* Left Arrow Button In sm Search To Move to normal Screen */}
           {
             showSearch &&
