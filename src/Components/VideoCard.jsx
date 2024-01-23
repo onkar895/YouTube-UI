@@ -78,7 +78,7 @@ const VideoCard = ({ info }) => {
         }
 
       </div>
-      <ul className='pt-3 space-y-2 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
+      <ul className='pt-3 space-y-1 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
         <div className='flex gap-2 items-center font-bold text-[14.6px] '>
           <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10' />
           <li className='mr-2 overflow-hidden'>{title}...</li>

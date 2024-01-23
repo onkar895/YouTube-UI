@@ -12,9 +12,9 @@ import { AiFillAudio } from "react-icons/ai";
 import { useNavigate } from 'react-router-dom';
 import SearchBar from './SearchBar';
 
-
 const Header = () => {
   const dispatch = useDispatch();
+
   const [showSearch, setShowSearch] = useState(false);
 
   const navigate = useNavigate()
@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 py-2 bg-white fixed w-full z-30 '>
+    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 py-[15px] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>
@@ -54,7 +54,7 @@ const Header = () => {
       <div className='flex items-center gap-6 text-[22px] lg:mr-3 md:mr-3'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
         <div className={`${showSearch ? 'max-sm:hidden' : ''} relative hover:rounded-full hover:bg:gray-200`}>
-          <IoNotificationsOutline className='hover:cursor-pointer relative text-black max-sm:mr-1' />
+          <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
           <span className='absolute bottom-3 left-3 text-xs bg-red-600 rounded-full px-1 text-white hover:cursor-pointer'>
             9+
           </span>
