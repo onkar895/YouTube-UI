@@ -16,8 +16,13 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(getSearchSuggestions, 200);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => {
+      getSearchSuggestions()
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+    }
   }, [searchQuery]);
 
   const getSearchSuggestions = async () => {
@@ -32,9 +37,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   };
 
   // Styles stored in variables for better readability and maintainability
-  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 ${isMenuOpen ? 'md:ml-20 md:w-[38vw] lg:ml-0' : ''}`;
+  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} ${isMenuOpen ? 'md:ml-20 md:w-[38vw] lg:ml-0' : ''} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 `;
 
-  const inputStyles = `${showSearch ? 'w-[61vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full  py-1 pl-3 md:pl-6 transition-all focus:outline-0 duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500' : ''} ${isMenuOpen ? 'md:w-[28vw] md:ml-20 lg:ml-0' : ''}`;
+  const inputStyles = `${showSearch ? 'w-[61vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500' : ''} ${isMenuOpen ? 'md:w-[31vw] md:ml-20 lg:ml-0' : ''} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full py-1 pl-3 md:pl-6 items-center transition-all focus:outline-0 duration-500}`;
 
   const searchButtonStyles = `${showSearch ? 'max-sm:px-3 max-sm:py-[10px] bg-gray-100' : 'max-sm:border-none max-sm:text-2xl max-sm:px-auto max-sm:ml-32'} text-xl px-[2px] py-[9px] border border-gray-300 hover:bg-gray-200 rounded-r-full md:px-6 flex justify-center items-center md:bg-gray-100`;
 
@@ -60,7 +65,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   // Function to handle input blur
   const handleInputBlur = () => {
     setIsInputFocused(false);
-    setTimeout(() => setShowSuggestions(false), 200);
+    setShowSuggestions(false);
   };
 
   const handleClearSearch = (event) => {
@@ -76,7 +81,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
           {
             showSearch && (
               <div className='flex ml-[0.2rem]'>
-                <button onClick={handleArrowLeftClick}>
+                <button onClick={handleArrowLeftClick} onFocus={handleClearSearch}>
                   <BsArrowLeftShort className='text-4xl' />
                 </button>
               </div>
@@ -85,16 +90,21 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
           {
             isInputFocused && (
-              <>
-                <div className={` absolute max-sm:hidden flex items-center `}>
-                  <button className={`${isMenuOpen ? 'md:ml-[6.4rem] lg:ml-0' : ''} lg:ml-[1.4rem] md:ml-[1.4rem]`}>
-                    <IoSearchOutline className='text-xl' />
-                  </button>
-                  <button className={`${isMenuOpen ? 'md:ml-[9rem] lg:ml-0' : ''} lg:ml-[28.8rem] md:ml-[12.5rem]`} onClick={handleClearSearch} >
-                    <IoCloseOutline className='text-2xl cursor-pointer' />
-                  </button>
-                </div>
-              </>
+              <div className={`${isMenuOpen ? 'md:left-[17.12rem] lg:ml-0' : 'lg:ml-[1.4rem] md:ml-[1.4rem]'} absolute max-sm:hidden flex items-center`}>
+                <button>
+                  <IoSearchOutline className='text-xl' />
+                </button>
+              </div>
+            )
+          }
+
+          {
+            searchQuery && (
+              <div className={`${isMenuOpen ? 'md:left-[28.5rem] lg:ml-0' : ''} absolute lg:right-[27.5rem] md:right-[19rem] flex items-center ${showSearch ? "max-sm:left-[20.3rem]" : "max-sm:hidden"}`}>
+                <button onClick={handleClearSearch} >
+                  <IoCloseOutline className='text-2xl cursor-pointer' />
+                </button>
+              </div>
             )
           }
 
@@ -116,14 +126,23 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
           {
             searchQuery && showSuggestions && (
               <div className={searchSuggestionBarStyles}>
-                <ul className='space-y-2 font-bold'>
-                  {suggestions.map((suggestion) => (
-                    <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-4 max-sm:px-1`}>
-                      <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
+                {
+                  suggestions.length === 0 ? (
+                    searchQuery !== "" && (
+                      <h1 className="text-center py-4 font-bold text-lg">{`No Results Found for ${searchQuery}`}</h1>
+                    )
+                  ) : (
+                    <ul className='space-y-2 font-bold'>
+                      {suggestions.map((suggestion) => (
+                        <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-4 max-sm:px-1`}>
+                          <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
+                          {suggestion}
+                        </li>
+                      ))}
+                    </ul>
+                  )
+                }
+
               </div>
             )
           }

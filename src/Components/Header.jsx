@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { FiMenu } from 'react-icons/fi';
+import { CgMenuLeftAlt } from "react-icons/cg";
 import { IoNotificationsOutline } from 'react-icons/io5';
+import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 import { RiVideoAddLine } from 'react-icons/ri';
 import YouTubeLogo from '../assets/YouTube_Logo.png';
 import MyPic from '../assets/MyPic.jpg';
@@ -29,12 +30,12 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 max-sm:pt-5 py-2 bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 py-[0.52rem] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
-      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center`}>
-        <div className='md:ml-1 py-2 hover:bg-gray-200 hover:rounded-full'>
-          <FiMenu className='w-10 h-6 cursor-pointer text-black' onClick={toggleMenuHandler} />
+      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3`}>
+        <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
+          <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
       </div>

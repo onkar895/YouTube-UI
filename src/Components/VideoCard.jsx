@@ -55,7 +55,7 @@ const VideoCard = ({ info }) => {
           src={thumbnails?.medium.url} alt="thumbnail"
           className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4]'
         />
-        <div className="absolute max-sm:bottom-1 max-sm:right-6 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
+        <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
           {duration}
         </div>
 

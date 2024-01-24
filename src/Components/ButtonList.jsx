@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import { ButtonNames } from '../utils/constants';
 import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
+import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 
 const ButtonList = () => {
   const tabBoxRef = useRef(null);
@@ -39,26 +39,28 @@ const ButtonList = () => {
 
   return (
     <div className="md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.5rem] max-sm:top-[4rem] bg-white pt-4 z-10">
-      {isScrollable && (
-        <>
-          {showLeftButton && (
-            <button
-              className="absolute left-0 top-0 bottom-0 rounded-full hover:scale-110"
-              onClick={() => handleScroll(-200)}
-            >
-              <AiFillLeftCircle className="w-9 h-16 bg-white" />
-            </button>
-          )}
-          {showRightButton && (
-            <button
-              className="absolute right-0 top-0 bottom-0 rounded-full hover:scale-110"
-              onClick={() => handleScroll(200)}
-            >
-              <AiFillRightCircle className="w-9 h-16 bg-white" />
-            </button>
-          )}
-        </>
-      )}
+      <div className='max-sm:hidden'>
+        {isScrollable && (
+          <>
+            {showLeftButton && (
+              <button
+                className="absolute left-0 top-0 bottom-0 rounded-full hover:scale-110"
+                onClick={() => handleScroll(-200)}
+              >
+                <BiSolidChevronLeftCircle className="w-8 h-16 bg-white" />
+              </button>
+            )}
+            {showRightButton && (
+              <button
+                className="absolute right-0 top-0 bottom-0 rounded-full hover:scale-110"
+                onClick={() => handleScroll(200)}
+              >
+                <BiSolidChevronRightCircle className="w-8 h-16 bg-white" />
+              </button>
+            )}
+          </>
+        )}
+      </div>
       <div className="overflow-x-auto transition-transform duration-300 ease-in-out">
         <ul className="flex text-sm gap-4 overflow-y-auto scrollBar whitespace-nowrap" ref={tabBoxRef}>
           {ButtonNames.map((name, index) => (
