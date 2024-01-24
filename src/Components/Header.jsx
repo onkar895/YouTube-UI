@@ -29,10 +29,10 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 py-[12px] max-sm:[15px] bg-white fixed w-full z-30'>
+    <div className='flex justify-between items-center lg:px-4 md:px-4 max-sm:px-1 max-sm:pr-3 max-sm:pt-5 py-2 bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
-      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center `}>
+      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center`}>
         <div className='md:ml-1 py-2 hover:bg-gray-200 hover:rounded-full'>
           <FiMenu className='w-10 h-6 cursor-pointer text-black' onClick={toggleMenuHandler} />
         </div>
