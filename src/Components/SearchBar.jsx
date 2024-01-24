@@ -32,11 +32,11 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   };
 
   // Styles stored in variables for better readability and maintainability
-  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[44.5vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 ${isMenuOpen ? 'md:ml-20 md:w-[38vw] lg:ml-0' : ''}`;
+  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 ${isMenuOpen ? 'md:ml-20 md:w-[38vw] lg:ml-0' : ''}`;
 
-  const inputStyles = `${showSearch ? 'w-[61vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full  py-1 pl-3 md:pl-6 transition-all focus:outline-0 duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500 max-sm:border max-sm:border-black ' : ''} ${isMenuOpen ? 'md:w-[29vw] md:ml-20 lg:ml-0' : ''}`;
+  const inputStyles = `${showSearch ? 'w-[61vw] mx-auto transition-all duration-500 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full  py-1 pl-3 md:pl-6 transition-all focus:outline-0 duration-500 ${isInputFocused ? 'max-sm:w-[75.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500' : ''} ${isMenuOpen ? 'md:w-[28vw] md:ml-20 lg:ml-0' : ''}`;
 
-  const searchButtonStyles = `${showSearch ? 'max-sm:px-3 max-sm:py-[10px] bg-gray-100' : 'max-sm:border-none max-sm:text-2xl max-sm:px-auto max-sm:ml-32'} text-xl px-[2px] py-[9px] border border-gray-300 hover:bg-gray-200 rounded-r-full md:px-6 flex justify-center items-center md:bg-gray-100 ${isInputFocused ? 'md:border md:border-blue-500 max-sm:border max-sm:border-black ' : ''}`;
+  const searchButtonStyles = `${showSearch ? 'max-sm:px-3 max-sm:py-[10px] bg-gray-100' : 'max-sm:border-none max-sm:text-2xl max-sm:px-auto max-sm:ml-32'} text-xl px-[2px] py-[9px] border border-gray-300 hover:bg-gray-200 rounded-r-full md:px-6 flex justify-center items-center md:bg-gray-100`;
 
   // Function to handle the search button click
   const handleSearchButtonClick = () => {
@@ -86,18 +86,17 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
           {
             isInputFocused && (
               <>
-                <div className={` absolute z-30 max-sm:hidden flex items-center`}>
-                  <div className={`${isMenuOpen ? 'md:ml-[6.4rem] lg:ml-0' : ''} lg:ml-[1.4rem] md:ml-[1.4rem]`}>
+                <div className={` absolute max-sm:hidden flex items-center `}>
+                  <button className={`${isMenuOpen ? 'md:ml-[6.4rem] lg:ml-0' : ''} lg:ml-[1.4rem] md:ml-[1.4rem]`}>
                     <IoSearchOutline className='text-xl' />
-                  </div>
-                  <div className={`${isMenuOpen ? 'md:ml-[9rem] lg:ml-0' : ''} lg:ml-[29rem] md:ml-[12.5rem]`}>
-                    <IoCloseOutline className='text-2xl cursor-pointer' onClick={handleClearSearch} />
-                  </div>
+                  </button>
+                  <button className={`${isMenuOpen ? 'md:ml-[9rem] lg:ml-0' : ''} lg:ml-[28.8rem] md:ml-[12.5rem]`} onClick={handleClearSearch} >
+                    <IoCloseOutline className='text-2xl cursor-pointer' />
+                  </button>
                 </div>
               </>
             )
           }
-
 
           <input
             type='text'
