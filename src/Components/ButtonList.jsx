@@ -6,63 +6,46 @@ import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 
 const ButtonList = () => {
-  const tabBoxRef = useRef(null);
-  const [isScrollable, setIsScrollable] = useState(false);
-  const [showLeftButton, setShowLeftButton] = useState(false);
-  const [showRightButton, setShowRightButton] = useState(false);
 
-  useEffect(() => {
-    const tabBox = tabBoxRef.current;
+  const listRef = useRef();
+  const [slideNumber, setSlideNumber] = useState(0);
 
-    const handleScroll = () => {
-      setIsScrollable(tabBox.scrollWidth > tabBox.clientWidth);
-      setShowLeftButton(tabBox.scrollLeft > 0);
-      setShowRightButton(tabBox.scrollLeft < tabBox.scrollWidth - tabBox.clientWidth);
-    };
+  const handleScroll = (direction) => {
+    const box = listRef.current;
+    const slideWidth = box.clientWidth;
 
-    tabBox.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
-
-    // Initial check for scrollability
-    handleScroll();
-
-    return () => {
-      tabBox.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
-  const handleScroll = (scrollValue) => {
-    const tabBox = tabBoxRef.current;
-    tabBox.scrollLeft += scrollValue;
+    if (direction === "previous") {
+      setSlideNumber(slideNumber - 1);
+      box.scrollLeft -= slideWidth;
+    } else if (direction === "next") {
+      setSlideNumber(slideNumber + 1);
+      box.scrollLeft += slideWidth;
+    }
   };
 
   return (
-    <div className="md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.5rem] max-sm:top-[4rem] bg-white pt-4 z-10">
+    <div className=" md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.5rem] max-sm:top-[4rem] bg-white pt-4 z-10">
+
       <div className='max-sm:hidden'>
-        {isScrollable && (
-          <>
-            {showLeftButton && (
-              <button
-                className="absolute left-0 top-0 bottom-0 rounded-full hover:scale-110"
-                onClick={() => handleScroll(-200)}
-              >
-                <BiSolidChevronLeftCircle className="w-8 h-16 bg-white" />
-              </button>
-            )}
-            {showRightButton && (
-              <button
-                className="absolute right-0 top-0 bottom-0 rounded-full hover:scale-110"
-                onClick={() => handleScroll(200)}
-              >
-                <BiSolidChevronRightCircle className="w-8 h-16 bg-white" />
-              </button>
-            )}
-          </>
-        )}
+        <div className={slideNumber === 0 ? "hidden" : ""}>
+          <button
+            className="absolute left-0 top-0 bottom-0 rounded-full hover:scale-110 hover:transition-all duration-200"
+            onClick={() => handleScroll("previous")}>
+            <BiSolidChevronLeftCircle className="w-8 h-16 bg-white" />
+          </button>
+        </div>
+
+        <div className={slideNumber === 1 ? "hidden" : ""}>
+          <button
+            className="absolute right-0 top-0 bottom-0 rounded-full hover:scale-110 hover:transition-all duration-200"
+            onClick={() => handleScroll("next")}>
+            <BiSolidChevronRightCircle className="w-8 h-16 bg-white" />
+          </button>
+        </div>
       </div>
+
       <div className="overflow-x-auto transition-transform duration-300 ease-in-out">
-        <ul className="flex text-sm gap-4 overflow-y-auto scrollBar whitespace-nowrap" ref={tabBoxRef}>
+        <ul className="flex text-sm gap-4 overflow-y-auto scrollBar whitespace-nowrap scroll-smooth" ref={listRef}>
           {ButtonNames.map((name, index) => (
             <li
               key={index}
