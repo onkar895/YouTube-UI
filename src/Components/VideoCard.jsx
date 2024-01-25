@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
-import { CHANNEL_PROFILE_PICTURE } from '../utils/APIList'
 import { timeDuration } from '../utils/constants';
+import { CHANNEL_PROFILE_API } from '../utils/APIList';
 import { formatTime } from '../utils/constants';
 import { formatNumberWithSuffix } from '../utils/constants';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
@@ -29,6 +30,17 @@ const VideoCard = ({ info }) => {
   }
 
   const [profilePicture, setProfilePicture] = useState("");
+
+  const CHANNEL_PROFILE_PICTURE = async () => {
+    try {
+      const data = await fetch(CHANNEL_PROFILE_API + "&id=" + channelId);
+      const response = await data?.json();
+      const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
+      return profilePictureUrl;
+    } catch (error) {
+      console.log("couldn't fetch channel profile picture", error);
+    }
+  };
 
   useEffect(() => {
     const fetchProfilePicture = async () => {
@@ -76,10 +88,9 @@ const VideoCard = ({ info }) => {
             </div>
           )
         }
-
       </div>
       <ul className='pt-3 space-y-1 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
-        <div className='flex gap-2 items-center font-bold text-[14.6px] '>
+        <div className='flex gap-2 items-center font-bold text-[14.6px]'>
           <img src={profilePicture} alt="ChannelProfile" className='rounded-full w-10' />
           <li className='mr-2 overflow-hidden'>{title}...</li>
         </div>
