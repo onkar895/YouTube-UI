@@ -1,22 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { MdOutlineThumbUpOffAlt, MdOutlineThumbDownOffAlt } from 'react-icons/md';
+import { BiLike, BiDislike } from "react-icons/bi";
+import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { CiBellOn } from 'react-icons/ci';
+import { PiShareFat, PiDotsThreeBold, PiCheckLight } from "react-icons/pi";
 import { useSearchParams } from 'react-router-dom';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
-import { formatNumberWithSuffix } from '../utils/constants';
+import { formatNumberWithSuffix, formatTime } from '../utils/constants';
+
 
 const WatchPage = () => {
   const [videoData, setVideoData] = useState({});
   const [subscribe, setSubscribe] = useState(false);
   const [channelPicture, setChannelPicture] = useState('');
   const [subScribers, setSubScribers] = useState('')
+  const [like, setLike] = useState(true)
+  const [disLike, setDisLike] = useState(true)
+  const [showMore, setShowMore] = useState(false);
 
   // useSearchParams is used for accessing and manipulating URL parameters.
   const [searchParams] = useSearchParams();
   const videoId = searchParams.get('v');
   const videoSrc = `https://www.youtube.com/embed/${videoId}`;
+
+  const subscriberCount = formatNumberWithSuffix(subScribers);
+  const likeCount = formatNumberWithSuffix(videoData?.statistics?.likeCount);
+  const viewCount = formatNumberWithSuffix(videoData?.statistics?.viewCount);
+  let calender = formatTime(videoData?.snippet?.publishedAt);
 
   useEffect(() => {
     fetchVideoData();
@@ -27,6 +38,7 @@ const WatchPage = () => {
       const data = await fetch(VIDEO_DETAILS_API + '&id=' + videoId);
       const response = await data.json();
       setVideoData(response?.items?.[0] || {}); // Ensure items array exists
+      console.log(videoData)
     } catch (error) {
       console.log('Error while fetching video details', error);
     }
@@ -52,14 +64,21 @@ const WatchPage = () => {
     }
   };
 
-  const subscriberCount = formatNumberWithSuffix(subScribers);
-  const likeCount = formatNumberWithSuffix(videoData?.statistics?.likeCount);
+  const handleLikeToggle = () => {
+    setLike((prevLike) => !prevLike);
+    setDisLike(true)
+  };
+
+  const handleDisLikeToggle = () => {
+    setDisLike((prevDisLike) => !prevDisLike);
+    setLike(true);
+  };
 
   return (
-    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-[5rem] max-sm:mx-auto max-sm:w-[95vw] md:w-[92.5vw] lg:w-[69.8vw]'>
+    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-[5rem] max-sm:mx-auto max-sm:w-[95vw] md:w-[92.5vw] lg:w-[69.5vw]'>
       <div>
         <iframe
-          className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[69.7vw] lg:h-[81vh] object-cover'
+          className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[69.5vw] lg:h-[81vh] object-cover'
           src={`${videoSrc}?autoplay=1&mute=0`}
           title='YouTube video player'
           frameBorder='0'
@@ -67,45 +86,89 @@ const WatchPage = () => {
           allowFullScreen
         ></iframe>
       </div>
-      <div>
-        <div className='flex flex-col'>
-          <div className='font-bold text-lg'>
-            <h2> {videoData?.snippet?.title} </h2>
-          </div>
-          <div className='flex items-center justify-between'>
+      <div className='flex flex-col my-2 gap-2'>
+        <div className='font-bold text-lg'>
+          <h2> {videoData?.snippet?.title} </h2>
+        </div>
+        <div className='flex items-center justify-between'>
+          <div className='flex items-center gap-5'>
             <div className='flex items-center gap-2'>
-              <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-10' />
+              <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-12' />
               <div className='flex flex-col'>
-                <span>{videoData?.snippet?.channelTitle}</span>
-                <span>{subscriberCount} Subscribers</span>
+                <span className='font-bold'>{videoData?.snippet?.channelTitle}</span>
+                <span className='text-xs text-gray-500'>{subscriberCount} Subscribers</span>
               </div>
-              <button
-                className='rounded-full p-2 bg-gray-700 hover:bg-black text-white'
-                onClick={() => setSubscribe(!subscribe)} // Toggle subscribe state on each click
-              >
-                {subscribe ? (
-                  <div className='flex items-center gap-1'>
-                    <span>Subscribed</span>
-                    <CiBellOn className='text-white' />
-                  </div>
-                ) : (
+            </div>
+            <button
+              onClick={() => setSubscribe(!subscribe)} // Toggle subscribe state on each click
+            >
+              {subscribe ? (
+                <div className='flex items-center gap-1 font-bold py-[7px] px-2 bg-gray-100 rounded-full'>
+                  <CiBellOn className='text-black text-2xl animate-pulse' />
+                  <span>Subscribed</span>
+                  <PiCheckLight className='text-black text-xl' />
+                </div>
+              ) : (
+                <div className='font-bold py-[7px] px-4 bg-black text-white rounded-full'>
                   <span>Subscribe</span>
-                )}
-              </button>
-            </div>
-            <div className='flex gap-2'>
-              <div className='flex gap-1'>
-                <li>{likeCount}</li>
-                <MdOutlineThumbUpOffAlt className='text-black bg-transparent' />
+                </div>
+              )}
+            </button>
+          </div>
+          <div className='flex items-center gap-5'>
+            <div className='flex items-center bg-gray-100 rounded-full cursor-pointer'>
+              <div className='flex items-center gap-2 hover:bg-gray-200 hover:rounded-l-full py-[7px] px-3' onClick={handleLikeToggle}>
+                {
+                  like ? (
+                    <BiLike className='text-gray-500 bg-transparent text-xl cursor-pointer' />
+                  ) : (
+                    <BiSolidLike className='text-black bg-transparent text-xl cursor-pointer' />
+                  )
+                }
+                <span className='font-bold'>{likeCount}</span>
               </div>
-              <div>
-                <MdOutlineThumbDownOffAlt className='text-black bg-transparent' />
+              <div className='p-[0.5px] h-6 bg-gray-400'>
+
+              </div>
+              <div className='hover:bg-gray-200 hover:rounded-r-full py-[7px] px-3' onClick={handleDisLikeToggle}>
+                {
+                  disLike ? (
+                    <BiDislike className='text-gray-500 bg-transparent text-xl cursor-pointer' />
+                  ) : (
+                    <BiSolidDislike className='text-black bg-transparent text-xl cursor-pointer' />
+                  )
+                }
               </div>
             </div>
+            <div className='flex gap-2 items-center bg-gray-100 rounded-full py-[7px] px-3 font-bold cursor-pointer hover:bg-gray-200'>
+              <PiShareFat className='text-2xl text-gray-500' />
+              <span>Share</span>
+            </div>
+            <div className='bg-gray-100 py-[7px] px-2 rounded-full cursor-pointer hover:bg-gray-200'>
+              <PiDotsThreeBold className='text-2xl' />
+            </div>
+          </div>
+        </div>
+        <div className='flex flex-col gap-1 bg-gray-100 rounded-2xl p-3'>
+          <div className='flex gap-2 items-center'>
+            <span className='font-bold'>{viewCount} views</span>
+            <div className='p-[0.5px] h-4 bg-gray-500'></div>
+            <span>{calender}</span>
+          </div>
+          <div>
+            <p className={`text-sm overflow-hidden ${(showMore) ? "line-clamp-none" : "line-clamp-4"}`}>
+              {videoData?.snippet?.description}
+            </p>
+            <span className="text-sm font-bold cursor-pointer" onClick={() => setShowMore(!showMore)}>
+              {
+                showMore ? "Show Less" : "Show More"
+              }
+            </span>
           </div>
         </div>
       </div>
     </div>
+
   );
 };
 

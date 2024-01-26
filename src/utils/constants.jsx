@@ -124,12 +124,30 @@ export const ButtonNames = [
 ];
 
 export const formatTime = (time) => {
-  let a = new Date();
-  let b = new Date(time);
-  let c = a - b;
-  let e = c / (24 * 60 * 60 * 1000).toFixed();
-  return e;
+  let currentDate = new Date();
+  let inputDate = new Date(time);
+  let differenceInMilliseconds = currentDate - inputDate;
+  let differenceInDays = differenceInMilliseconds / (24 * 60 * 60 * 1000);
+
+  if (differenceInDays > 30) {
+    let monthsAgo = Math.ceil(differenceInDays / 30.44);
+
+    if (monthsAgo === 1) {
+      return <span>{monthsAgo} Month ago</span>;
+    } else {
+      return <span>{monthsAgo} Months ago</span>;
+    }
+  } else {
+    let daysAgo = Math.ceil(differenceInDays);
+
+    if (daysAgo === 1) {
+      return <span>{daysAgo} day ago</span>;
+    } else {
+      return <span>{daysAgo} days ago</span>;
+    }
+  }
 };
+
 
 export const timeDuration = (isoDuration) => {
   let hours = 0;

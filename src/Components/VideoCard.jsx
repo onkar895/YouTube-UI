@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
-import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
+import { BiLike } from "react-icons/bi";
 import { timeDuration } from '../utils/constants';
 import { CHANNEL_INFO_API } from '../utils/APIList';
 import { formatTime } from '../utils/constants';
@@ -15,7 +15,7 @@ const VideoCard = ({ info }) => {
   let duration = timeDuration(contentDetails.duration);
   // console.log(contentDetails.duration)
   const { title, channelTitle, thumbnails, channelId, publishedAt } = snippet;
-  let days = formatTime(publishedAt);
+  let calender = formatTime(publishedAt);
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -101,7 +101,7 @@ const VideoCard = ({ info }) => {
             </div>
             <div className='flex items-center space-x-1'>
               <li>{likeCount} Likes</li>
-              <MdOutlineThumbUpOffAlt className='text-gray-600' />
+              <BiLike className='text-gray-600' />
             </div>
           </div>
           <div className='flex items-center justify-between mr-2'>
@@ -110,17 +110,7 @@ const VideoCard = ({ info }) => {
               <LuEye className='text-gray-600' />
             </div>
             <div className='text-black'>
-              {days > 30 ? (
-                Math.ceil(days / 30.44) === 1 ? (
-                  <span>{Math.ceil(days / 30.44)} Month ago</span>
-                ) : (
-                  <span>{Math.ceil(days / 30.44)} Months ago</span>
-                )
-              ) : Math.ceil(days) === 1 ? (
-                <span>{Math.ceil(days)} day ago</span>
-              ) : (
-                <span>{Math.ceil(days)} days ago</span>
-              )}
+              {calender}
             </div>
           </div>
         </div>
