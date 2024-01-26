@@ -5,6 +5,8 @@ import { BiLike, BiDislike } from "react-icons/bi";
 import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 import { CiBellOn } from 'react-icons/ci';
 import { PiShareFat, PiDotsThreeBold, PiCheckLight } from "react-icons/pi";
+import { MdOutlineDownloading } from "react-icons/md";
+import { HiOutlineChevronDown } from "react-icons/hi2";
 import { useSearchParams } from 'react-router-dom';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
 import { formatNumberWithSuffix, formatTime } from '../utils/constants';
@@ -75,10 +77,10 @@ const WatchPage = () => {
   };
 
   return (
-    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-[5rem] max-sm:mx-auto max-sm:w-[95vw] md:w-[92.5vw] lg:w-[69.5vw]'>
+    <div className='md:mx-[1.85rem] md:mt-14 max-sm:mt-[5rem] max-sm:mx-auto max-sm:w-[95vw] md:w-[92.3vw] lg:w-[69.5vw]'>
       <div>
         <iframe
-          className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[69.5vw] lg:h-[81vh] object-cover'
+          className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.3vw] md:h-[40vh] lg:w-[69.5vw] lg:h-[81vh] object-cover'
           src={`${videoSrc}?autoplay=1&mute=0`}
           title='YouTube video player'
           frameBorder='0'
@@ -86,38 +88,38 @@ const WatchPage = () => {
           allowFullScreen
         ></iframe>
       </div>
-      <div className='flex flex-col my-2 gap-2'>
-        <div className='font-bold text-lg'>
-          <h2> {videoData?.snippet?.title} </h2>
+      <div className='flex flex-col my-2 gap-3'>
+        <div className='font-bold max-sm:text-justify text-lg max-sm:mx-1'>
+          <h2>{videoData?.snippet?.title} </h2>
         </div>
-        <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-5'>
+        <div className='flex flex-wrap items-center justify-between max-sm:gap-5 '>
+          <div className='flex items-center gap-5 max-sm:w-full max-sm:justify-between'>
             <div className='flex items-center gap-2'>
-              <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-12' />
+              <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-12 max-sm:w-10' />
               <div className='flex flex-col'>
-                <span className='font-bold'>{videoData?.snippet?.channelTitle}</span>
+                <span className='font-bold max-sm:text-sm'>{videoData?.snippet?.channelTitle}</span>
                 <span className='text-xs text-gray-500'>{subscriberCount} Subscribers</span>
               </div>
             </div>
-            <button
+            <button className='rounded-full'
               onClick={() => setSubscribe(!subscribe)} // Toggle subscribe state on each click
             >
               {subscribe ? (
-                <div className='flex items-center gap-1 font-bold py-[7px] px-2 bg-gray-100 rounded-full'>
+                <div className='flex items-center gap-1 max-sm:gap-2 py-[5px] max-sm:py-[7px] px-2 max-sm:px-5 bg-gray-100 rounded-full'>
                   <CiBellOn className='text-black text-2xl animate-pulse' />
-                  <span>Subscribed</span>
-                  <PiCheckLight className='text-black text-xl' />
+                  <span className='max-sm:hidden text-sm'>Subscribed</span>
+                  <HiOutlineChevronDown className='text-black text-xl ' />
                 </div>
               ) : (
-                <div className='font-bold py-[7px] px-4 bg-black text-white rounded-full'>
-                  <span>Subscribe</span>
+                <div className='flex py-[7px] max-sm:py-[8px] px-5 bg-black text-white rounded-full'>
+                  <span className='max-sm:text-sm text-sm'>Subscribe</span>
                 </div>
               )}
             </button>
           </div>
-          <div className='flex items-center gap-5'>
+          <div className='flex items-center lg:gap-5 md:gap-3 max-sm:gap-4 max-sm:text-sm max-sm:w-full max-sm:justify-between'>
             <div className='flex items-center bg-gray-100 rounded-full cursor-pointer'>
-              <div className='flex items-center gap-2 hover:bg-gray-200 hover:rounded-l-full py-[7px] px-3' onClick={handleLikeToggle}>
+              <div className='flex items-center gap-2 hover:bg-gray-200 hover:rounded-l-full py-[5px] px-3' onClick={handleLikeToggle}>
                 {
                   like ? (
                     <BiLike className='text-gray-500 bg-transparent text-xl cursor-pointer' />
@@ -125,12 +127,12 @@ const WatchPage = () => {
                     <BiSolidLike className='text-black bg-transparent text-xl cursor-pointer' />
                   )
                 }
-                <span className='font-bold'>{likeCount}</span>
+                <span className='text-sm'>{likeCount}</span>
               </div>
               <div className='p-[0.5px] h-6 bg-gray-400'>
 
               </div>
-              <div className='hover:bg-gray-200 hover:rounded-r-full py-[7px] px-3' onClick={handleDisLikeToggle}>
+              <div className='hover:bg-gray-200 hover:rounded-r-full py-[7px] px-2' onClick={handleDisLikeToggle}>
                 {
                   disLike ? (
                     <BiDislike className='text-gray-500 bg-transparent text-xl cursor-pointer' />
@@ -140,28 +142,32 @@ const WatchPage = () => {
                 }
               </div>
             </div>
-            <div className='flex gap-2 items-center bg-gray-100 rounded-full py-[7px] px-3 font-bold cursor-pointer hover:bg-gray-200'>
-              <PiShareFat className='text-2xl text-gray-500' />
-              <span>Share</span>
+            <div className='flex gap-2 items-center bg-gray-100 rounded-full py-[7px] px-3 cursor-pointer hover:bg-gray-200'>
+              <PiShareFat className='text-xl text-gray-500' />
+              <span className='text-sm'>Share</span>
             </div>
-            <div className='bg-gray-100 py-[7px] px-2 rounded-full cursor-pointer hover:bg-gray-200'>
-              <PiDotsThreeBold className='text-2xl' />
+            <div className='flex items-center gap-1 bg-gray-100 rounded-full py-[7px] px-3 font-bold cursor-pointer hover:bg-gray-200 md:hidden'>
+              <MdOutlineDownloading className='text-xl' />
+              <span>Download</span>
+            </div>
+            <div className='bg-gray-100 py-[7px] px-2 rounded-full cursor-pointer hover:bg-gray-200 max-sm:hidden'>
+              <PiDotsThreeBold className='lg:text-xl' />
             </div>
           </div>
         </div>
-        <div className='flex flex-col gap-1 bg-gray-100 rounded-2xl p-3'>
+        <div className='flex flex-col gap-1 bg-gray-100 rounded-2xl p-3 mt-2'>
           <div className='flex gap-2 items-center'>
             <span className='font-bold'>{viewCount} views</span>
             <div className='p-[0.5px] h-4 bg-gray-500'></div>
             <span>{calender}</span>
           </div>
           <div>
-            <p className={`text-sm overflow-hidden ${(showMore) ? "line-clamp-none" : "line-clamp-4"}`}>
+            <p className={`text-sm overflow-hidden text-justify ${(showMore) ? "line-clamp-none" : "line-clamp-4"}`}>
               {videoData?.snippet?.description}
             </p>
-            <span className="text-sm font-bold cursor-pointer" onClick={() => setShowMore(!showMore)}>
+            <span className="text-xs font-bold cursor-pointer" onClick={() => setShowMore(!showMore)}>
               {
-                showMore ? "Show Less" : "Show More"
+                showMore ? "Show Less" : "Show More..."
               }
             </span>
           </div>
