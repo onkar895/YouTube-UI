@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
 import { MdOutlineThumbUpOffAlt } from 'react-icons/md';
 import { timeDuration } from '../utils/constants';
-import { CHANNEL_PROFILE_API } from '../utils/APIList';
+import { CHANNEL_INFO_API } from '../utils/APIList';
 import { formatTime } from '../utils/constants';
 import { formatNumberWithSuffix } from '../utils/constants';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
@@ -33,7 +33,7 @@ const VideoCard = ({ info }) => {
 
   const CHANNEL_PROFILE_PICTURE = async () => {
     try {
-      const data = await fetch(CHANNEL_PROFILE_API + "&id=" + channelId);
+      const data = await fetch(CHANNEL_INFO_API + "&id=" + channelId);
       const response = await data?.json();
       const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
       return profilePictureUrl;

@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <div className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 py-[0.52rem] bg-white fixed w-full z-30'>
+    <nav className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 py-[0.52rem] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3`}>
@@ -64,7 +64,7 @@ const Header = () => {
           <img className='rounded-full' src={MyPic} alt="Mypic" />
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

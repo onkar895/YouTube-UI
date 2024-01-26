@@ -13,7 +13,7 @@ const SideBar = () => {
   const location = useLocation();
 
   const SideBarStyle = isMenuOpen
-    ? 'fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-20 text-sm hover:overflow-x-hidden md:top-[55px] max-sm:top-[55px] transition-shadow duration-500'
+    ? 'fixed shadow-2xl hover:overflow-y-scroll md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm hover:overflow-x-hidden md:top-[55px] max-sm:top-[55px] transition-shadow duration-500'
     : 'fixed hidden sm:flex md:flex-col text-xs space-y-6 mt-[73px] ml-1';
 
   // Early return pattern
