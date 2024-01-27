@@ -63,18 +63,10 @@ const VideoCard = ({ info }) => {
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
       >
-        <img
-          src={thumbnails?.medium.url} alt="thumbnail"
-          className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4]'
-        />
-        <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
-          {duration}
-        </div>
-
         {
           isHovered && (
-            // Render the YouTube video iframe when hovered
-            <div className={`absolute top-0 left-0 w-full h-full ${isHovered ? '' : 'hidden'}`}>
+            // Render the translucent overlay when hovered
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center cursor-pointer justify-center rounded-2xl">
               <iframe
                 width="100%"
                 height="100%"
@@ -83,11 +75,18 @@ const VideoCard = ({ info }) => {
                 frameBorder="0"
                 allowFullScreen
                 autoPlay
-                className='rounded-2xl'
-              ></iframe>
+                className='rounded-2xl'>
+              </iframe>
             </div>
           )
         }
+        <img
+          src={thumbnails?.medium.url} alt="thumbnail"
+          className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4]'
+        />
+        <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
+          {duration}
+        </div>
       </div>
       <ul className='pt-3 space-y-1 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
         <div className='flex gap-2 items-center font-bold text-[14.6px]'>

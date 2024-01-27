@@ -47,7 +47,7 @@ const VideoContainer = () => {
       ) : (
         videos.map((video) => (
           <NavLink to={'/watch?v=' + video.id} key={video.id}>
-            <VideoCard info={video} />
+            <VideoCard info={video} videoId={video.id} />
           </NavLink>
         ))
       )}
