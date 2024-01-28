@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import { IoCloseOutline } from "react-icons/io5";
-import { YOUTUBE_SEARCH_API } from '../utils/APIList';
+import { YOUTUBE_SEARCH_SUGGESTION_API } from '../utils/APIList';
 import { useSelector } from 'react-redux';
 import { cacheResults } from '../utils/searchSlice';
 import { useDispatch } from 'react-redux';
@@ -58,7 +58,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const getSearchSuggestions = async () => {
     try {
       console.log('API CALL - ' + searchQuery);
-      const data = await fetch(`${YOUTUBE_SEARCH_API}q=${searchQuery}`);
+      const data = await fetch(`${YOUTUBE_SEARCH_SUGGESTION_API}q=${searchQuery}`);
       const response = await data.json();
       setSuggestions(response[1]);
 

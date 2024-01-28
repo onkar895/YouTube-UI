@@ -8,7 +8,7 @@ const searchSlice = createSlice({
   reducers: {
     cacheResults: (state, action) => {
       // Using Object.assign to merge the current state with the payload just like spread in ES6
-      // state = {...state, ...actio.payload}
+      // state = {...state, ...action.payload}
       state = Object.assign(state, action.payload)
     }
   }

@@ -5,9 +5,9 @@ import { Provider } from 'react-redux';
 import store from './utils/store';
 import "../src/index.css";
 import Header from './Components/Header'
-import Body from './HomePageContainer/Body'
+import Body from './Components/Body'
 import SearchResults from './HomePageContainer/SearchResults';
-import MainContainer from './HomePageContainer/MainContainer';
+import MainContainer from './Components/MainContainer'
 
 // Lazy load WatchPage
 const WatchPage = lazy(() => import('./HomePageContainer/WatchPage'));
