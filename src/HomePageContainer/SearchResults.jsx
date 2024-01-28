@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import ButtonList from '../Components/ButtonList';
@@ -15,35 +16,35 @@ const SearchResults = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getSearchResults = async () => {
-      try {
-        if (!searchQuery) return;
-
-        const response = await fetch(
-          `${YOUTUBE_SEARCH_API}&q=${searchQuery}&regionCode=IN&type=video`
-        );
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch search results');
-        }
-
-        const data = await response.json();
-        setVideos(data.items || []);
-      } catch (error) {
-        console.error('Error while fetching search videos', error);
-        setError('Failed to fetch videos. Please try again later.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
     getSearchResults();
   }, [searchQuery]);
+
+  const getSearchResults = async () => {
+    try {
+      if (!searchQuery) return;
+
+      const response = await fetch(
+        `${YOUTUBE_SEARCH_API}&q=${searchQuery}&regionCode=IN&type=video`
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch search results');
+      }
+
+      const data = await response.json();
+      setVideos(data.items || []);
+    } catch (error) {
+      console.error('Error while fetching search videos', error);
+      setError('Failed to fetch videos. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   return (
     <>
-      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto">
+      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto md:mx-24">
         <ButtonList />
         <div className='flex flex-col items-start gap-y-5'>
           {
@@ -55,7 +56,9 @@ const SearchResults = () => {
               <CustomError message='Unable to fetch the request for now!' />
             ) : (
               videos.map((video) => (
-                <SearchVideoPage key={video.id.videoId} info={video} />
+                <div key={video.id.videoId} className='ml-24'>
+                  <SearchVideoPage info={video} />
+                </div>
               ))
             )
           }
