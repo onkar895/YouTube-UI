@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ButtonList from '../Components/ButtonList';
 import { YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { useSearchParams } from 'react-router-dom';
-import SearchErrorPage from './SearchErrorPage';
+import CustomError from './CustomError'
 import SearchVideoPage from '../Components/SearchVideoPage';
 
 const SearchResults = () => {
@@ -47,7 +47,7 @@ const SearchResults = () => {
             loading ? (
               <h1>Loading....</h1>
             ) : videos.length === 0 ? (
-              <SearchErrorPage />
+              <CustomError />
             ) : (
               videos.map((video) => (
                 <SearchVideoPage key={video.id.videoId} info={video} />
