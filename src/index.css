@@ -25,19 +25,23 @@ body::-webkit-scrollbar-thumb {
     height: 50px !important;
 }
 
-::-webkit-scrollbar-track {
+.sidebar::-webkit-scrollbar-track {
     border-radius: 12px;
+    background-color: white;
 }
 
-::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar {
+    width: 0;
+    background-color: white;
+}
+
+.sidebar:hover::-webkit-scrollbar {
     width: 6px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgb(125, 123, 123);
+.sidebar::-webkit-scrollbar-thumb {
+    background-color: rgb(125, 123, 123);
     border-radius: 12px;
-    height: 50px !important;
-    display: none;
 }
 
 .scrollBar::-webkit-scrollbar {

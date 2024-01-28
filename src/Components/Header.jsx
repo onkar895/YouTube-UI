@@ -29,12 +29,12 @@ const Header = () => {
   };
 
   return (
-    <nav className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 py-[0.52rem] bg-white fixed w-full z-30'>
+    <nav className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 max-sm:py-[0.52rem] md:py-[0.85rem] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3`}>
         <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
-          <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
+          <CgMenuLeftAlt className='text-3xl cursor-pointer text-black md:mt-[1px]' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
       </div>

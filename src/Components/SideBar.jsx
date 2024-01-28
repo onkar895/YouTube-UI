@@ -14,11 +14,9 @@ import { useSelector } from 'react-redux';
 import { NavLink, useLocation } from 'react-router-dom';
 
 const SideBar = () => {
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  const location = useLocation();
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
 
-  const SideBarStyle = isMenuOpen
-    && 'fixed shadow-2xl left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm hover:overflow-x-hidden md:top-0 max-sm:top-0 transition-shadow duration-300 scroll-smooth '
+  const location = useLocation();
 
   const dispatch = useDispatch();
 
@@ -32,6 +30,9 @@ const SideBar = () => {
   const toggleMenuHandler = () => {
     dispatch(toggleMenu());
   };
+
+  const SideBarStyle = isMenuOpen
+    && 'fixed shadow-2xl left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-600 transition-shadow duration-500 scroll-smooth'
 
   // Early return pattern
   // If the menu is closed and the location is '/watch', hide the first sidebar
@@ -68,15 +69,15 @@ const SideBar = () => {
   // If the menu is open, render the toggle sidebar with all sections.
   return (
     <>
-      <div className={SideBarStyle}>
-        <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-3 bg-white px-[1.35rem] py-[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
+      <div className={`fixed sidebar shadow-2xl left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-600 transition-shadow duration-500 scroll-smooth`}>
+        <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-3 bg-white px-[1.35rem] py-[0.91rem] max-sm:[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
           <div className='p-1 max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
             <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
-        <div className='mt-[67px] max-sm:mt-[80px]'>
-          <ul className='md:ml-4 mt-3'>
+        <div className='mt-[67.5px] block h-screen overflow-y-auto max-sm:mt-[80px] pb-16 sidebar'>
+          <ul className='md:ml-4'>
             <li className=' bg-gray-100 md:w-52 w-[50.5vw] pl-[13px] rounded-lg'>
               <NavLink to='/' exact='true' className='flex items-center gap-5'>
                 <MdHomeFilled className='w-5 h-10' />
