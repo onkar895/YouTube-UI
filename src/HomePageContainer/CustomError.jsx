@@ -1,9 +1,10 @@
-/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { useSelector } from "react-redux";
 
-const Error = () => {
+const Error = ({ message }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const classNameString = !isMenuOpen
@@ -14,7 +15,7 @@ const Error = () => {
     <>
       <div className={`w-[100%] ${classNameString} flex flex-col gap-2 text-lg justify-between overflow-hidden top-24 hover:scale-105 hover:transition-all hover:duration-500 hover:cursor-pointer`}>
         <div className="py-1">
-          <h1 className="text-2xl text-red-600 animate-pulse">Unable to fetch the request for now! 🙄</h1>
+          <h1 className="text-2xl text-red-600 animate-pulse text-center">{message}</h1>
         </div>
         <h3> - This service, powered by free APIs with limitations, may experience interruptions.</h3>
         <p> - The API key has reached the maximum number of allowed requests. So, it breaks anytime! Sorry for the inconvenience.</p>

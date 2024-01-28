@@ -12,6 +12,7 @@ const SearchResults = () => {
 
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getSearchResults = async () => {
@@ -30,6 +31,7 @@ const SearchResults = () => {
         setVideos(data.items || []);
       } catch (error) {
         console.error('Error while fetching search videos', error);
+        setError('Failed to fetch videos. Please try again later.');
       } finally {
         setLoading(false);
       }
@@ -38,16 +40,19 @@ const SearchResults = () => {
     getSearchResults();
   }, [searchQuery]);
 
+
   return (
-    <div className="flex flex-col max-sm:mx-auto">
-      <ButtonList />
-      <div className="md:mt-20 md:mx-24 max-sm:mt-2">
+    <>
+      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto">
+        <ButtonList />
         <div className='flex flex-col items-start gap-y-5'>
           {
             loading ? (
               <h1>Loading....</h1>
+            ) : error ? (
+              <CustomError message={error} />
             ) : videos.length === 0 ? (
-              <CustomError />
+              <CustomError message='Unable to fetch the request for now!' />
             ) : (
               videos.map((video) => (
                 <SearchVideoPage key={video.id.videoId} info={video} />
@@ -56,7 +61,8 @@ const SearchResults = () => {
           }
         </div>
       </div>
-    </div>
+    </>
+
   );
 };
 

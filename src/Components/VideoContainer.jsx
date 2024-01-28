@@ -34,7 +34,7 @@ const VideoContainer = () => {
   };
 
   if (error) {
-    return <CustomError />;
+    return <CustomError message='Unable to fetch the request for now!' />;
   }
 
   return (
