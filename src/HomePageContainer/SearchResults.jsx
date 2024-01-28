@@ -5,10 +5,10 @@ import ButtonList from '../Components/ButtonList'
 const SearchResults = () => {
   return (
     <>
-      <div className='flex flex-col'>
+      <div className='flex flex-col max-sm:mx-auto'>
         <ButtonList />
-        <div className='mt-24 mx-24'>
-          HEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+        <div className='md:mt-20 md:mx-24 max-sm:mt-20'>
+          HEYYYYYYYYYYYYYYYY
         </div>
       </div>
     </>

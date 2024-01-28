@@ -60,7 +60,7 @@ const Header = () => {
             9+
           </span>
         </div>
-        <div className='w-8 h-9 hover:cursor-pointer'>
+        <div className={`w-8 h-9 hover:cursor-pointer ${showSearch ? "max-sm:mt-[1px]" : ""}`}>
           <img className='rounded-full' src={MyPic} alt="Mypic" />
         </div>
       </div>
