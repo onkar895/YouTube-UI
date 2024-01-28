@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { IoNotificationsOutline } from 'react-icons/io5';
-import { HiOutlineBars3CenterLeft } from "react-icons/hi2";
 import { RiVideoAddLine } from 'react-icons/ri';
 import YouTubeLogo from '../assets/YouTube_Logo.png';
 import MyPic from '../assets/MyPic.jpg';

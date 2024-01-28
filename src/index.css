@@ -37,6 +37,7 @@ body::-webkit-scrollbar-thumb {
     background: rgb(125, 123, 123);
     border-radius: 12px;
     height: 50px !important;
+    display: none;
 }
 
 .scrollBar::-webkit-scrollbar {
@@ -69,4 +70,3 @@ body::-webkit-scrollbar-thumb {
 .loading:hover {
     filter: brightness(1);
 } */
-
