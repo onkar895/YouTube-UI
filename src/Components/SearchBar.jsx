@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { IoSearchOutline } from 'react-icons/io5';
 import { BsArrowLeftShort } from 'react-icons/bs';
 import { IoCloseOutline } from "react-icons/io5";
@@ -9,6 +9,7 @@ import { YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { useSelector } from 'react-redux';
 import { cacheResults } from '../utils/searchSlice';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ showSearch, setShowSearch }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -18,8 +19,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   const searchCache = useSelector((store) => store.search)
-
+  const search = useRef(null);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   // Styles stored in variables for better readability and maintainability
   const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} ${isMenuOpen ? 'md:w-[38vw] lg:ml-0' : ''} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 `;
@@ -98,6 +100,30 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const handleClearSearch = (event) => {
     event.preventDefault();
     setSearchQuery('');
+    search.current.focus()
+  };
+
+  const handleSuggestionClick = (search_query) => {
+    setSearchQuery(() => search_query);
+    setShowSuggestions(false);
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  const handleSearch = (event, search) => {
+    event.preventDefault();
+    if (search !== "") {
+      const query = search.replace(" ", "+");
+      navigate(`/searchresults?search_query=${query}`);
+      handleScrollTop();
+      setShowSuggestions(false);
+      setSearchQuery("");
+    }
   };
 
   return (
@@ -137,6 +163,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
           <input
             type='text'
+            ref={search}
             placeholder='Search'
             className={inputStyles}
             value={searchQuery}
@@ -144,7 +171,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
             onFocus={handleInputFocus}
             onBlur={handleInputBlur}
           />
-          <button className={searchButtonStyles} onClick={handleSearchButtonClick}>
+          <button className={searchButtonStyles} onClick={(event) => { handleSearchButtonClick(); handleSearch(event, searchQuery) }}>
             <IoSearchOutline />
           </button>
         </div>
@@ -160,16 +187,17 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
                     )
                   ) : (
                     <ul className='space-y-2 font-bold'>
-                      {suggestions.map((suggestion) => (
-                        <li key={suggestion} className={`flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-4 max-sm:px-1`}>
-                          <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
-                          {suggestion}
-                        </li>
-                      ))}
+                      {
+                        suggestions.map((suggestion) => (
+                          <li key={suggestion} className='flex items-center hover:bg-gray-200 md:px-[0.7rem] py-1 max-sm:gap-4 max-sm:px-1 cursor-pointer' onClick={(event) => handleSearch(event, suggestion)} >
+                            <IoSearchOutline className='md:w-10 md:h-5 mt-1 max-sm:w-9 max-sm:h-5 ' />
+                            {suggestion}
+                          </li>
+                        ))
+                      }
                     </ul>
                   )
                 }
-
               </div>
             )
           }

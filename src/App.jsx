@@ -7,6 +7,7 @@ import "../src/index.css";
 import Header from './Components/Header'
 import Body from './HomePageContainer/Body'
 import MainContainer from './HomePageContainer/MainContainer'
+import SearchResults from './HomePageContainer/SearchResults';
 
 // Lazy load WatchPage
 const WatchPage = lazy(() => import('./HomePageContainer/WatchPage'));
@@ -27,6 +28,7 @@ const App = () => {
                   </Suspense>
                 }
               />
+              <Route exact path="/searchresults" element={<SearchResults />} />
             </Route>
           </Routes>
         </Router>
