@@ -38,20 +38,22 @@ const VideoContainer = () => {
   }
 
   return (
-    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 max-sm:gap-y-10 md:mt-[4.8rem] max-sm:mt-[5rem]'>
-      {/* {
+    <>
+      <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 max-sm:gap-y-10 md:mt-[4.8rem] max-sm:mt-[5rem] md:mx-24 w-full'>
+        {/* {
         videos[0] && <RedBorderedVideoCard info={videos[0]} />
       } */}
-      {loading ? (
-        <VideoShimmer />
-      ) : (
-        videos.map((video) => (
-          <NavLink to={'/watch?v=' + video.id} key={video.id}>
-            <VideoCard info={video} videoId={video.id} />
-          </NavLink>
-        ))
-      )}
-    </div>
+        {loading ? (
+          <VideoShimmer />
+        ) : (
+          videos.map((video) => (
+            <NavLink to={'/watch?v=' + video.id} key={video.id}>
+              <VideoCard info={video} videoId={video.id} />
+            </NavLink>
+          ))
+        )}
+      </div>
+    </>
   );
 };
 

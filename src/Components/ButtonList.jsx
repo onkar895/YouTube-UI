@@ -24,7 +24,7 @@ const ButtonList = () => {
   };
 
   return (
-    <div className=" md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.5rem] max-sm:top-[4rem] bg-white pt-4 z-10">
+    <div className=" md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.5rem] max-sm:top-[4rem] bg-white pt-4 z-10 md:mx-24 w-full">
 
       <div className='max-sm:hidden'>
         <div className={slideNumber === 0 ? "hidden" : ""}>
