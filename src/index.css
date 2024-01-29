@@ -76,10 +76,9 @@ body::-webkit-scrollbar-thumb {
 } */
 
 .sidebar-open {
+    /* Remove left and transition properties */
+    /* Add right property */
     animation: slideIn 0.2s ease-in-out forwards;
-    /* left: 0;
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
 }
 
 @keyframes slideIn {
@@ -90,11 +89,6 @@ body::-webkit-scrollbar-thumb {
         left: 0;
     }
 }
-
-/* .sidebar-closed {
-    transform: translateX(100%);
-    transition: transform 0.3s ease-out;
-} */
 
 .blur-effect {
     filter: blur(2px);
