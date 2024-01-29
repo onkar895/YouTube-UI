@@ -53,28 +53,6 @@ body::-webkit-scrollbar-thumb {
     display: none;
 }
 
-/* @keyframes animation {
-    0% {
-        left: -100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
-
-.shimmer {
-    animation: spin 2s linear infinite, animation 1s linear infinite;
-}
-
-.loading {
-    filter: brightness(0.8);
-    transition: filter 0.3s ease;
-}
-
-.loading:hover {
-    filter: brightness(1);
-} */
-
 .sidebar-open {
     animation: slideIn 0.2s ease-in-out forwards;
 }

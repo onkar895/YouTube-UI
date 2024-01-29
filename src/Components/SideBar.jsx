@@ -33,7 +33,8 @@ const SideBar = () => {
   };
 
   const SideBarStyle = isMenuOpen
-    && ' sidebar-open fixed left-0 md:w-[36vw] lg:w-[19vw] max-sm:w-[60vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300';
+    ? ' sidebar-open fixed left-0 md:w-[36vw] lg:w-[19vw] max-sm:w-[60vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300'
+    : 'fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1'
 
   // Early return pattern
   // If the menu is closed and the location is '/watch', hide the first sidebar
@@ -44,8 +45,8 @@ const SideBar = () => {
 
     // Render the first sidebar with four sections when the menu is closed.
     return (
-      <div className='fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1'>
-        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
+      <div className={SideBarStyle}>
+        <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1" >
           <NavLink to="/" exact="true" className="flex flex-col items-center">
             <MdHomeFilled className="w-5 h-7" />
             <span className="font-bold">Home</span>
@@ -63,7 +64,7 @@ const SideBar = () => {
           <FaSquareYoutube className="w-4 h-8 text-black" />
           <span>You</span>
         </div>
-      </div>
+      </div >
     );
   }
 
