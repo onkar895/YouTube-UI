@@ -24,9 +24,9 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const navigate = useNavigate()
 
   // Styles stored in variables for better readability and maintainability
-  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} ${isMenuOpen ? 'md:w-[38vw] lg:ml-0' : ''} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 `;
+  const searchSuggestionBarStyles = `${showSearch ? 'max-sm:w-[98%] max-sm:rounded-b-2xl max-sm:h-full max-sm:border-none' : 'max-sm:hidden'} fixed py-5 bg-white md:shadow-2xl md:rounded-2xl md:w-[45vw] lg:w-[42.3vw] lg:h-[75vh] border border-gray-100 `;
 
-  const inputStyles = `${showSearch ? 'w-[61vw] max-sm:mx-auto transition-all duration-500 max-sm:ml-2 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} ${isInputFocused ? 'max-sm:w-[73.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500' : ''} ${isMenuOpen ? 'md:w-[36vw] lg:ml-0' : ''} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full py-1 pl-3 md:pl-6 items-center transition-all focus:outline-0 duration-500}`;
+  const inputStyles = `${showSearch ? 'w-[61vw] max-sm:mx-auto transition-all duration-500 max-sm:ml-2 ml-2 pl-4 py-2 bg-gray-100' : 'max-sm:hidden'} ${isInputFocused ? 'max-sm:w-[73.5vw] max-sm:mx-auto max-sm:focus:outline-0 md:pl-[3.2rem] md:border md:border-blue-500' : ''} md:w-[36vw] lg:w-[42vw] md:py-[7px] lg:py-[7px] border border-gray-300 rounded-l-full py-1 pl-3 md:pl-6 items-center transition-all focus:outline-0 duration-500}`;
 
   const searchButtonStyles = `${showSearch ? 'max-sm:px-3 max-sm:py-[10px] bg-gray-100' : 'max-sm:border-none max-sm:text-2xl max-sm:px-auto max-sm:ml-32'} text-xl px-[2px] py-[9px] border border-gray-300 hover:bg-gray-200 rounded-r-full md:px-6 flex justify-center items-center md:bg-gray-100`;
 
@@ -148,7 +148,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
           {
             searchQuery && (
-              <div className={`${isMenuOpen ? 'md:left-[27.2rem] lg:ml-[23.3rem]' : ''} ${showSearch ? "max-sm:right-16 max-sm:mx-auto" : "max-sm:hidden"} absolute lg:right-[27.5rem] md:right-[19rem] flex items-center`}>
+              <div className={`${showSearch ? "max-sm:right-16 max-sm:mx-auto" : "max-sm:hidden"} absolute lg:right-[27.5rem] md:right-[24rem] flex items-center`}>
                 <button onClick={handleClearSearch} className={``}>
                   <IoCloseOutline className='text-2xl cursor-pointer' />
                 </button>

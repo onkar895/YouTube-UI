@@ -2,7 +2,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ButtonNames } from '../utils/constants';
-import { AiFillLeftCircle, AiFillRightCircle } from 'react-icons/ai';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 
 const ButtonList = () => {

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import ButtonList from '../Components/ButtonList';
 import { YOUTUBE_SEARCH_API } from '../utils/APIList';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import CustomError from './CustomError'
 import SearchVideoPage from '../Components/SearchVideoPage';
 
@@ -44,9 +44,11 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto md:mx-24">
-        <ButtonList />
-        <div className='flex flex-col items-start gap-y-5'>
+      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto">
+        <div className='md:mx-24 md:w-full'>
+          <ButtonList />
+        </div>
+        <div className='flex flex-col items-start gap-y-5 py-5'>
           {
             loading ? (
               <h1>Loading....</h1>
@@ -56,9 +58,9 @@ const SearchResults = () => {
               <CustomError message='Unable to fetch the request for now!' />
             ) : (
               videos.map((video) => (
-                <div key={video.id.videoId} className='ml-24'>
+                <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId} className='ml-24'>
                   <SearchVideoPage info={video} />
-                </div>
+                </NavLink>
               ))
             )
           }

@@ -32,7 +32,9 @@ const SideBar = () => {
   };
 
   const SideBarStyle = isMenuOpen
-    && 'fixed shadow-2xl left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-600 transition-shadow duration-500 scroll-smooth'
+    ? 'sidebar-open fixed left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300'
+    : 'fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1';
+
 
   // Early return pattern
   // If the menu is closed and the location is '/watch', hide the first sidebar
@@ -43,7 +45,7 @@ const SideBar = () => {
 
     // Render the first sidebar with four sections when the menu is closed.
     return (
-      <div className='fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1 '>
+      <div className={SideBarStyle}>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
           <NavLink to="/" exact="true" className="flex flex-col items-center">
             <MdHomeFilled className="w-5 h-7" />
@@ -69,7 +71,7 @@ const SideBar = () => {
   // If the menu is open, render the toggle sidebar with all sections.
   return (
     <>
-      <div className={`fixed sidebar shadow-2xl left-0 md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-600 transition-shadow duration-500 scroll-smooth`}>
+      <div className={SideBarStyle}>
         <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-3 bg-white px-[1.35rem] py-[0.91rem] max-sm:[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
           <div className='p-1 max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
             <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
@@ -171,3 +173,4 @@ const SideBar = () => {
 };
 
 export default SideBar;
+

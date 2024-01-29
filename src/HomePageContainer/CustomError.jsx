@@ -7,9 +7,7 @@ import { useSelector } from "react-redux";
 const Error = ({ message }) => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
-  const classNameString = !isMenuOpen
-    ? `bg-black font-bold tracking-wide rounded-2xl shadow-md text-white text-justify box-border lg:w-[48%] max-sm:w-[93%] lg:py-6 lg:px-6 max-sm:py-6 max-sm:px-5 lg:ml-[24.5%] max-sm:ml-[3.4%] lg:min-h-[20vh] md:w-[68%] md:py-6 md:px-6 md:ml-[15%] relative`
-    : `bg-black shadow-md font-bold text-justify tracking-wide rounded-2xl text-white box-border w-[42%] py-6 px-8 ml-[36.5%] min-h-[20vh] relative  `;
+  const classNameString = `bg-black font-bold tracking-wide rounded-2xl shadow-md text-white text-justify box-border lg:w-[48%] max-sm:w-[93%] lg:py-6 lg:px-6 max-sm:py-6 max-sm:px-5 lg:ml-[24.5%] max-sm:ml-[3.4%] lg:min-h-[20vh] md:w-[68%] md:py-6 md:px-6 md:ml-[15%] relative`
 
   return (
     <>
