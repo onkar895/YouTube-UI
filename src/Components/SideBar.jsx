@@ -34,7 +34,7 @@ const SideBar = () => {
 
   const SideBarStyle = isMenuOpen
     ? ' sidebar-open fixed left-0 md:w-[36vw] lg:w-[19vw] max-sm:w-[60vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300'
-    : ' sidebar-close fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1';
+    : 'fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1';
 
   // Early return pattern
   // If the menu is closed and the location is '/watch', hide the first sidebar

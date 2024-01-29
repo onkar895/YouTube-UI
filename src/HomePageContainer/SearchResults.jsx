@@ -44,7 +44,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="md:mt-[3.5rem] max-sm:mt-[4rem] max-sm:mx-auto">
+      <div className="md:mt-[4.4rem] max-sm:mt-[5rem] max-sm:mx-auto">
         <div className='md:mx-24 md:w-full'>
           <ButtonList />
         </div>

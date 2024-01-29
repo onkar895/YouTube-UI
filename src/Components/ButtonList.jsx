@@ -23,22 +23,22 @@ const ButtonList = () => {
   };
 
   return (
-    <div className=" md:w-[83vw] lg:w-[89.5vw] max-sm:w-[94vw] max-sm:mx-auto sticky md:top-[3.6rem] max-sm:top-[4rem] bg-white pt-4 z-10 w-full">
+    <div className=" md:w-[83vw] lg:w-[89.8vw] max-sm:w-[94vw] max-sm:mx-auto sticky bg-white z-10">
 
       <div className='max-sm:hidden'>
         <div className={slideNumber === 0 ? "hidden" : ""}>
           <button
-            className="absolute left-0 top-0 bottom-0 rounded-full hover:scale-110 hover:transition-all duration-200"
+            className="absolute left-0 rounded-full hover:scale-110 hover:transition-all duration-200"
             onClick={() => handleScroll("previous")}>
-            <BiSolidChevronLeftCircle className="w-8 h-16 bg-white" />
+            <BiSolidChevronLeftCircle className="w-8 h-8 bg-white" />
           </button>
         </div>
 
         <div className={slideNumber === 1 ? "hidden" : ""}>
           <button
-            className="absolute right-0 top-0 bottom-0 rounded-full hover:scale-110 hover:transition-all duration-200"
+            className="absolute right-0 rounded-full hover:scale-110 hover:transition-all duration-200"
             onClick={() => handleScroll("next")}>
-            <BiSolidChevronRightCircle className="w-8 h-16 bg-white" />
+            <BiSolidChevronRightCircle className="w-8 h-8 bg-white" />
           </button>
         </div>
       </div>

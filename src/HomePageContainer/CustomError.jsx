@@ -2,16 +2,14 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import { useSelector } from "react-redux";
 
 const Error = ({ message }) => {
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   const classNameString = `bg-black font-bold tracking-wide rounded-2xl shadow-md text-white text-justify box-border lg:w-[48%] max-sm:w-[93%] lg:py-6 lg:px-6 max-sm:py-6 max-sm:px-5 lg:ml-[24.5%] max-sm:ml-[3.4%] lg:min-h-[20vh] md:w-[68%] md:py-6 md:px-6 md:ml-[15%] relative`
 
   return (
     <>
-      <div className={`w-[100%] ${classNameString} flex flex-col gap-2 text-lg justify-between overflow-hidden top-24 hover:scale-105 hover:transition-all hover:duration-500 hover:cursor-pointer`}>
+      <div className={`w-[100%] ${classNameString} flex flex-col gap-2 text-lg justify-between overflow-hidden top-10 hover:scale-105 hover:transition-all hover:duration-500 hover:cursor-pointer`}>
         <div className="py-1">
           <h1 className="text-2xl text-red-600 animate-pulse text-center">{message}</h1>
         </div>
