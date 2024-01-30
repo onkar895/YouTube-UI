@@ -7,7 +7,7 @@ const MainContainer = () => {
 
   return (
     <>
-      <div className='md:mx-24 md:mt-[4.4rem] max-sm:mt-[5rem] md:space-y-6 max-sm:space-y-6 max-sm:mx-auto'>
+      <div className='md:mx-24 md:mt-[4.4rem] max-sm:mt-[5rem] md:space-y-6 max-sm:space-y-4 max-sm:mx-auto'>
         <ButtonList />
         <VideoContainer />
       </div>

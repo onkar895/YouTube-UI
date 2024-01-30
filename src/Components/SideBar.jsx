@@ -73,7 +73,7 @@ const SideBar = () => {
   return (
     <>
       <div className={SideBarStyle}>
-        <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-3 bg-white px-[1.35rem] py-[0.91rem] max-sm:[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
+        <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-2 bg-white px-[1.35rem] py-[0.91rem] max-sm:[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
           <div className='p-1 max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
             <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
           </div>

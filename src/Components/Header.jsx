@@ -29,11 +29,11 @@ const Header = () => {
   };
 
   return (
-    <nav className='flex justify-between items-center md:px-[1.35rem] max-sm:px-[0.32rem] max-sm:pr-3 max-sm:pt-5 max-sm:py-[0.52rem] md:py-[0.85rem] bg-white fixed w-full z-30'>
+    <nav className='flex justify-between items-center md:px-[1.6rem] md:mx-auto max-sm:px-[0.6rem] max-sm:mx:auto max-sm:pt-5 max-sm:py-[0.52rem] md:py-[0.85rem] bg-white fixed w-full z-30'>
 
       {/* Logo and Menu Icon */}
-      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3`}>
-        <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
+      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3 max-sm:gap-1`}>
+        <div className=' hover:bg-gray-200 hover:rounded-full'>
           <CgMenuLeftAlt className='text-3xl cursor-pointer text-black md:mt-[1px]' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
@@ -51,7 +51,7 @@ const Header = () => {
       </div>
 
       {/* Notification and User Icons */}
-      <div className='flex items-center gap-6 text-[22px] lg:mr-3 md:mr-3'>
+      <div className='flex items-center gap-6 text-[22px]'>
         <RiVideoAddLine className='hover:cursor-pointer md:flex hidden text-black' />
         <div className={`${showSearch ? 'max-sm:hidden' : ''} relative hover:rounded-full hover:bg:gray-200`}>
           <IoNotificationsOutline className='hover:cursor-pointer relative text-black' />
