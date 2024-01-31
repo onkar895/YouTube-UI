@@ -5,7 +5,7 @@ import React from "react";
 
 const Error = ({ message }) => {
 
-  const classNameString = `bg-black font-bold tracking-wide rounded-2xl shadow-md text-white text-justify box-border lg:w-[48%] max-sm:w-[93%] lg:py-6 lg:px-6 max-sm:py-6 max-sm:px-5 lg:ml-[24.5%] max-sm:ml-[3.4%] lg:min-h-[20vh] md:w-[68%] md:py-6 md:px-6 md:ml-[15%] relative`
+  const classNameString = `bg-black font-bold tracking-wide rounded-2xl shadow-md text-white text-justify box-border lg:w-[48%] md:mt-12 max-sm:mt-12 max-sm:w-[94vw] lg:py-6 lg:px-6 max-sm:py-6 max-sm:px-5 max-sm:mx-3 lg:ml-[24.5%] lg:min-h-[20vh] md:w-[68%] md:py-6 md:px-6 md:ml-[15%] relative`
 
   return (
     <>

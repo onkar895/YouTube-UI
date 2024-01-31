@@ -12,6 +12,15 @@ const VideoContainer = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Simulate loading data
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     getVideos();
   }, []);
 
@@ -28,9 +37,8 @@ const VideoContainer = () => {
     } catch (error) {
       console.error('Error while fetching the videos:', error);
       setError('Failed to fetch videos. Please try again later.');
-    } finally {
-      setLoading(false);
     }
+
   };
 
   if (error) {
@@ -39,7 +47,7 @@ const VideoContainer = () => {
 
   return (
     <>
-      <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-4 md:gap-y-10 max-sm:gap-y-10 w-full'>
+      <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-20 max-sm:mt-16'>
         {/* {
         videos[0] && <RedBorderedVideoCard info={videos[0]} />
       } */}

@@ -57,7 +57,7 @@ const VideoCard = ({ info }) => {
   )
 
   return (
-    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%] md:mx-auto'>
+    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]'>
       <div
         className='relative'
         onMouseOver={() => setIsHovered(true)}

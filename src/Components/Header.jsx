@@ -29,11 +29,11 @@ const Header = () => {
   };
 
   return (
-    <nav className='flex justify-between items-center md:px-[1.6rem] md:mx-auto max-sm:px-[0.6rem] max-sm:mx:auto max-sm:pt-5 max-sm:py-[0.52rem] md:py-[0.85rem] bg-white fixed w-full z-30'>
+    <nav className='fixed flex justify-between items-center md:mx-auto md:px-[1.35rem] max-sm:px-[0.35rem] max-sm:pr-3 lg:pr-7 md:pr-6 max-sm:mx:auto max-sm:h-[4.6rem] md:h-[3.8rem] bg-white w-[100vw] z-30'>
 
       {/* Logo and Menu Icon */}
       <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3 max-sm:gap-1`}>
-        <div className=' hover:bg-gray-200 hover:rounded-full'>
+        <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
           <CgMenuLeftAlt className='text-3xl cursor-pointer text-black md:mt-[1px]' onClick={toggleMenuHandler} />
         </div>
         <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
@@ -59,7 +59,7 @@ const Header = () => {
             9+
           </span>
         </div>
-        <div className={`w-8 h-9 hover:cursor-pointer ${showSearch ? "max-sm:mt-[1px]" : ""}`}>
+        <div className={`w-8 h-9 hover:cursor-pointer`}>
           <img className='rounded-full' src={MyPic} alt="Mypic" />
         </div>
       </div>

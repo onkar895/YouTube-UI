@@ -3,11 +3,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ButtonNames } from '../utils/constants';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
+import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
 
 const ButtonList = () => {
 
+  const [loading, setLoading] = useState(true);
   const listRef = useRef();
   const [slideNumber, setSlideNumber] = useState(0);
+
+  useEffect(() => {
+    // Simulate loading data
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleScroll = (direction) => {
     const box = listRef.current;
@@ -23,9 +34,8 @@ const ButtonList = () => {
   };
 
   return (
-    <div className=" md:w-[83vw] lg:w-[89.8vw] max-sm:w-[94vw] max-sm:mx-auto sticky bg-white z-10">
-
-      <div className='max-sm:hidden'>
+    <div className="fixed z-10 lg:w-[90.2vw] md:w-[84.2vw] max-sm:w-[94vw] max-sm:mx-3 bg-white md:pt-3">
+      <div className={`${loading ? "hidden" : ''} max-sm:hidden`}>
         <div className={slideNumber === 0 ? "hidden" : ""}>
           <button
             className="absolute left-0 rounded-full hover:scale-110 hover:transition-all duration-200"
@@ -45,17 +55,19 @@ const ButtonList = () => {
 
       <div className="overflow-x-auto transition-transform duration-300 ease-in-out">
         <ul className="flex text-sm gap-4 overflow-y-auto scrollBar whitespace-nowrap scroll-smooth" ref={listRef}>
-          {ButtonNames.map((name, index) => (
-            <li
-              key={index}
-              className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${name === 'All' ? 'bg-gray-900 text-white' : ''
-                }`}
-            >
-              <NavLink to={`/${name.toLowerCase()}`}>
-                <span>{name}</span>
-              </NavLink>
-            </li>
-          ))}
+          {
+            loading ? (
+              <ButtonsShimmer />
+            ) : (
+              ButtonNames.map((name, index) => (
+                <li key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${name === 'All' ? 'bg-gray-900 text-white' : ''}`}>
+                  <NavLink to={`/${name.toLowerCase()}`}>
+                    <span>{name}</span>
+                  </NavLink>
+                </li>
+              ))
+            )
+          }
         </ul>
       </div>
     </div>

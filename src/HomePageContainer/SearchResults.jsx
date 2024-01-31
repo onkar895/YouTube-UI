@@ -6,6 +6,7 @@ import { YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import CustomError from './CustomError'
 import SearchVideoPage from '../Components/SearchVideoPage';
+import SearchVideoShimmer from '../Components/ShimmerUI/SearchVideoShimmer';
 
 const SearchResults = () => {
   const [searchParam] = useSearchParams();
@@ -44,14 +45,14 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="md:mt-[4.4rem] max-sm:mt-[5rem] max-sm:mx-auto">
-        <div className='md:mx-24 md:w-full'>
+      <div className="md:mx-24 md:my-[3.81rem] max-sm:mt-[4.5rem] max-sm:mx-auto md:w-full">
+        <div>
           <ButtonList />
         </div>
         <div className='flex flex-col items-start gap-y-5 py-5'>
           {
             loading ? (
-              <h1>Loading....</h1>
+              <SearchVideoShimmer />
             ) : error ? (
               <CustomError message={error} />
             ) : videos.length === 0 ? (

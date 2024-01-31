@@ -33,7 +33,7 @@ const SideBar = () => {
   };
 
   const SideBarStyle = isMenuOpen
-    ? ' sidebar-open fixed left-0 md:w-[36vw] lg:w-[19vw] max-sm:w-[60vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300'
+    ? ' sidebar-open fixed left-0 md:w-[30vw] lg:w-[19vw] max-sm:w-[60vw] h-full bg-white z-50 text-sm md:top-0 max-sm:top-0 shadow-gray-700 shadow-2xl transition-shadow duration-300'
     : 'fixed max-sm:hidden md:flex-col text-xs space-y-6 mt-[73px] ml-1'
 
   // Early return pattern
@@ -73,25 +73,25 @@ const SideBar = () => {
   return (
     <>
       <div className={SideBarStyle}>
-        <div className='fixed flex items-center md:w-[32vw] lg:w-[19vw] max-sm:w-[52vw] md:gap-2 bg-white px-[1.35rem] py-[0.91rem] max-sm:[0.55rem] max-sm:px-[0.35rem] max-sm:py-[1.36rem]'>
+        <div className='fixed flex items-center md:w-[30vw] lg:w-[19vw] max-sm:w-[60vw] md:gap-3 max-sm:gap-1 bg-white px-[1.35rem] md:h-[3.8rem] max-sm:px-[0.35rem] max-sm:h-[4.6rem]'>
           <div className='p-1 max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
             <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
-        <div className='mt-[67.5px] block h-screen overflow-y-auto max-sm:mt-[80px] pb-16 sidebar'>
+        <div className='mt-[67.5px] block h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
           <ul className='md:ml-4'>
-            <li className=' bg-gray-100 lg:w-[16.2vw] md:w-[31.7vw] w-[58.5vw] pl-[13px] rounded-lg'>
+            <li className=' bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] w-[58.5vw] pl-[13px] rounded-lg'>
               <NavLink to='/' exact='true' className='flex items-center gap-5'>
                 <MdHomeFilled className='w-5 h-10' />
                 <span className='font-bold'>Home</span>
               </NavLink>
             </li>
-            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[31.7vw]  cursor-pointer hover:w[47vw]'>
+            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  cursor-pointer hover:w[47vw]'>
               <SiYoutubeshorts className='w-5 h-10' />
               Shorts
             </li>
-            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[31.7vw]   cursor-pointer hover:w[47vw]'>
+            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]   cursor-pointer hover:w[47vw]'>
               <MdSubscriptions className='w-5 h-10' />
               Subscriptions
             </li>
@@ -108,7 +108,7 @@ const SideBar = () => {
                 Explore.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[31.7vw] hover:w-[58.5vw]'>
+                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw]'>
                         <NavLink className='flex items-center gap-5'>
                           {icon}
                           <span>{name}</span>
@@ -132,7 +132,7 @@ const SideBar = () => {
                 Premium.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[31.7vw]  hover:w-[58.5vw]'>
+                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw]'>
                         <NavLink className='flex items-center gap-5'>
                           <span className='text-red-600'>{icon}</span>
                           <span>{name}</span>
@@ -155,7 +155,7 @@ const SideBar = () => {
                 Setting.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[31.7vw]  hover:w-[58.5vw}'>
+                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw}'>
                         <NavLink className='flex items-center gap-5'>
                           {icon}
                           <span>{name}</span>
@@ -174,4 +174,3 @@ const SideBar = () => {
 };
 
 export default SideBar;
-
