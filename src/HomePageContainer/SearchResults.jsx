@@ -52,7 +52,7 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="md:mx-24 md:my-[3.81rem] max-sm:mt-[4.5rem] max-sm:mx-auto md:w-full">
+      <div className="md:mx-24 md:my-[3.81rem] max-sm:mt-[4.6rem] max-sm:mx-auto md:w-full">
         <div>
           <ButtonList />
         </div>
@@ -75,7 +75,6 @@ const SearchResults = () => {
         </div>
       </div>
     </>
-
   );
 };
 

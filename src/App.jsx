@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './utils/store';
 import "../src/index.css";
 import Header from './Components/Header'
-import Body from './Components/Body'
+import Body from './HomePageContainer/Body'
 import SearchResults from './HomePageContainer/SearchResults';
 import MainContainer from './Components/MainContainer'
 

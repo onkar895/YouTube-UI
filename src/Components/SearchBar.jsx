@@ -94,7 +94,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   // Function to handle input blur
   const handleInputBlur = () => {
     setIsInputFocused(false);
-    // setShowSuggestions(false);
+    setShowSuggestions(false);
   };
 
   const handleClearSearch = (event) => {
