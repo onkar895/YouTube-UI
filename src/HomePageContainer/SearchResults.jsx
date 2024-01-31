@@ -17,6 +17,15 @@ const SearchResults = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    // Simulate loading data
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
     getSearchResults();
   }, [searchQuery]);
 
@@ -37,8 +46,6 @@ const SearchResults = () => {
     } catch (error) {
       console.error('Error while fetching search videos', error);
       setError('Failed to fetch videos. Please try again later.');
-    } finally {
-      setLoading(false);
     }
   };
 

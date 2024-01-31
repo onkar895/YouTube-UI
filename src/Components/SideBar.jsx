@@ -74,7 +74,7 @@ const SideBar = () => {
     <>
       <div className={SideBarStyle}>
         <div className='fixed flex items-center md:w-[30vw] lg:w-[19vw] max-sm:w-[60vw] md:gap-3 max-sm:gap-1 bg-white px-[1.35rem] md:h-[3.8rem] max-sm:px-[0.35rem] max-sm:h-[4.6rem]'>
-          <div className='p-1 max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
+          <div className='md:p-1 md:mt-[0.1rem] max-sm:p-1 hover:bg-gray-200 hover:rounded-full'>
             <CgMenuLeftAlt className='text-3xl cursor-pointer text-black' onClick={toggleMenuHandler} />
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
