@@ -37,10 +37,11 @@ const ButtonList = () => {
 
   const handleButtonClick = (ButtonName) => {
     const query = ButtonName.replace(" ", "+");
-    setSelectedButton(ButtonName); // Update selected button
     if (query === "All") {
+      setSelectedButton("All"); // Update selected button only if not "All"
       navigate("/");
     } else {
+      setSelectedButton(ButtonName); // Update selected button
       navigate(`/searchresults?search_query=${query}`);
     }
   };
