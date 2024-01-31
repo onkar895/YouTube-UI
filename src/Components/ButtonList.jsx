@@ -1,20 +1,28 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
-import { ButtonNames } from '../utils/constants';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
+import { ButtonNames } from '../utils/constants'; // Assuming ButtonNames is imported from constants
 
 const ButtonList = () => {
 
   const listRef = useRef();
+  const [searchParams] = useSearchParams();
+  const [selectedButton, setSelectedButton] = useState("All");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [selectedButton, setSelectedButton] = useState("All"); // State to track selected button
 
   useEffect(() => {
-    // Simulate loading data
+    const Query = searchParams.get("search_query");
+    if (Query) {
+      setSelectedButton(Query);
+    } else {
+      setSelectedButton("All");
+    }
+
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
@@ -36,15 +44,15 @@ const ButtonList = () => {
   };
 
   const handleButtonClick = (ButtonName) => {
-    const query = ButtonName.replace(" ", "+");
-    if (query === "All") {
-      setSelectedButton("All"); // Update selected button only if not "All"
+    const newQuery = ButtonName.replace(" ", "+");
+    setSelectedButton(newQuery);
+    if (newQuery === "All") {
       navigate("/");
     } else {
-      setSelectedButton(ButtonName); // Update selected button
-      navigate(`/searchresults?search_query=${query}`);
+      navigate(`/searchresults?search_query=${newQuery}`);
     }
   };
+
 
   return (
     <div className="fixed z-10 lg:w-[90.2vw] md:w-[84.2vw] max-sm:w-[94vw] max-sm:mx-3 bg-white md:pt-3">
@@ -72,12 +80,10 @@ const ButtonList = () => {
             loading ? (
               <ButtonsShimmer />
             ) : (
-              ButtonNames.map((name, index) => (
-                <li key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`}>
-                  <button onClick={() => handleButtonClick(name)}>
-                    <span>{name}</span>
-                  </button>
-                </li>
+              ButtonNames.map((name) => (
+                <button key={name} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleButtonClick(name)}>
+                  <span>{name}</span>
+                </button>
               ))
             )
           }
