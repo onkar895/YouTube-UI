@@ -66,7 +66,7 @@ const SearchResults = () => {
               <CustomError message='Unable to fetch the request for now!' />
             ) : (
               videos.map((video) => (
-                <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId} className='ml-24'>
+                <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId}>
                   <SearchVideoPage info={video} />
                 </NavLink>
               ))

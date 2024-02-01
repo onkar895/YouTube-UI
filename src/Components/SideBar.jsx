@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Explore, Premium, Setting } from '../utils/constants';
+import React, { useEffect, useState } from 'react';
+import { Explore, Premium, Setting, Home } from '../utils/constants';
 import { MdHomeFilled } from 'react-icons/md';
 import { FaSquareYoutube } from 'react-icons/fa6';
 import { SiYoutubeshorts } from 'react-icons/si';
@@ -12,10 +12,13 @@ import { useDispatch } from 'react-redux';
 import { toggleMenu } from '../utils/appSlice';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
+
+  const [searchParams] = useSearchParams();
+  const [selectedButton, setSelectedButton] = useState("Home");
 
   const location = useLocation();
 
@@ -23,9 +26,28 @@ const SideBar = () => {
 
   const navigate = useNavigate()
 
+  useEffect(() => {
+    const Query = searchParams.get("search_query");
+    if (Query) {
+      setSelectedButton(Query);
+    } else {
+      setSelectedButton("Home");
+    }
+  }, [])
+
   function handleClick() {
     navigate("/");
   }
+
+  const handleButtonClick = (ButtonName) => {
+    const newQuery = ButtonName.replace(" ", "+");
+    setSelectedButton(newQuery);
+    if (newQuery === "Home") {
+      navigate("/");
+    } else {
+      navigate(`/searchresults?search_query=${newQuery}`);
+    }
+  };
 
   // Function to toggle the side menu
   const toggleMenuHandler = () => {
@@ -81,20 +103,20 @@ const SideBar = () => {
         </div>
         <div className='mt-[67.5px] block h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
           <ul className='md:ml-4'>
-            <li className=' bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] w-[58.5vw] pl-[13px] rounded-lg'>
-              <NavLink to='/' exact='true' className='flex items-center gap-5'>
-                <MdHomeFilled className='w-5 h-10' />
-                <span className='font-bold'>Home</span>
-              </NavLink>
-            </li>
-            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  cursor-pointer hover:w[47vw]'>
-              <SiYoutubeshorts className='w-5 h-10' />
-              Shorts
-            </li>
-            <li className='flex items-center gap-5 pl-[13px] hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]   cursor-pointer hover:w[47vw]'>
-              <MdSubscriptions className='w-5 h-10' />
-              Subscriptions
-            </li>
+            {
+              Home.map(({ icon, name }) => {
+                return (
+                  <div key={name}>
+                    <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                      <button className='flex items-center gap-5'>
+                        <span>{icon}</span>
+                        <span>{name}</span>
+                      </button>
+                    </li>
+                  </div>
+                )
+              })
+            }
           </ul>
 
           <div className='mt-3 pl-3 w-56'>
@@ -108,11 +130,11 @@ const SideBar = () => {
                 Explore.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw]'>
-                        <NavLink className='flex items-center gap-5'>
+                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                        <button className='flex items-center gap-5' >
                           {icon}
                           <span>{name}</span>
-                        </NavLink>
+                        </button>
                       </li>
                     </div>
                   )
@@ -132,11 +154,11 @@ const SideBar = () => {
                 Premium.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw]'>
-                        <NavLink className='flex items-center gap-5'>
+                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                        <button className='flex items-center gap-5'>
                           <span className='text-red-600'>{icon}</span>
                           <span>{name}</span>
-                        </NavLink>
+                        </button>
                       </li>
                     </div>
                   )
@@ -156,10 +178,10 @@ const SideBar = () => {
                   return (
                     <div key={name}>
                       <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw}'>
-                        <NavLink className='flex items-center gap-5'>
+                        <button className='flex items-center gap-5'>
                           {icon}
                           <span>{name}</span>
-                        </NavLink>
+                        </button>
                       </li>
                     </div>
                   )

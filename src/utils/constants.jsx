@@ -1,3 +1,6 @@
+import { MdHomeFilled } from 'react-icons/md';
+import { MdSubscriptions } from 'react-icons/md';
+import { SiYoutubeshorts } from 'react-icons/si';
 import { IoMdTrendingUp } from "react-icons/io";
 import { HiShoppingBag } from "react-icons/hi2";
 import { MdMusicNote } from "react-icons/md";
@@ -16,6 +19,21 @@ import { IoSettingsSharp } from "react-icons/io5";
 import { RiChatHistoryFill } from "react-icons/ri";
 import { IoMdHelpCircle } from "react-icons/io";
 import { MdFeedback } from "react-icons/md";
+
+export const Home = [
+  {
+    icon: <MdHomeFilled className='w-5 h-10' />,
+    name: "Home"
+  },
+  {
+    icon: <MdSubscriptions className='w-5 h-10' />,
+    name: "Subscriptions"
+  },
+  {
+    icon: <SiYoutubeshorts className='w-5 h-10' />,
+    name: "Shorts"
+  },
+]
 
 export const Explore = [
   {
