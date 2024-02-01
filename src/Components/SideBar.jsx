@@ -86,7 +86,7 @@ const SideBar = () => {
           <FaSquareYoutube className="w-4 h-8 text-black" />
           <span>You</span>
         </div>
-      </div >
+      </div>
     );
   }
 
