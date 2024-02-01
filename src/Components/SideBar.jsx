@@ -19,7 +19,7 @@ const SideBar = () => {
 
   const [searchParams] = useSearchParams();
   const [selectedButton, setSelectedButton] = useState("Home");
-
+  const [isLoading, setIsLoading] = useState(false);
   const location = useLocation();
 
   const dispatch = useDispatch();
@@ -39,9 +39,19 @@ const SideBar = () => {
     navigate("/");
   }
 
+  const StopLoading = () => {
+    setTimeout(() => {
+      // Close sidebar after 1000ms
+      dispatch(toggleMenu());
+      setIsLoading(false); // Stop loading
+    }, 1000);
+  }
+
   const handleButtonClick = (ButtonName) => {
     const newQuery = ButtonName.replace(" ", "+");
     setSelectedButton(newQuery);
+    setIsLoading(true); // Start loading
+    StopLoading()       // Stop Loading and Close sidebar after 1000ms 
     if (newQuery === "Home") {
       navigate("/");
     } else {
