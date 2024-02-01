@@ -52,11 +52,11 @@ const SearchResults = () => {
 
   return (
     <>
-      <div className="md:mx-24 md:my-[3.81rem] max-sm:mt-[4.6rem] max-sm:mx-auto md:w-full">
-        <div>
+      <div className="max-sm:mt-[4.6rem] max-sm:mx-auto md:w-full">
+        <div className='md:mx-24 md:my-[3.81rem]'>
           <ButtonList />
         </div>
-        <div className='flex flex-col items-start gap-y-5 py-5'>
+        <div className='flex flex-col items-start gap-y-5 py-20 '>
           {
             loading ? (
               <SearchVideoShimmer />

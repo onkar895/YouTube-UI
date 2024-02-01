@@ -14,7 +14,7 @@ const SearchVideoPage = ({ info }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className='flex cursor-pointer md:w-[100%] lg:w-[100%] max-sm:w-[100%] md:mx-auto'>
+    <div className='flex cursor-pointer md:w-[100%] max-sm:w-[100%] md:mx-auto md:gap-x-3 bg-gray-300'>
       <div className='relative'
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}>
@@ -46,7 +46,7 @@ const SearchVideoPage = ({ info }) => {
         </div>
       </div>
       <div>
-        <div>
+        <div className='font-bold'>
           <h1>{title}</h1>
         </div>
       </div>
