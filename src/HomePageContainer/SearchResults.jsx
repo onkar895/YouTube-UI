@@ -11,7 +11,6 @@ import SearchVideoShimmer from '../Components/ShimmerUI/SearchVideoShimmer';
 const SearchResults = () => {
   const [searchParam] = useSearchParams();
   const searchQuery = searchParam.get('search_query');
-
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,17 +1,42 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 // SearchVideoPage.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { CHANNEL_INFO_API } from '../utils/APIList';
 import { timeDuration } from '../utils/constants';
+import { formatNumberWithSuffix } from '../utils/constants';
 
 const SearchVideoPage = ({ info }) => {
+
+  const [subScribers, setSubScribers] = useState(0)
+  const [isHovered, setIsHovered] = useState(false);
+
   const { snippet, statistics, contentDetails } = info;
   // let duration = timeDuration(contentDetails.duration);
   const { title, channelTitle, thumbnails, channelId, publishedAt, description } = snippet;
 
   console.log(info)
 
-  const [isHovered, setIsHovered] = useState(false);
+  const subscriberCount = formatNumberWithSuffix(subScribers);
+
+  useEffect(() => {
+    if (info?.snippet?.channelId) {
+      fetchChannelData();
+    }
+  }, [info?.snippet?.channelId]);
+
+  const fetchChannelData = async () => {
+    try {
+      const data = await fetch(CHANNEL_INFO_API + '&id=' + info?.snippet?.channelId);
+      const response = await data.json();
+      const subScribers = response?.items?.[0]?.statistics?.subscriberCount || ''
+      setSubScribers(subScribers)
+      console.log(response.items[0])
+    } catch (error) {
+      console.log("Couldn't fetch channel profile picture", error);
+    }
+  };
 
   return (
     <div className='flex cursor-pointer md:w-[100%] max-sm:w-[100%] md:mx-auto md:gap-x-3 bg-gray-300'>
@@ -48,6 +73,9 @@ const SearchVideoPage = ({ info }) => {
       <div>
         <div className='font-bold'>
           <h1>{title}</h1>
+        </div>
+        <div>
+          {subscriberCount} Subscribers
         </div>
       </div>
     </div>
