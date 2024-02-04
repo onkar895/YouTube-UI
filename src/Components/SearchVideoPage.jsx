@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-// SearchVideoPage.jsx
 import React, { useState, useEffect } from 'react';
 import { CHANNEL_INFO_API } from '../utils/APIList';
 import { timeDuration } from '../utils/constants';
@@ -39,7 +38,7 @@ const SearchVideoPage = ({ info }) => {
   };
 
   return (
-    <div className='flex cursor-pointer md:w-[100%] max-sm:w-[100%] md:mx-auto md:gap-x-3 bg-gray-300'>
+    <div className='flex cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3 bg-gray-300'>
       <div className='relative'
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}>
@@ -64,19 +63,14 @@ const SearchVideoPage = ({ info }) => {
         <img
           src={thumbnails.medium.url}
           alt="thumbnail"
-          className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4]"
+          className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw]"
         />
         <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
           { }
         </div>
       </div>
       <div>
-        <div className='font-bold'>
-          <h1>{title}</h1>
-        </div>
-        <div>
-          {subscriberCount} Subscribers
-        </div>
+        {title}
       </div>
     </div>
 

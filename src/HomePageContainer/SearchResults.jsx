@@ -48,21 +48,20 @@ const SearchResults = () => {
     }
   };
 
-
   return (
     <>
-      <div className="max-sm:mt-[4.6rem] max-sm:mx-auto md:w-full">
-        <div className='md:mx-24 md:my-[3.81rem]'>
+      <div className="md:mx-24 md:my-[3.81rem] max-sm:mt-[4.6rem] max-sm:mx-auto md:w-full">
+        <div>
           <ButtonList />
         </div>
-        <div className='flex flex-col items-start gap-y-5 py-20 '>
+        <div className='flex flex-col items-start gap-y-5 py-16 '>
           {
             loading ? (
               <SearchVideoShimmer />
             ) : error ? (
-              <CustomError message={error} />
-            ) : videos.length === 0 ? (
-              <CustomError message='Unable to fetch the request for now!' />
+              <div>
+                <CustomError message='Unable to fetch the request for now!' />
+              </div>
             ) : (
               videos.map((video) => (
                 <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId}>
