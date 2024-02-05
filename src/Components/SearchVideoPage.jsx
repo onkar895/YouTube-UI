@@ -81,13 +81,13 @@ const SearchVideoPage = ({ info }) => {
           )
         }
 
-        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover'>
+        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[32.4vw] object-cover'>
           <img
             src={thumbnails.medium.url}
             alt="thumbnail"
-            className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover"
+            className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[32.4vw] object-cover"
           />
-          <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
+          <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-1 md:right-2 bg-black text-white px-2 py-1 rounded-lg text-xs">
             {videos?.contentDetails?.duration}
           </div>
         </div>
