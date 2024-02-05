@@ -2,22 +2,42 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { CHANNEL_INFO_API } from '../utils/APIList';
+import { CHANNEL_INFO_API, YOUTUBE_VIDEO_API } from '../utils/APIList';
 import { timeDuration } from '../utils/constants';
 import { formatNumberWithSuffix } from '../utils/constants';
 
 const SearchVideoPage = ({ info }) => {
 
-  const [subScribers, setSubScribers] = useState(0)
+  const [videos, setVideos] = useState([]);
+
+  const [channelPicture, setChannelPicture] = useState('');
+
+  const [channelInfo, setChannelInfo] = useState([])
+
   const [isHovered, setIsHovered] = useState(false);
 
-  const { snippet, statistics, contentDetails } = info;
-  // let duration = timeDuration(contentDetails.duration);
-  const { title, channelTitle, thumbnails, channelId, publishedAt, description } = snippet;
+  const { snippet } = info;
 
-  console.log(info)
+  const { title, thumbnails, publishedAt, description } = snippet;
 
-  const subscriberCount = formatNumberWithSuffix(subScribers);
+  useEffect(() => {
+    getVideos();
+  }, []);
+
+  const getVideos = async () => {
+    try {
+      const response = await fetch(YOUTUBE_VIDEO_API);
+
+      if (!response.ok) {
+        throw new Error(`Failed to fetch videos. Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setVideos(data.items);
+    } catch (error) {
+      console.error('Error while fetching the videos:', error);
+    }
+  };
 
   useEffect(() => {
     if (info?.snippet?.channelId) {
@@ -29,16 +49,17 @@ const SearchVideoPage = ({ info }) => {
     try {
       const data = await fetch(CHANNEL_INFO_API + '&id=' + info?.snippet?.channelId);
       const response = await data.json();
-      const subScribers = response?.items?.[0]?.statistics?.subscriberCount || ''
-      setSubScribers(subScribers)
       console.log(response.items[0])
+      setChannelInfo(response?.items[0])
+      const profilePictureUrl = response?.items?.[0]?.snippet?.thumbnails?.default?.url || '';
+      setChannelPicture(profilePictureUrl);
     } catch (error) {
       console.log("Couldn't fetch channel profile picture", error);
     }
   };
 
   return (
-    <div className='flex cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3 bg-gray-300'>
+    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3'>
       <div className='relative'
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}>
@@ -60,22 +81,34 @@ const SearchVideoPage = ({ info }) => {
           )
         }
 
-        <div className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover'>
+        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover'>
           <img
             src={thumbnails.medium.url}
             alt="thumbnail"
             className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover"
           />
           <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
-            { }
+            {videos?.contentDetails?.duration}
           </div>
         </div>
       </div>
-      <div>
-        {title}
+      <div className='md:flex md:flex-col md:justify-between'>
+        <div className=''>
+          <h1>{title}</h1>
+          <div className='md:flex'>
+            <span>{channelInfo?.statistics?.viewCount}</span>
+            <span>{channelInfo?.snippet?.publishedAt}</span>
+          </div>
+        </div>
+        <div className='flex'>
+          <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-12 max-sm:w-10' />
+          <span>{channelInfo?.snippet?.channelTitle}</span>
+        </div>
+        <div>
+          <span>{channelInfo?.snippet?.description}</span>
+        </div>
       </div>
     </div>
-
   );
 };
 

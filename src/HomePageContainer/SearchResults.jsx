@@ -31,15 +31,10 @@ const SearchResults = () => {
   const getSearchResults = async () => {
     try {
       if (!searchQuery) return;
-
-      const response = await fetch(
-        `${YOUTUBE_SEARCH_API}&q=${searchQuery}&regionCode=IN&type=video`
-      );
-
+      const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${searchQuery}&regionCode=IN&type=video`);
       if (!response.ok) {
         throw new Error(`Failed to fetch search results. Status: ${response.status}`);
       }
-
       const data = await response.json();
       setVideos(data.items || []);
       setError(null);
@@ -55,7 +50,7 @@ const SearchResults = () => {
         <div>
           <ButtonList />
         </div>
-        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 '>
+        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:mt-12 max-sm:mt-8 md:gap-y-10 max-sm:gap-y-10 '>
           {
             loading ? (
               <SearchVideoShimmer />
