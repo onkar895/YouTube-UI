@@ -11,7 +11,7 @@ const SearchVideoShimmer = () => {
           .map((_, index) => (
 
             <div key={index} className='flex items-start gap-x-5 max-sm:flex max-sm:flex-col max-sm:gap-3'>
-              <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100vw] animate-pulse shadow-lg'>
+              <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100vw] animate-pulse shadow-lg rounded-2xl'>
                 <div className='bg-gray-300 rounded-2xl max-sm:w-[94vw] md:h-[25vw] lg:h-[16vw] max-sm:h-[50vw] lg:w-[29vw] md:w-[40.4vw] animate-pulse'>
                 </div>
               </div>

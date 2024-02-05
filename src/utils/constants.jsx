@@ -124,7 +124,7 @@ export const ButtonNames = [
   "Music",
   "Freecodecamp",
   "Live",
-  "Akshay Saini",
+  "Namaste JavaScript",
   "Rohit Sharma",
   "Comedy",
   "T-series",

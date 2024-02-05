@@ -10,7 +10,7 @@ import { MdOutlineDownloading } from 'react-icons/md'
 import { HiOutlineChevronDown } from 'react-icons/hi2'
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../../utils/APIList'
 import { formatNumberWithSuffix, formatTime } from '../../utils/constants'
- 
+
 const ChannelData = ({ videoId }) => {
   const [videoData, setVideoData] = useState({});
   const [subscribe, setSubscribe] = useState(false);
