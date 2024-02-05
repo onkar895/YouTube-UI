@@ -37,11 +37,12 @@ const SearchResults = () => {
       );
 
       if (!response.ok) {
-        throw new Error('Failed to fetch search results');
+        throw new Error(`Failed to fetch search results. Status: ${response.status}`);
       }
 
       const data = await response.json();
       setVideos(data.items || []);
+      setError(null);
     } catch (error) {
       console.error('Error while fetching search videos', error);
       setError('Failed to fetch videos. Please try again later.');

@@ -34,6 +34,7 @@ const VideoContainer = () => {
 
       const data = await response.json();
       setVideos(data.items);
+      setError(null); // Clear error state on successful fetch
     } catch (error) {
       console.error('Error while fetching the videos:', error);
       setError('Failed to fetch videos. Please try again later.');
@@ -46,22 +47,20 @@ const VideoContainer = () => {
   }
 
   return (
-    <>
-      <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-20 max-sm:mt-16'>
-        {/* {
+    <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-20 max-sm:mt-16'>
+      {/* {
         videos[0] && <RedBorderedVideoCard info={videos[0]} />
       } */}
-        {loading ? (
-          <VideoShimmer />
-        ) : (
-          videos.map((video) => (
-            <NavLink to={'/watch?v=' + video.id} key={video.id}>
-              <VideoCard info={video} videoId={video.id} />
-            </NavLink>
-          ))
-        )}
-      </div>
-    </>
+      {loading ? (
+        <VideoShimmer />
+      ) : (
+        videos.map((video) => (
+          <NavLink to={`/watch?v=${video.id}`} key={video.id}>
+            <VideoCard info={video} videoId={video.id} />
+          </NavLink>
+        ))
+      )}
+    </div>
   );
 };
 
