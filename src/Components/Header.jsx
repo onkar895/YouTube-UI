@@ -32,7 +32,7 @@ const Header = () => {
     <nav className='fixed flex justify-between items-center md:mx-auto md:px-[1.35rem] max-sm:px-[0.35rem] max-sm:pr-3 lg:pr-7 md:pr-6 max-sm:mx:auto max-sm:h-[4.6rem] md:h-[3.8rem] bg-white w-[100vw] z-30'>
 
       {/* Logo and Menu Icon */}
-      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-3 max-sm:gap-1`}>
+      <div className={`${showSearch ? 'max-sm:hidden' : ''} flex items-center md:gap-1 max-sm:gap-1`}>
         <div className='p-1 hover:bg-gray-200 hover:rounded-full'>
           <CgMenuLeftAlt className='text-3xl cursor-pointer text-black md:mt-[1px]' onClick={toggleMenuHandler} />
         </div>

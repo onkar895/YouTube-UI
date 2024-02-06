@@ -49,19 +49,22 @@ const SearchResults = () => {
         <div>
           <ButtonList />
         </div>
-        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:mt-12 max-sm:mt-8 md:gap-y-10 max-sm:gap-y-10 '>
-          <div>
-            <h1>Showing Results for: <span className='font-bold'>{searchQuery}</span> </h1>
-          </div>
+        <div className='md:mt-12'>
+          <h1>Showing Results for: <span className='font-bold'>{searchQuery}</span> </h1>
+        </div>
+        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6  max-sm:mt-8 md:gap-y-10 max-sm:gap-y-10'>
+
           {
             isLoading ? (
               <SearchVideoShimmer />
             ) : error ? (
-              <CustomError message='Unable to fetch the request for now!' />
+              <div className=''>
+                <CustomError message='Unable to fetch the request for now!' />
+              </div>
             ) : (
               videos.map((video) => (
                 <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId}>
-                  <SearchVideoPage info={video} />
+                  <SearchVideoPage info={video} videoId={video?.id?.videoId} />
                 </NavLink>
               ))
             )

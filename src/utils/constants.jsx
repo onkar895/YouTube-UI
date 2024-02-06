@@ -52,19 +52,19 @@ export const Subscriptions = [
     fullname: "Shark Tank India",
   },
   {
-    src: "https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UCq-Fj5jknLsUf-MWSy4_brA",
-    fullname: "T-Series",
+    src: "https://yt3.googleusercontent.com/ytc/AIf8zZTDkajQxPa4sjDOW-c3er1szXkSAO-H9TiF4-8u_Q=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UC8butISFwT-Wl7EV0hUK0BQ",
+    fullname: "freeCodeCamp",
   },
   {
-    src: "https://yt3.googleusercontent.com/a4AOsw2qHfuXAooYs7EMkwqJMmW_Wbqebpzm8Xmf2Rj_95QMLnAAFDNRNOJG-sSoairOXvQKrS8=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UCOQNJjhXwvAScuELTT_i7cQ",
-    fullname: "Sony LIV",
+    src: "https://yt3.googleusercontent.com/l_ZIXrVEQcHTBTsmpt2CFiWJF9_0hwB3rngr1_lxozZ3Lz58Ij5TcDFOp2TYlioU2gI9RlyExw=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCqwUrj10mAEsqezcItqvwEw",
+    fullname: "BB Ki Vines",
   },
   {
-    src: "https://yt3.googleusercontent.com/3K6h6gpMPf4mK9qh6SXTl0W3PLxnOMzUnFHc2lbS9t-ucS-b4JGcR8nW7ja9XDYkHM-kAnijk2c=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UCt2JXOLNxqry7B_4rRZME3Q",
-    fullname: "ICC",
+    src: "https://yt3.googleusercontent.com/ytc/AIf8zZTPIL9EkFafJj8HqxgEj9avK-OBX-U6p0V9NrEwSw=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UC0RhatS1pyxInC00YKjjBqQ",
+    fullname: "GeeksforGeeks",
   },
   {
     src: "https://yt3.googleusercontent.com/bFpwiiOB_NLCVsIcVQ9UcwBjb1RzipnMmtNfLSWpeIaHboyGkBCq4KBitmovRbStk9WvIWIZOyo=s176-c-k-c0x00ffffff-no-rj",

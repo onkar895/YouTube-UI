@@ -14,11 +14,11 @@ const WatchPage = () => {
   const videoSrc = `https://www.youtube.com/embed/${videoId}`;
 
   return (
-    <div className='md:flex md:mt-[4rem] max-sm:mt-[4.8rem]'>
-      <div className='md:mx-[1.85rem] max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[70vw]'>
+    <div className='md:flex md:gap-8 md:mt-[4rem] max-sm:mt-[4.8rem]'>
+      <div className='md:ml-[1.82rem] max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw]'>
         <div>
           <iframe
-            className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[70vw] lg:h-[81vh] object-cover'
+            className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[64.5vw] lg:h-[81vh] object-cover'
             src={`${videoSrc}?autoplay=1&mute=0`}
             title='YouTube video player'
             frameBorder='0'
@@ -29,14 +29,14 @@ const WatchPage = () => {
         <div>
           <ChannelData videoId={videoId} />
         </div>
-        <div className='md:hidden'>
+        <div className='lg:hidden'>
           <LiveChat />
         </div>
         <div>
           <CommentsData />
         </div>
       </div>
-      <div className='max-sm:hidden'>
+      <div className='hidden md:block'>
         <LiveChat />
       </div>
     </div>

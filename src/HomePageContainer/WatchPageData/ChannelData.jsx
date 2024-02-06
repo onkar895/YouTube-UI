@@ -50,7 +50,7 @@ const ChannelData = ({ videoId }) => {
     try {
       const data = await fetch(CHANNEL_INFO_API + '&id=' + videoData?.snippet?.channelId);
       const response = await data.json();
-      const profilePictureUrl = response?.items?.[0]?.snippet?.thumbnails?.default?.url || ''; // Ensure nested properties exist
+      const profilePictureUrl = response?.items?.[0]?.snippet?.thumbnails?.default?.url || ''; 
       const subScribers = response?.items?.[0]?.statistics?.subscriberCount || ''
       setChannelPicture(profilePictureUrl);
       setSubScribers(subScribers)

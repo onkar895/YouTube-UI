@@ -2,40 +2,33 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import { CHANNEL_INFO_API, YOUTUBE_VIDEO_API } from '../utils/APIList';
-import { timeDuration } from '../utils/constants';
-import { formatNumberWithSuffix } from '../utils/constants';
+import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
+import { formatTime, formatNumberWithSuffix } from '../utils/constants';
 
-const SearchVideoPage = ({ info }) => {
+const SearchVideoPage = ({ info, videoId }) => {
 
   const [videos, setVideos] = useState([]);
-
   const [channelPicture, setChannelPicture] = useState('');
-
   const [channelInfo, setChannelInfo] = useState([])
-
   const [isHovered, setIsHovered] = useState(false);
-
   const { snippet } = info;
+  const { title, thumbnails, publishedAt, description, channelTitle } = snippet;
 
-  const { title, thumbnails, publishedAt, description } = snippet;
+  const viewCount = formatNumberWithSuffix(videos?.statistics?.viewCount);
+  let calender = formatTime(publishedAt);
 
   useEffect(() => {
-    getVideos();
-  }, []);
+    fetchVideoData();
+  }, [videoId]);
 
-  const getVideos = async () => {
+  const fetchVideoData = async () => {
     try {
-      const response = await fetch(YOUTUBE_VIDEO_API);
-
-      if (!response.ok) {
-        throw new Error(`Failed to fetch videos. Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      setVideos(data.items);
+      const data = await fetch(VIDEO_DETAILS_API + '&id=' + videoId);
+      const response = await data.json();
+      setVideos(response?.items?.[0] || {}); // Ensure items array exists
+      console.log(response?.items?.[0])
     } catch (error) {
-      console.error('Error while fetching the videos:', error);
+      console.log('Error while fetching video details', error);
     }
   };
 
@@ -49,7 +42,6 @@ const SearchVideoPage = ({ info }) => {
     try {
       const data = await fetch(CHANNEL_INFO_API + '&id=' + info?.snippet?.channelId);
       const response = await data.json();
-      console.log(response.items[0])
       setChannelInfo(response?.items[0])
       const profilePictureUrl = response?.items?.[0]?.snippet?.thumbnails?.default?.url || '';
       setChannelPicture(profilePictureUrl);
@@ -92,20 +84,20 @@ const SearchVideoPage = ({ info }) => {
           </div>
         </div>
       </div>
-      <div className='md:flex md:flex-col md:justify-between'>
-        <div className=''>
-          <h1>{title}</h1>
-          <div className='md:flex'>
-            <span>{channelInfo?.statistics?.viewCount}</span>
-            <span>{channelInfo?.snippet?.publishedAt}</span>
+      <div className='md:flex md:flex-col md:justify-between md:my-2'>
+        <div>
+          <h1 className='font-bold'>{title}</h1>
+          <div className='md:flex md:gap-2 text-sm'>
+            <span>{viewCount} Views</span>
+            <span>{calender}</span>
           </div>
         </div>
-        <div className='flex'>
-          <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-12 max-sm:w-10' />
-          <span>{channelInfo?.snippet?.channelTitle}</span>
+        <div className='flex items-center gap-2'>
+          <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-8 max-sm:w-8' />
+          <span className='text-sm'>{channelTitle}</span>
         </div>
-        <div>
-          <span>{channelInfo?.snippet?.description}</span>
+        <div className='text-sm'>
+          <span>{description}</span>
         </div>
       </div>
     </div>
