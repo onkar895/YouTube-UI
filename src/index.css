@@ -75,3 +75,21 @@ body::-webkit-scrollbar-thumb {
     -webkit-filter: blur(2px);
     pointer-events: none;
 }
+
+.chatScroll::-webkit-scrollbar-track {
+    border-radius: 12px;
+}
+
+.chatScroll::-webkit-scrollbar {
+    width: 0;
+    background-color: rgb(231, 227, 227);
+}
+
+.chatScroll:hover::-webkit-scrollbar {
+    width: 7px;
+}
+
+.chatScroll::-webkit-scrollbar-thumb {
+    background-color: rgb(135, 133, 133);
+    border-radius: 12px;
+}

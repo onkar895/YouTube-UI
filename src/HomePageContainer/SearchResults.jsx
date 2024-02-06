@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
-import ButtonList from '../Components/ButtonList';
 import { YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import CustomError from './CustomError'
 import SearchVideoPage from '../Components/SearchVideoPage';
 import SearchVideoShimmer from '../Components/ShimmerUI/SearchVideoShimmer';
+import CategoryList from '../Components/CategoryList';
 
 const SearchResults = () => {
   const [searchParam] = useSearchParams();
@@ -47,7 +47,7 @@ const SearchResults = () => {
     <>
       <div className="flex flex-col gap-6 md:my-[3.81rem] lg:w-[90.2vw] md:w-[84.2vw] max-sm:w-[100vw] max-sm:my-[4.6rem] max-sm:mx-auto md:mx-24">
         <div>
-          <ButtonList />
+          <CategoryList />
         </div>
         <div className='md:mt-12'>
           <h1>Showing Results for: <span className='font-bold'>{searchQuery}</span> </h1>

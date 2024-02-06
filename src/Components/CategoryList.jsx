@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { fetchTagsUrl, videoFetchCatBased } from '../utils/APIList';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
-import { ButtonNames } from '../utils/constants';
+import { TagNames } from '../utils/constants';
 
-const ButtonList = () => {
+const CategoryList = () => {
   const listRef = useRef();
   const navigate = useNavigate();
   const [selectedButton, setSelectedButton] = useState("All");
@@ -86,7 +86,7 @@ const ButtonList = () => {
               {tags.length === 0 && (
                 <div>
                   <section className='space-x-2'>
-                    {ButtonNames.map((item, index) => (
+                    {TagNames.map((item, index) => (
                       <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => setSelectedButton(item)}>
                         {item}
                       </button>
@@ -97,7 +97,7 @@ const ButtonList = () => {
 
               {tags.length > 0 && (
                 <section className='space-x-2'>
-                  <small onClick={() => setSelectedButton("All")} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === "All" ? 'bg-gray-900 text-white' : ''}`}>
+                  <small onClick={() => navigate('/')} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === "All" ? 'bg-gray-900 text-white' : ''}`}>
                     All
                   </small>
                   {tags.map(({ id, snippet: { title } }) => (
@@ -115,4 +115,4 @@ const ButtonList = () => {
   );
 };
 
-export default ButtonList;
+export default CategoryList;

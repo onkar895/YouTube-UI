@@ -155,7 +155,7 @@ export const Setting = [
   },
 ]
 
-export const ButtonNames = [
+export const TagNames = [
   "All",
   "Gaming",
   "Mixes",
@@ -178,6 +178,8 @@ export const ButtonNames = [
   "Comedy Clubs",
   "Data Structures",
 ];
+
+export const LIVE_CHAT_COUNT = 25;
 
 export const formatTime = (time) => {
   let currentDate = new Date();
