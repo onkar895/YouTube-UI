@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { Explore, Premium, Setting, Home } from '../utils/constants';
+import { Explore, Premium, Setting, Home, Subscriptions } from '../utils/constants';
 import { MdHomeFilled } from 'react-icons/md';
 import { FaSquareYoutube } from 'react-icons/fa6';
 import { SiYoutubeshorts } from 'react-icons/si';
@@ -20,6 +20,7 @@ const SideBar = () => {
   const [searchParams] = useSearchParams();
   const [selectedButton, setSelectedButton] = useState("Home");
   const [isLoading, setIsLoading] = useState(false);
+
   const location = useLocation();
 
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const SideBar = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const Query = searchParams.get("search_query");
+    const Query = searchParams.get("sq");
     if (Query) {
       setSelectedButton(Query);
     } else {
@@ -47,16 +48,9 @@ const SideBar = () => {
     }, 1000);
   }
 
-  const handleButtonClick = (ButtonName) => {
-    const newQuery = ButtonName.replace(" ", "+");
-    setSelectedButton(newQuery);
+  const handleButtonClick = () => {
     setIsLoading(true); // Start loading
     StopLoading()       // Stop Loading and Close sidebar after 1000ms 
-    if (newQuery === "Home") {
-      navigate("/");
-    } else {
-      navigate(`/searchresults?search_query=${newQuery}`);
-    }
   };
 
   // Function to toggle the side menu
@@ -117,17 +111,46 @@ const SideBar = () => {
               Home.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
-                      <button className='flex items-center gap-5'>
-                        <span>{icon}</span>
-                        <span>{name}</span>
-                      </button>
-                    </li>
+                    <NavLink to={name === "Home" ? '/' : `/explore?sq=${name}`}>
+                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={handleButtonClick}>
+                        <button className='flex items-center gap-5' >
+                          {icon}
+                          <span>{name}</span>
+                        </button>
+                      </li>
+                    </NavLink>
                   </div>
                 )
               })
             }
           </ul>
+
+          <div className='mt-3 pl-3 w-56'>
+            <hr />
+          </div>
+
+          <div className='md:ml-4 my-4'>
+            <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>SubScriptions</h1>
+            <ul>
+              {
+                Subscriptions.map(({ src, profileId, fullname }) => {
+                  return (
+                    <div key={profileId}>
+                      <NavLink to={`/channel?Id=${profileId}`}>
+                        <li className={`py-[10px] pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === fullname ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={handleButtonClick}>
+                          <div className='flex items-center gap-5' >
+                            <img src={src} alt="" className="rounded-full w-5"
+                            />
+                            <span className="">{fullname}</span>
+                          </div>
+                        </li>
+                      </NavLink>
+                    </div>
+                  )
+                })
+              }
+            </ul>
+          </div>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
@@ -140,12 +163,14 @@ const SideBar = () => {
                 Explore.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
-                        <button className='flex items-center gap-5' >
-                          {icon}
-                          <span>{name}</span>
-                        </button>
-                      </li>
+                      <NavLink to={`/explore?sq=${name}`}>
+                        <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={handleButtonClick}>
+                          <button className='flex items-center gap-5' >
+                            {icon}
+                            <span>{name}</span>
+                          </button>
+                        </li>
+                      </NavLink>
                     </div>
                   )
                 })
@@ -164,12 +189,14 @@ const SideBar = () => {
                 Premium.map(({ icon, name }) => {
                   return (
                     <div key={name}>
-                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
-                        <button className='flex items-center gap-5'>
-                          <span className='text-red-600'>{icon}</span>
-                          <span>{name}</span>
-                        </button>
-                      </li>
+                      <NavLink to={`/explore?sq=${name}`}>
+                        <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={handleButtonClick}>
+                          <button className='flex items-center gap-5'>
+                            <span className='text-red-600'>{icon}</span>
+                            <span>{name}</span>
+                          </button>
+                        </li>
+                      </NavLink>
                     </div>
                   )
                 })

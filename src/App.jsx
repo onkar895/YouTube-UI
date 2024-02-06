@@ -8,6 +8,8 @@ import Header from './Components/Header'
 import Body from './HomePageContainer/Body'
 import SearchResults from './HomePageContainer/SearchResults';
 import MainContainer from './Components/MainContainer'
+import ExplorePage from './HomePageContainer/ExplorePage';
+import ChannelPage from './HomePageContainer/ChannelPage';
 
 // Lazy load WatchPage
 const WatchPage = lazy(() => import('./HomePageContainer/WatchPage'));
@@ -28,7 +30,9 @@ const App = () => {
                   </Suspense>
                 }
               />
-              <Route exact path="/searchresults" element={<SearchResults />} />
+              <Route exact path="/results" element={<SearchResults />} />
+              <Route exact path='/explore' element={<ExplorePage />} />
+              <Route exact path='/channel' element={<ChannelPage />} />
             </Route>
           </Routes>
         </Router>

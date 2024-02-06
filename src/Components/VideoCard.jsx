@@ -1,71 +1,52 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { LuEye } from 'react-icons/lu';
 import { BiLike } from "react-icons/bi";
-import { timeDuration } from '../utils/constants';
+import { timeDuration, formatTime, formatNumberWithSuffix } from '../utils/constants';
 import { CHANNEL_INFO_API } from '../utils/APIList';
-import { formatTime } from '../utils/constants';
-import { formatNumberWithSuffix } from '../utils/constants';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
 
 const VideoCard = ({ info }) => {
-  const { snippet, statistics, contentDetails } = info;
-  let duration = timeDuration(contentDetails.duration);
-  // console.log(contentDetails.duration)
-  const { title, channelTitle, thumbnails, channelId, publishedAt } = snippet;
-  let calender = formatTime(publishedAt);
-
   const [isHovered, setIsHovered] = useState(false);
-
-  let viewCount = 0;
-  if (info?.statistics?.viewCount) {
-    viewCount = formatNumberWithSuffix(statistics.viewCount);
-  }
-
-  let likeCount = 0;
-  if (info?.statistics?.likeCount) {
-    likeCount = formatNumberWithSuffix(statistics.likeCount);
-  }
-
   const [profilePicture, setProfilePicture] = useState("");
-
-  const CHANNEL_PROFILE_PICTURE = async () => {
-    try {
-      const data = await fetch(CHANNEL_INFO_API + "&id=" + channelId);
-      const response = await data?.json();
-      const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
-      return profilePictureUrl;
-    } catch (error) {
-      console.log("couldn't fetch channel profile picture", error);
-    }
-  };
 
   useEffect(() => {
     const fetchProfilePicture = async () => {
-      const profilePictureUrl = await CHANNEL_PROFILE_PICTURE(channelId);
-      setProfilePicture(profilePictureUrl);
+      try {
+        const data = await fetch(CHANNEL_INFO_API + "&id=" + info.snippet.channelId);
+        const response = await data.json();
+        const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
+        setProfilePicture(profilePictureUrl);
+      } catch (error) {
+        console.error("Couldn't fetch channel profile picture", error);
+      }
     };
 
-    fetchProfilePicture();
-  }, [channelId]);
+    if (info) {
+      fetchProfilePicture();
+    }
+  }, [info]);
 
+  if (!info) {
+    return <VideoShimmer />;
+  }
 
-  if (!info) return (
-    <VideoShimmer />
-  )
+  const { snippet, statistics, contentDetails } = info;
+  const { title, channelTitle, thumbnails, publishedAt } = snippet;
+  const duration = timeDuration(contentDetails.duration);
+  const calender = formatTime(publishedAt);
+  const viewCount = statistics?.viewCount ? formatNumberWithSuffix(statistics.viewCount) : 0;
+  const likeCount = statistics?.likeCount ? formatNumberWithSuffix(statistics.likeCount) : 0;
 
   return (
     <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]'>
-      <div
-        className='relative'
+      <div className='relative'
         onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}
       >
         {
-          isHovered && (
-            // Render the translucent overlay when hovered
+          isHovered ? (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center cursor-pointer justify-center rounded-2xl">
               <iframe
                 width="100%"
@@ -78,15 +59,19 @@ const VideoCard = ({ info }) => {
                 className='rounded-2xl'>
               </iframe>
             </div>
+          ) : (
+            <>
+              <img
+                src={thumbnails?.medium.url}
+                alt="thumbnail"
+                className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw]'
+              />
+              <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
+                {duration}
+              </div>
+            </>
           )
         }
-        <img
-          src={thumbnails?.medium.url} alt="thumbnail"
-          className='rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw]'
-        />
-        <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-2 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
-          {duration}
-        </div>
       </div>
       <ul className='pt-3 space-y-1 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
         <div className='flex gap-2 items-center font-bold text-[14.6px]'>
@@ -117,14 +102,5 @@ const VideoCard = ({ info }) => {
     </div>
   );
 };
-
-// Higher Order Component :
-// export const RedBorderedVideoCard = ({ info }) => {
-//   return (
-//     <div className='border border-red-800 p-1 m-1'>
-//       <VideoCard info={info} />
-//     </div>
-//   )
-// }
 
 export default VideoCard;

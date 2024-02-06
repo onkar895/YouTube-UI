@@ -35,6 +35,24 @@ export const Home = [
   },
 ]
 
+export const Subscriptions = [
+  {
+    src: "https://yt3.googleusercontent.com/ytc/AOPolaSj48pypV9ilqNUztYjQ8Q760NYCAw3w1LwoWbJYQ=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UC3N9i_KvKZYP4F84FPIzgPQ",
+    fullname: "Akshay Saini",
+  },
+  {
+    src: "https://yt3.googleusercontent.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCRzYN32xtBf3Yxsx5BvJWJw",
+    fullname: "Warikoo",
+  },
+  {
+    src: "https://yt3.googleusercontent.com/G42b4i9auAhu-cy3wi9IhLxmkfl2i_iokiVgHx32xsZ8I4ok6uzamWXUj16xzJmAGoq8fRfS1Q=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCIPZVAwDGa-A4ZJxCBvXRuQ",
+    fullname: "RoadsideCoder",
+  },
+];
+
 export const Explore = [
   {
     icon: <IoMdTrendingUp className='w-5 h-10' />,

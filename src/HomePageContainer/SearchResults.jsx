@@ -12,13 +12,12 @@ const SearchResults = () => {
   const [searchParam] = useSearchParams();
   const searchQuery = searchParam.get('search_query');
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate loading data
     const timer = setTimeout(() => {
-      setLoading(false);
+      setIsLoading(false);
     }, 2000);
 
     return () => clearTimeout(timer);
@@ -51,8 +50,11 @@ const SearchResults = () => {
           <ButtonList />
         </div>
         <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:mt-12 max-sm:mt-8 md:gap-y-10 max-sm:gap-y-10 '>
+          <div>
+            <h1>Showing Results for: <span className='font-bold'>{searchQuery}</span> </h1>
+          </div>
           {
-            loading ? (
+            isLoading ? (
               <SearchVideoShimmer />
             ) : error ? (
               <CustomError message='Unable to fetch the request for now!' />

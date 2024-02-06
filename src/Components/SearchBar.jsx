@@ -114,7 +114,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
     event.preventDefault();
     if (search !== "") {
       const query = search.replace(" ", "+");
-      navigate(`/searchresults?search_query=${query}`);
+      navigate(`/results?search_query=${query}`);
       handleScrollTop();
       setShowSuggestions(false);
       setSearchQuery("");
