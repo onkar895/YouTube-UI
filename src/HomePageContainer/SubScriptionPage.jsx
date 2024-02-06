@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 import ButtonList from '../Components/ButtonList';
 import { CHANNEL_INFO_API } from '../utils/APIList';
 
-const ChannelPage = () => {
+const SubScriptionPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [channelData, setChannelData] = useState({});
@@ -17,7 +17,6 @@ const ChannelPage = () => {
   const [channelId, setChannelId] = useState('');
   const [channelPicture, setChannelPicture] = useState('');
   const [subscribers, setSubscribers] = useState(0);
-
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
@@ -61,9 +60,11 @@ const ChannelPage = () => {
 
       setChannelPicture(profilePictureUrl);
       setSubscribers(subscribersCount);
+
     } catch (error) {
       console.log("Error fetching channel data:", error);
       setError('Unable to fetch channel data. Please try again later.');
+
     }
   };
 
@@ -87,4 +88,4 @@ const ChannelPage = () => {
   );
 };
 
-export default ChannelPage;
+export default SubScriptionPage;

@@ -25,7 +25,7 @@ const ButtonList = () => {
       setLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
-  }, [searchParams]);
+  }, []);
 
   const handleScroll = (direction) => {
     const box = listRef.current;

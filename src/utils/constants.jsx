@@ -37,19 +37,39 @@ export const Home = [
 
 export const Subscriptions = [
   {
+    src: "https://yt3.googleusercontent.com/eu051krrRNQMMi5h6ynfnvhFJzxzSKulJQ42g5v72MQ9Bvv8KdpNIa6yM-0iGpnDgSF0itAD=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCpEhnqL0y41EpW2TvWAHD7Q",
+    fullname: "SET India",
+  },
+  {
     src: "https://yt3.googleusercontent.com/ytc/AOPolaSj48pypV9ilqNUztYjQ8Q760NYCAw3w1LwoWbJYQ=s176-c-k-c0x00ffffff-no-rj",
     profileId: "UC3N9i_KvKZYP4F84FPIzgPQ",
     fullname: "Akshay Saini",
   },
   {
-    src: "https://yt3.googleusercontent.com/X9eoDIB9cgb1s-kvATRs1lQDcU4Fjc15NDV9s9FF8ck7IsA8u7OdijaernoDV9LLdePgjlt_=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UCRzYN32xtBf3Yxsx5BvJWJw",
-    fullname: "Warikoo",
+    src: "https://yt3.googleusercontent.com/nfrP94TD-7CC2pSqLXjeluf0SRIloELxGvCf9nL4DeJqBeonHcgwm0IePafovV8MzCWeQ9qhpA=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UC6vd-JCD7Z_FuF8N5LTydPA",
+    fullname: "Shark Tank India",
   },
   {
-    src: "https://yt3.googleusercontent.com/G42b4i9auAhu-cy3wi9IhLxmkfl2i_iokiVgHx32xsZ8I4ok6uzamWXUj16xzJmAGoq8fRfS1Q=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UCIPZVAwDGa-A4ZJxCBvXRuQ",
-    fullname: "RoadsideCoder",
+    src: "https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCq-Fj5jknLsUf-MWSy4_brA",
+    fullname: "T-Series",
+  },
+  {
+    src: "https://yt3.googleusercontent.com/a4AOsw2qHfuXAooYs7EMkwqJMmW_Wbqebpzm8Xmf2Rj_95QMLnAAFDNRNOJG-sSoairOXvQKrS8=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCOQNJjhXwvAScuELTT_i7cQ",
+    fullname: "Sony LIV",
+  },
+  {
+    src: "https://yt3.googleusercontent.com/3K6h6gpMPf4mK9qh6SXTl0W3PLxnOMzUnFHc2lbS9t-ucS-b4JGcR8nW7ja9XDYkHM-kAnijk2c=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCt2JXOLNxqry7B_4rRZME3Q",
+    fullname: "ICC",
+  },
+  {
+    src: "https://yt3.googleusercontent.com/bFpwiiOB_NLCVsIcVQ9UcwBjb1RzipnMmtNfLSWpeIaHboyGkBCq4KBitmovRbStk9WvIWIZOyo=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCIEv3lZ_tNXHzL3ox-_uUGQ",
+    fullname: "Gordon Ramsay",
   },
 ];
 
