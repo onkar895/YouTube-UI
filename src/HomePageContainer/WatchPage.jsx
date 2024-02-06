@@ -29,7 +29,7 @@ const WatchPage = () => {
         <div>
           <ChannelData videoId={videoId} />
         </div>
-        <div className='lg:hidden'>
+        <div className='lg:hidden md:mt-5 max-sm:mt-5'>
           <LiveChat />
         </div>
         <div>
