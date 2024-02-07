@@ -17,8 +17,8 @@ const WatchPage = () => {
 
   return (
     <div>
-      <div className={`${container ? "lg:flex" : "md:flex max-sm:flex-col"} md:gap-4 md:mt-[4rem] max-sm:mt-[4.8rem] space-y-5 lg:space-y-0`}>
-        <div className='md:flex md:flex-col md:ml-[1.82rem] max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw]'>
+      <div className={`${container ? "lg:flex" : "md:flex-col max-sm:flex-col"} md:gap-4 md:mt-[4rem] max-sm:mt-[4.8rem] space-y-5 lg:space-y-0 md:mx-[1.82rem] max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw]`}>
+        <div>
           <div>
             <iframe
               className='rounded-2xl max-sm:w-[95vw] max-sm:h-[28vh] md:w-[92.5vw] md:h-[40vh] lg:w-[64.5vw] lg:h-[81vh] object-cover'
@@ -33,18 +33,12 @@ const WatchPage = () => {
             <ChannelData videoId={videoId} />
           </div>
         </div>
-        {/* For small and Medium sizes screens */}
-        <div className='md:ml-7 lg:ml-0 max-sm:mx-[0.65rem]'>
+        <div>
           <LiveChat />
           <RelatedVideoPage />
         </div>
-        {/* For large sizes screens */}
-        {/* <div className='md:hidden max-sm:hidden lg:block'>
-        <LiveChat />
-        <RelatedVideoPage />
-      </div> */}
       </div>
-      <div>
+      <div className=''>
         <CommentsData />
       </div>
     </div>

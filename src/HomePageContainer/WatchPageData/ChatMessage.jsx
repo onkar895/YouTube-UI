@@ -6,7 +6,7 @@ import { FaCircleUser } from "react-icons/fa6";
 const ChatMessage = ({ name, message }) => {
   return (
     <div className='flex items-center gap-3 shadow-md py-2 px-2 cursor-pointer hover:bg-gray-200 border'>
-      <FaCircleUser className='text-2xl' />
+      <FaCircleUser className='text-2xl text-gray-600' />
       <div className='flex flex-col'>
         <span className='text-sm'>{name}</span>
         <span className='text-xs text-gray-500'>{message}</span>
