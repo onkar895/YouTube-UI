@@ -23,7 +23,7 @@ export const fetchTagsUrl =
 
 export const videoFetchCatBased = async (cat, vidId, nextPageToken = "") => {
   const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${cat}&maxResults=15&type=video&videoCategoryId=${vidId}${nextPageToken ? `&pageToken=${nextPageToken}` : ""
+    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${cat}&maxResults=25&type=video&videoCategoryId=${vidId}${nextPageToken ? `&pageToken=${nextPageToken}` : ""
     }`
   );
   const data = await res?.json();

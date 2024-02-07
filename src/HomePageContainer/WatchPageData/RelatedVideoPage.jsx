@@ -3,7 +3,7 @@ import React from 'react'
 
 const RelatedVideoPage = () => {
   return (
-    <div>
+    <div className='my-5'>
       RelatedVideoPage
     </div>
   )
