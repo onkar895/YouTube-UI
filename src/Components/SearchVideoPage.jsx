@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
-import { formatTime, formatNumberWithSuffix } from '../utils/constants';
+import { formatTime, formatNumberWithSuffix, timeDuration } from '../utils/constants';
 
 const SearchVideoPage = ({ info, videoId }) => {
 
@@ -16,6 +16,7 @@ const SearchVideoPage = ({ info, videoId }) => {
 
   const viewCount = formatNumberWithSuffix(videos?.statistics?.viewCount);
   let calender = formatTime(publishedAt);
+  const duration = timeDuration(videos?.contentDetails?.duration);
 
   useEffect(() => {
     fetchVideoData();
@@ -51,11 +52,8 @@ const SearchVideoPage = ({ info, videoId }) => {
   };
 
   return (
-    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3'>
-      <div className='relative'
-        onMouseOver={() => setIsHovered(true)}
-        onMouseOut={() => setIsHovered(false)}>
-
+    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3' onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+      <div className='relative'>
         {
           isHovered && (
             <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center cursor-pointer justify-center rounded-2xl">
@@ -80,15 +78,16 @@ const SearchVideoPage = ({ info, videoId }) => {
             className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[32.4vw] object-cover"
           />
           <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-1 md:right-2 bg-black text-white px-2 py-1 rounded-lg text-xs">
-            {videos?.contentDetails?.duration}
+            {duration}
           </div>
         </div>
       </div>
-      <div className='md:flex md:flex-col md:justify-between md:my-2'>
-        <div>
+      <div className='md:flex md:flex-col md:space-y-8 md:my-2'>
+        <div className='md:flex md:flex-col gap-1'>
           <h1 className='font-bold'>{title}</h1>
-          <div className='md:flex md:gap-2 text-sm'>
+          <div className='md:flex md:gap-1 text-sm'>
             <span>{viewCount} Views</span>
+            <span >•</span>
             <span>{calender}</span>
           </div>
         </div>

@@ -16,7 +16,7 @@ const LiveChat = () => {
 
   const InputStyle = `relative md:w-[92.5vw] lg:w-[26.8vw] max-sm:w-[100vw] outline-none shadow-gray-400 shadow-2xl py-1 text-sm mx-[9px] border-b-2 ${isFocused ? 'border-blue-600 transition-all duration-300' : 'border-gray-500'} text-gray-600 bg-gray-100`
 
-  const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[28.4vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
+  const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[30vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -76,7 +76,7 @@ const LiveChat = () => {
         )
       }
       <div className={`${isChatVisible ? '' : 'hidden'}`}>
-        <div className='shadow-gray-300 shadow-2xl border md:w-[92.5vw] lg:w-[28.4vw] bg-gray-100 py-3 max-sm:py-6 flex flex-col lg:gap-2 md:gap-2 max-sm:gap-2'>
+        <div className='shadow-gray-300 shadow-2xl border md:w-[92.5vw] lg:w-[30vw] bg-gray-100 py-3 max-sm:py-6 flex flex-col lg:gap-2 md:gap-2 max-sm:gap-2'>
           <div className='flex items-center justify-between mx-2'>
             <div className='flex items-center gap-3'>
               <div className={`w-6 hover:cursor-pointer`}>

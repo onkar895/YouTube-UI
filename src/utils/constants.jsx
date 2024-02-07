@@ -214,6 +214,10 @@ export const timeDuration = (isoDuration) => {
   let minutesIndex;
   let hoursIndex;
 
+  if (typeof isoDuration !== 'string' || !isoDuration.trim()) {
+    return '00:00'; // Default value when isoDuration is not valid
+  }
+
   if (isoDuration.includes("H")) {
     hoursIndex = isoDuration.indexOf("H");
     hours = parseInt(isoDuration.slice(2, hoursIndex));
@@ -245,12 +249,12 @@ export const timeDuration = (isoDuration) => {
     )}`;
     return formattedTime;
   }
+}
 
-  // Function to pad single-digit numbers with leading zeros
-  function padZero(num) {
-    return num < 10 ? `0${num}` : num;
-  }
-};
+// Function to pad single-digit numbers with leading zeros
+function padZero(num) {
+  return num < 10 ? `0${num}` : num;
+}
 
 export const formatNumberWithSuffix = (x) => {
   if (x === undefined) {

@@ -15,7 +15,7 @@ const WatchPage = () => {
   const videoSrc = useMemo(() => `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=0`, [videoId]);
 
   return (
-    <div className='md:flex md:gap-8 md:mt-[4rem] max-sm:mt-[4.8rem]'>
+    <div className='md:flex md:gap-4 md:mt-[4rem] max-sm:mt-[4.8rem]'>
       <div className='md:ml-[1.82rem] max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw]'>
         <div>
           <iframe
