@@ -138,7 +138,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
           {
             isInputFocused && (
-              <div className={`${isMenuOpen ? 'md:ml-[1.4rem]' : 'lg:ml-[1.4rem] md:ml-[1.4rem]'} absolute flex items-center`}>
+              <div className='absolute flex items-center lg:ml-[1.4rem] md:ml-[1.4rem]'>
                 <button className='max-sm:hidden '>
                   <IoSearchOutline className='text-xl' />
                 </button>
@@ -148,7 +148,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
 
           {
             searchQuery && (
-              <div className={`${showSearch ? "max-sm:right-16 max-sm:mx-auto" : "max-sm:hidden"} absolute lg:right-[27rem] md:right-[18.5rem] flex items-center`}>
+              <div className={`${showSearch ? "max-sm:right-16 max-sm:mx-auto" : "max-sm:hidden"} absolute lg:right-[27rem] md:right-[18.8rem] flex items-center`}>
                 <button onClick={handleClearSearch} className={``}>
                   <IoCloseOutline className='text-2xl cursor-pointer' />
                 </button>

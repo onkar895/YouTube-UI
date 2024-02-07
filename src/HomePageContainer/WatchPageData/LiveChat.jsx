@@ -6,6 +6,8 @@ import { addMessage } from '../../utils/chatSlice';
 import { generateRandomComment, generateRandomName } from '../../utils/helper';
 import MyPic from '../../assets/MyPic.jpg';
 import { VscSend } from 'react-icons/vsc';
+import { SlEmotsmile } from "react-icons/sl";
+import { FaRegFaceSmile } from "react-icons/fa6";
 
 const LiveChat = () => {
   const [message, setMessage] = useState('');
@@ -14,7 +16,7 @@ const LiveChat = () => {
   const dispatch = useDispatch();
   const chatMessage = useSelector((store) => store.chat.messages);
 
-  const InputStyle = `relative md:w-[92.5vw] lg:w-[28.4vw] max-sm:w-[100%] outline-none shadow-gray-400 shadow-2xl py-1 text-sm mx-[9px] border-b-2 ${isFocused ? 'border-blue-700 transition-all duration-300' : 'border-gray-500'} text-gray-600 bg-gray-100`
+  const InputStyle = `relative md:w-[92.5vw] lg:w-[28.4vw] max-sm:w-[100%] outline-none shadow-gray-400 shadow-2xl py-1 text-sm mx-[9px] border-b-2 ${isFocused ? 'border-blue-700 transition-all duration-300 px-9' : 'border-gray-500'} text-gray-600 bg-gray-100`
 
   const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[30vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
 
@@ -90,6 +92,13 @@ const LiveChat = () => {
           </div>
           <div>
             <form onSubmit={(e) => e.preventDefault()} className='flex items-center'>
+              {
+                isFocused && (
+                  <span className='absolute z-10 ml-3 text-lg text-gray-700'>
+                    <FaRegFaceSmile />
+                  </span>
+                )
+              }
               <input
                 type='text'
                 placeholder='Chat...'
@@ -101,7 +110,7 @@ const LiveChat = () => {
               />
               <button onClick={(e) => handleChat(e)}
                 className='absolute lg:right-[1.85rem] max-sm:right-[1.35rem] md:right-[2.5rem] cursor-pointer'>
-                <VscSend className={`${isFocused ? "text-blue-800 animate-pulse" : ""} text-gray-500 text-lg`} />
+                <VscSend className={`${isFocused ? "text-blue-700 animate-pulse" : ""} text-gray-500 text-lg`} />
               </button>
             </form>
           </div>
