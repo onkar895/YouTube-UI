@@ -14,7 +14,7 @@ const LiveChat = () => {
   const dispatch = useDispatch();
   const chatMessage = useSelector((store) => store.chat.messages);
 
-  const InputStyle = `relative md:w-[92.5vw] lg:w-[26.8vw] max-sm:w-[100vw] outline-none shadow-gray-400 shadow-2xl py-1 text-sm mx-[9px] border-b-2 ${isFocused ? 'border-blue-600 transition-all duration-300' : 'border-gray-500'} text-gray-600 bg-gray-100`
+  const InputStyle = `relative md:w-[92.5vw] lg:w-[28.4vw] max-sm:w-[100%] outline-none shadow-gray-400 shadow-2xl py-1 text-sm mx-[9px] border-b-2 ${isFocused ? 'border-blue-600 transition-all duration-300' : 'border-gray-500'} text-gray-600 bg-gray-100`
 
   const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[30vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
 
@@ -63,8 +63,8 @@ const LiveChat = () => {
 
   return (
     <div>
-      <div className={`${isChatVisible ? "" : "hidden"} cursor-pointer py-3 border border-b-2 rounded-t-2xl bg-gray-100 hover:bg-gray-200 text-center text-sm`}>
-        <span>Live Chat</span>
+      <div className={`${isChatVisible ? "hover:bg-gray-800 hover:text-white" : "hidden"} cursor-pointer py-3 border border-b-2 rounded-t-2xl bg-gray-100 hover:bg-gray-200 text-center text-sm`}>
+        <span className='animate-pulse'>Live Chat</span>
       </div>
       {
         isChatVisible && (
@@ -100,16 +100,16 @@ const LiveChat = () => {
                 onBlur={() => setIsFocused(false)}
               />
               <button onClick={(e) => handleChat(e)}
-                className='absolute lg:right-[2.1rem] max-sm:right-[1.35rem] md:right-[2.5rem] cursor-pointer'>
-                <VscSend className='text-gray-500 text-lg' />
+                className='absolute lg:right-[1.85rem] max-sm:right-[1.35rem] md:right-[2.5rem] cursor-pointer'>
+                <VscSend className={`${isFocused ? "text-blue-900 animate-pulse" : ""} text-gray-500 text-lg`} />
               </button>
             </form>
           </div>
         </div>
       </div>
       <div onClick={toggleChatVisibility}
-        className={`${!isChatVisible ? "rounded-2xl" : ""} flex justify-center cursor-pointer py-3 border rounded-b-2xl bg-gray-100 hover:bg-gray-200`}>
-        <button className='text-sm lg:w-[28.3vw]'>
+        className={`${!isChatVisible ? "rounded-xl bg-gray-800 hover:scale-95 transition-all duration-500 text-white" : ""} flex justify-center cursor-pointer py-3 border rounded-b-2xl hover:text-white bg-gray-100 hover:bg-gray-800`}>
+        <button className={`${isChatVisible ? "" : "animate-pulse"} text-sm lg:w-[28.3vw]`}>
           {isChatVisible ? 'Hide Chat' : 'Show Chat'}
         </button>
       </div>
