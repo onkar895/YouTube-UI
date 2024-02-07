@@ -110,7 +110,7 @@ const LiveChat = () => {
               />
               <button onClick={(e) => handleChat(e)}
                 className='absolute lg:right-[1.85rem] max-sm:right-[1.35rem] md:right-[2.5rem] cursor-pointer'>
-                <VscSend className={`${isFocused ? "text-blue-700 animate-pulse" : ""} text-gray-500 text-lg`} />
+                <VscSend className={`${isFocused ? "text-blue-800 animate-pulse" : ""} text-gray-500 text-lg`} />
               </button>
             </form>
           </div>
