@@ -23,24 +23,4 @@ export const fetchTagsUrl =
   "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=" +
   API_KEY;
 
-export const videoFetchCatBased = async (cat, vidId, nextPageToken = "") => {
-  const res = await fetch(
-    `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${cat}&maxResults=25&type=video&videoCategoryId=${vidId}${nextPageToken ? `&pageToken=${nextPageToken}` : ""
-    }`
-  );
-  const data = await res?.json();
-  let ids = [];
-  for (const x of data.items) {
-    ids = [...ids, x?.id?.videoId];
-  }
-  const res2 = await fetch(
-    `https://www.googleapis.com/youtube/v3/videos?key=${API_KEY}&part=snippet%2CcontentDetails%2Cstatistics&id=${ids.join(
-      ","
-    )}`
-  );
-
-  const data2 = await res2?.json();
-  // console.log(data2);
-  return { ...data2, nextPageToken: data.nextPageToken };
-};
 

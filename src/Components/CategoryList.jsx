@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { fetchTagsUrl, videoFetchCatBased } from '../utils/APIList';
+import { fetchTagsUrl, YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
 import { TagNames } from '../utils/constants';
@@ -12,10 +12,22 @@ const CategoryList = () => {
   const [selectedButton, setSelectedButton] = useState("All");
   const [loading, setLoading] = useState(true);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([])
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(null);
-  const [nextPageToken, setNextPageToken] = useState("");
+
+  const fetchVideosByKeyword = async (keyword) => {
+    try {
+      const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${encodeURIComponent(keyword)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
+      }
+      const data = await response.json();
+      return data.items;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,17 +52,18 @@ const CategoryList = () => {
     }
   };
 
-  const tagFilterHandler = async (id, title) => {
+  const handleCategoryClick = async (keyword) => {
+    setLoading(true);
+    setSelectedButton(keyword);
     try {
-      const res = await videoFetchCatBased(title, id);
-      if (res?.items?.length > 0) {
-        setNextPageToken(res.nextPageToken || "");
-        setData(res.items);
-        setSelectedButton(title);
-      }
+      const videos = await fetchVideosByKeyword(keyword);
+      // const res = await videos.json()
+      setData(videos);
     } catch (error) {
-      console.error('Error fetching videos based on category:', error);
-      setError('Failed to fetch videos based on category. Please try again later.');
+      console.error('Error fetching videos:', error);
+      setError('Failed to fetch videos. Please try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -87,7 +100,7 @@ const CategoryList = () => {
                 <div>
                   <section className='space-x-2'>
                     {TagNames.map((item, index) => (
-                      <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => setSelectedButton(item)}>
+                      <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleCategoryClick(item)}>
                         {item}
                       </button>
                     ))}
@@ -101,7 +114,7 @@ const CategoryList = () => {
                     All
                   </small>
                   {tags.map(({ id, snippet: { title } }) => (
-                    <button key={id} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === title ? 'bg-gray-900 text-white' : ''}`} onClick={() => tagFilterHandler(id, title)}>
+                    <button key={id} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === title ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleCategoryClick(title)}>
                       {title}
                     </button>
                   ))}
