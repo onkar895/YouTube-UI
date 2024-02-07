@@ -40,7 +40,7 @@ const WatchPage = () => {
         </div>
       </div>
       {/* For large sizes screens */}
-      <div className='hidden md:block'>
+      <div className='md:hidden max-sm:hidden lg:block'>
         <LiveChat />
         <RelatedVideoPage />
       </div>
