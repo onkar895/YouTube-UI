@@ -4,9 +4,11 @@ import React, { useState } from 'react'
 import { timeDuration, formatTime, formatNumberWithSuffix } from '../../utils/constants'
 
 const RelatedVideos = ({ info }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const { snippet, contentDetails, statistics } = info;
   const { title, thumbnails, channelTitle, publishedAt } = snippet;
-  const [isHovered, setIsHovered] = useState(false);
+
   const duration = timeDuration(contentDetails.duration);
   const calender = formatTime(publishedAt);
   const viewCount = statistics?.viewCount ? formatNumberWithSuffix(statistics.viewCount) : 0;

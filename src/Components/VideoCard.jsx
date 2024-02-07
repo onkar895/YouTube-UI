@@ -40,25 +40,26 @@ const VideoCard = ({ info }) => {
   const likeCount = statistics?.likeCount ? formatNumberWithSuffix(statistics.likeCount) : 0;
 
   return (
-    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]'>
-      <div className='relative'
-        onMouseOver={() => setIsHovered(true)}
-        onMouseOut={() => setIsHovered(false)}
-      >
-        {isHovered && (
-          <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center cursor-pointer justify-center rounded-2xl">
-            <iframe
-              width="100%"
-              height="100%"
-              src={`https://www.youtube.com/embed/${info.id}?autoplay=1&mute=1`}
-              title={info.snippet.title}
-              frameBorder="0"
-              allowFullScreen
-              autoPlay
-              className='rounded-2xl'
-            ></iframe>
-          </div>
-        )}
+    <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]'
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}>
+      <div className='relative'>
+        {
+          isHovered && (
+            <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center cursor-pointer justify-center rounded-2xl">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${info.id}?autoplay=1&mute=1`}
+                title={info.snippet.title}
+                frameBorder="0"
+                allowFullScreen
+                autoPlay
+                className='rounded-2xl'
+              ></iframe>
+            </div>
+          )
+        }
         <img
           src={thumbnails?.medium.url}
           alt="thumbnail"
