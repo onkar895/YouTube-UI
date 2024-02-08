@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { fetchTagsUrl, YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
-import changeCategory from '../utils/categorySlice'
+import changeCategory from '../utils/CategorySlice'
 import { TagNames } from '../utils/constants';
 
 const CategoryList = () => {
@@ -119,3 +119,4 @@ const CategoryList = () => {
 };
 
 export default CategoryList;
+

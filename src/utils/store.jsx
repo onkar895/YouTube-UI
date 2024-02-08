@@ -9,7 +9,7 @@ const store = configureStore({
     app: appSlice,
     search: searchSlice,
     chat: chatSlice,
-    category: CategorySlice,
+    videoCategory: CategorySlice,
   },
 })
 

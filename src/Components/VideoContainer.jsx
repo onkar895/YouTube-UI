@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import { YOUTUBE_VIDEO_API } from '../utils/APIList';
+import { YOUTUBE_VIDEO_API, YOUTUBE_SEARCHCATEGORY_API } from '../utils/APIList';
 import VideoCard from '../Components/VideoCard';
 import VideoShimmer from './ShimmerUI/VideoShimmer';
 import CustomError from '../HomePageContainer/CustomError';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const category = useSelector((store) => store.videoCategory.category);
 
   useEffect(() => {
     // Simulate loading data
@@ -20,9 +23,29 @@ const VideoContainer = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const fetchVideosByKeyword = async (keyword, videoId) => {
+    try {
+      const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${(keyword)}&videoCategoryId=${(videoId)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
+      }
+      const data = await response.json();
+      return data.items;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
   useEffect(() => {
-    getVideos();
-  }, []);
+    if (category === 'All') {
+      getVideos();
+    } else {
+      fetchVideosByKeyword(category).then(setVideos).catch((error) => {
+        console.error('Error while fetching the videos:', error);
+        setError('Failed to fetch videos. Please try again later.');
+      });
+    }
+  }, [category]);
 
   const getVideos = async () => {
     try {
@@ -39,7 +62,6 @@ const VideoContainer = () => {
       console.error('Error while fetching the videos:', error);
       setError('Failed to fetch videos. Please try again later.');
     }
-
   };
 
   if (error) {
@@ -48,9 +70,6 @@ const VideoContainer = () => {
 
   return (
     <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-20 max-sm:mt-16'>
-      {/* {
-        videos[0] && <RedBorderedVideoCard info={videos[0]} />
-      } */}
       {loading ? (
         <VideoShimmer />
       ) : (

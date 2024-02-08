@@ -33,7 +33,7 @@ const ChannelData = ({ videoId }) => {
     try {
       const data = await fetch(VIDEO_DETAILS_API + '&id=' + videoId);
       const response = await data.json();
-      setVideoData(response?.items?.[0] || {}); // Ensure items array exists
+      setVideoData(response?.items?.[0] || {});
       console.log(videoData)
     } catch (error) {
       console.log('Error while fetching video details', error);
