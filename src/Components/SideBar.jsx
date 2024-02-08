@@ -16,9 +16,10 @@ import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
+
+  const [searchParams] = useSearchParams();
   const [selectedButton, setSelectedButton] = useState("Home");
   const [isLoading, setIsLoading] = useState(false);
-
   const location = useLocation();
 
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const SideBar = () => {
   const navigate = useNavigate()
 
   // useEffect(() => {
-  //   const Query = searchParams.get("Id");
+  //   const Query = searchParams.get("eId");
   //   if (Query) {
   //     setSelectedButton(Query);
   //   } else {
@@ -43,18 +44,18 @@ const SideBar = () => {
       // Close sidebar after 1000ms
       dispatch(toggleMenu());
       setIsLoading(false); // Stop loading
-    }, 1000);
+    }, 500);
   }
 
-  const handleButtonClick = (channelId) => {
-    const newQuery = channelId.replace(" ", "+");
+  const handleButtonClick = (ButtonName) => {
+    const newQuery = ButtonName.replace(" ", "+");
     setSelectedButton(newQuery);
     setIsLoading(true); // Start loading
-    StopLoading()       // Stop Loading and Close sidebar after 1000ms 
+    StopLoading()       // Stop Loading and Close sidebar after 500ms 
     if (newQuery === "Home") {
       navigate("/");
     } else {
-      navigate(`/channel?Id=${newQuery}`);
+      navigate(`/channel?cId=${newQuery}`);
     }
   };
 
@@ -109,126 +110,111 @@ const SideBar = () => {
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
-        <div className='mt-[67.5px] block h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
-          <ul className='md:ml-4'>
+        <div className='flex flex-col gap-y-1 md:pl-4 mt-[67.5px] h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
+          <div>
             {
               Home.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <NavLink>
-                      <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`}>
-                        <button className='flex items-center gap-5' >
-                          {icon}
-                          <span>{name}</span>
-                        </button>
-                      </li>
-                    </NavLink>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                      <button className='flex items-center gap-5' >
+                        {icon}
+                        <span>{name}</span>
+                      </button>
+                    </li>
                   </div>
                 )
               })
             }
-          </ul>
+          </div>
+
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div className='md:ml-4 my-4'>
+          <div>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>SubScriptions</h1>
-            <ul>
-              {
-                Subscriptions.map(({ src, profileId, fullname }) => {
-                  return (
-                    <div key={profileId}>
-                      <button>
-                        <li className={`py-[10px] pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === fullname ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(profileId)}>
-                          <div className='flex items-center gap-5' >
-                            <img src={src} alt="" className="rounded-full w-5"
-                            />
-                            <span className="">{fullname}</span>
-                          </div>
-                        </li>
-                      </button>
-                    </div>
-                  )
-                })
-              }
-            </ul>
+            {
+              Subscriptions.map(({ src, profileId, fullname }) => {
+                return (
+                  <div key={profileId}>
+                    <li className={`list-none py-[10px] pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === fullname ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(fullname)}>
+                      <div className='flex items-center gap-5' >
+                        <img src={src} alt="" className="rounded-full w-5"
+                        />
+                        <span className="">{fullname}</span>
+                      </div>
+                    </li>
+                  </div>
+                )
+              })
+            }
           </div>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div className='md:ml-4 my-4'>
+          <div>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>Explore</h1>
-            <ul>
-              {
-                Explore.map(({ icon, name }) => {
-                  return (
-                    <div key={name}>
-                      <NavLink>
-                        <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} >
-                          <button className='flex items-center gap-5' >
-                            {icon}
-                            <span>{name}</span>
-                          </button>
-                        </li>
-                      </NavLink>
-                    </div>
-                  )
-                })
-              }
-            </ul>
+            {
+              Explore.map(({ icon, name }) => {
+                return (
+                  <div key={name}>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                      <button className='flex items-center gap-5' >
+                        {icon}
+                        <span>{name}</span>
+                      </button>
+                    </li>
+                  </div>
+                )
+              })
+            }
           </div>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div className='md:ml-4 my-4'>
+          <div>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>More from YouTube</h1>
-            <ul>
-              {
-                Premium.map(({ icon, name }) => {
-                  return (
-                    <div key={name}>
-                      <NavLink>
-                        <li className={`pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} >
-                          <button className='flex items-center gap-5'>
-                            <span className='text-red-600'>{icon}</span>
-                            <span>{name}</span>
-                          </button>
-                        </li>
-                      </NavLink>
-                    </div>
-                  )
-                })
-              }
-            </ul>
+            {
+              Premium.map(({ icon, name }) => {
+                return (
+                  <div key={name}>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                      <button className='flex items-center gap-5'>
+                        <span className='text-red-600'>{icon}</span>
+                        <span>{name}</span>
+                      </button>
+                    </li>
+                  </div>
+                )
+              })
+            }
           </div>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div className='md:ml-4 my-4'>
-            <ul>
-              {
-                Setting.map(({ icon, name }) => {
-                  return (
-                    <div key={name}>
-                      <li className='pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw}'>
-                        <button className='flex items-center gap-5'>
-                          {icon}
-                          <span>{name}</span>
-                        </button>
-                      </li>
-                    </div>
-                  )
-                })
-              }
-            </ul>
+          <div>
+            {
+              Setting.map(({ icon, name }) => {
+                return (
+                  <div key={name}>
+                    <li className='list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw}'>
+                      <button className='flex items-center gap-5'>
+                        {icon}
+                        <span>{name}</span>
+                      </button>
+                    </li>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
       </div>

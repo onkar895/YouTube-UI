@@ -52,7 +52,8 @@ const ChannelVideoPage = ({ info, videoId }) => {
   };
 
   return (
-    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3' onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+    <div className='cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%]' onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}>
       <div className='relative'>
         {
           isHovered && (
@@ -71,31 +72,29 @@ const ChannelVideoPage = ({ info, videoId }) => {
           )
         }
 
-        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[38.4vw] object-cover'>
-          <img
-            src={thumbnails.medium.url}
-            alt="thumbnail"
-            className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[38.4vw] object-cover"
-          />
-          <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-1 md:right-2 bg-black text-white px-2 py-1 rounded-lg text-xs">
-            {duration}
-          </div>
+        <img
+          src={thumbnails.medium.url}
+          alt="thumbnail"
+          className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[40.4vw] object-cover"
+        />
+        <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-1 md:right-4 bg-black text-white px-2 py-1 rounded-lg text-xs">
+          {duration}
         </div>
       </div>
-      <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:space-y-2 max-sm:my-1 md:space-y-2 lg:space-y-6 md:my-1'>
-        <div className='md:flex md:flex-col gap-1 max-sm:flex max-sm:flex-col'>
-          <h1 className='font-bold md:text-sm lg:text-md'>{title}</h1>
-          <div className='md:flex md:gap-1 text-xs max-sm:flex max-sm:gap-1'>
+      <div className='pt-3 space-y-1 max-sm:text-justify md:mx-auto mx-[1.2rem] md:text-justify'>
+        <div className='md:flex md:flex-col gap-2 max-sm:flex'>
+          <h1 className='font-bold mr-2 overflow-hidden text-[14.6px]'>{title}</h1>
+          <div className='md:flex md:gap-1 max-sm:flex max-sm:gap-1'>
             <span>{viewCount} Views</span>
             <span >•</span>
             <span>{calender}</span>
           </div>
         </div>
         <div className='flex items-center gap-2'>
-          <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-8 max-sm:w-8' />
+          <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-10' />
           <span className='text-sm'>{channelTitle}</span>
         </div>
-        <div className='text-sm'>
+        <div className='text-sm overflow-hidden'>
           <span>{description}</span>
         </div>
       </div>
