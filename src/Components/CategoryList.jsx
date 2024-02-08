@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 import { fetchTagsUrl, YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
+import changeCategory from '../utils/CategorySlice'
 import { TagNames } from '../utils/constants';
 
 const CategoryList = () => {
@@ -12,20 +14,15 @@ const CategoryList = () => {
   const [selectedButton, setSelectedButton] = useState("All");
   const [loading, setLoading] = useState(true);
   const [slideNumber, setSlideNumber] = useState(0);
-  const [data, setData] = useState([])
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(null);
 
-  const fetchVideosByKeyword = async (keyword) => {
-    try {
-      const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${encodeURIComponent(keyword)}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch videos');
-      }
-      const data = await response.json();
-      return data.items;
-    } catch (error) {
-      throw new Error(error.message);
+  const dispatch = useDispatch()
+
+  const fetchVideosByKeyword = (keyword) => {
+    if (selectedButton !== keyword) {
+      dispatch(changeCategory(keyword));
+      setSelectedButton(keyword);
     }
   };
 
@@ -49,21 +46,6 @@ const CategoryList = () => {
     } catch (error) {
       console.error('Error fetching tags:', error);
       setError('Failed to fetch tags. Please try again later.');
-    }
-  };
-
-  const handleCategoryClick = async (keyword) => {
-    setLoading(true);
-    setSelectedButton(keyword);
-    try {
-      const videos = await fetchVideosByKeyword(keyword);
-      // const res = await videos.json()
-      setData(videos);
-    } catch (error) {
-      console.error('Error fetching videos:', error);
-      setError('Failed to fetch videos. Please try again later.');
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -96,30 +78,38 @@ const CategoryList = () => {
             <ButtonsShimmer />
           ) : (
             <>
-              {tags.length === 0 && (
-                <div>
-                  <section className='space-x-2'>
-                    {TagNames.map((item, index) => (
-                      <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleCategoryClick(item)}>
-                        {item}
-                      </button>
-                    ))}
-                  </section>
-                </div>
-              )}
+              {
+                tags.length === 0 && (
+                  <div>
+                    <section className='space-x-2'>
+                      {
+                        TagNames.map((item, index) => (
+                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => fetchVideosByKeyword(item)}>
+                            {item}
+                          </button>
+                        ))
+                      }
+                    </section>
+                  </div>
+                )
+              }
 
-              {tags.length > 0 && (
-                <section className='space-x-2'>
-                  <small onClick={() => navigate('/')} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === "All" ? 'bg-gray-900 text-white' : ''}`}>
-                    All
-                  </small>
-                  {tags.map(({ id, snippet: { title } }) => (
-                    <button key={id} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === title ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleCategoryClick(title)}>
-                      {title}
-                    </button>
-                  ))}
-                </section>
-              )}
+              {
+                tags.length > 0 && (
+                  <section className='space-x-2'>
+                    <small onClick={() => navigate('/')} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === "All" ? 'bg-gray-900 text-white' : ''}`}>
+                      All
+                    </small>
+                    {
+                      tags.map((name, index) => (
+                        <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => fetchVideosByKeyword(name)}>
+                          {name}
+                        </button>
+                      ))
+                    }
+                  </section>
+                )
+              }
             </>
           )}
         </ul>

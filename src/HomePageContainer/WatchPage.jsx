@@ -32,13 +32,16 @@ const WatchPage = () => {
           <div>
             <ChannelData videoId={videoId} />
           </div>
+          <div className='md:hidden max-sm:hidden lg:block'>
+            <CommentsData />
+          </div>
         </div>
         <div>
           <LiveChat />
           <RelatedVideoPage />
         </div>
       </div>
-      <div className=''>
+      <div className='lg:hidden'>
         <CommentsData />
       </div>
     </div>

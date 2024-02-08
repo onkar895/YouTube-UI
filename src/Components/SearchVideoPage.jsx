@@ -71,21 +71,21 @@ const SearchVideoPage = ({ info, videoId }) => {
           )
         }
 
-        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[32.4vw] object-cover'>
+        <div className='rounded-2xl w-[100%] mx-auto lg:w-[29vw] md:w-[38.4vw] object-cover'>
           <img
             src={thumbnails.medium.url}
             alt="thumbnail"
-            className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[32.4vw] object-cover"
+            className="rounded-2xl w-[94%] mx-auto lg:w-[29vw] md:w-[38.4vw] object-cover"
           />
           <div className="absolute max-sm:bottom-1 max-sm:right-4 lg:bottom-1 lg:right-1 md:bottom-1 md:right-2 bg-black text-white px-2 py-1 rounded-lg text-xs">
             {duration}
           </div>
         </div>
       </div>
-      <div className='md:flex md:flex-col md:space-y-8 md:my-2'>
-        <div className='md:flex md:flex-col gap-1'>
-          <h1 className='font-bold'>{title}</h1>
-          <div className='md:flex md:gap-1 text-sm'>
+      <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:space-y-2 max-sm:my-1 md:space-y-2 lg:space-y-6 md:my-1'>
+        <div className='md:flex md:flex-col gap-1 max-sm:flex max-sm:flex-col'>
+          <h1 className='font-bold md:text-sm lg:text-md'>{title}</h1>
+          <div className='md:flex md:gap-1 text-xs max-sm:flex max-sm:gap-1'>
             <span>{viewCount} Views</span>
             <span >•</span>
             <span>{calender}</span>
