@@ -15,11 +15,13 @@ import { useSelector } from 'react-redux';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 
 const SideBar = () => {
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
 
   const [searchParams] = useSearchParams();
   const [selectedButton, setSelectedButton] = useState("Home");
   const [isLoading, setIsLoading] = useState(false);
+
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
+
   const location = useLocation();
 
   const dispatch = useDispatch();
@@ -47,15 +49,27 @@ const SideBar = () => {
     }, 500);
   }
 
-  const handleButtonClick = (ButtonName) => {
-    const newQuery = ButtonName.replace(" ", "+");
+  const handleChannelButtonClick = (ButtonName) => {
+    const Query = ButtonName.replace(" ", "+");
+    setSelectedButton(Query);
+    setIsLoading(true); // Start loading
+    StopLoading()       // Stop Loading and Close sidebar after 500ms 
+    if (Query === "Home") {
+      navigate("/");
+    } else {
+      navigate(`/channel?cId=${Query}`);
+    }
+  };
+
+  const handleExploreButtonClick = (ExploreName) => {
+    const newQuery = ExploreName.replace(" ", "+");
     setSelectedButton(newQuery);
     setIsLoading(true); // Start loading
     StopLoading()       // Stop Loading and Close sidebar after 500ms 
     if (newQuery === "Home") {
       navigate("/");
     } else {
-      navigate(`/channel?cId=${newQuery}`);
+      navigate(`/explore?eq=${newQuery}`);
     }
   };
 
@@ -116,7 +130,7 @@ const SideBar = () => {
               Home.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleExploreButtonClick(name)}>
                       <button className='flex items-center gap-5' >
                         {icon}
                         <span>{name}</span>
@@ -139,7 +153,7 @@ const SideBar = () => {
               Subscriptions.map(({ src, profileId, fullname }) => {
                 return (
                   <div key={profileId}>
-                    <li className={`list-none py-[10px] pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === fullname ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(fullname)}>
+                    <li className={`list-none py-[10px] pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === fullname ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleChannelButtonClick(fullname)}>
                       <div className='flex items-center gap-5' >
                         <img src={src} alt="" className="rounded-full w-5"
                         />
@@ -162,7 +176,7 @@ const SideBar = () => {
               Explore.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleExploreButtonClick(name)}>
                       <button className='flex items-center gap-5' >
                         {icon}
                         <span>{name}</span>
@@ -184,7 +198,7 @@ const SideBar = () => {
               Premium.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleButtonClick(name)}>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleExploreButtonClick(name)}>
                       <button className='flex items-center gap-5'>
                         <span className='text-red-600'>{icon}</span>
                         <span>{name}</span>

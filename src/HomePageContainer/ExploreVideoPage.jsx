@@ -4,18 +4,17 @@ import React, { useState, useEffect } from 'react';
 import { YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import CustomError from './CustomError'
-import ChannelVideoPage from '../Components/ChannelVideoPage';
+import ExploreVideos from '../Components/ExploreVideos'
 import VideoShimmer from '../Components/ShimmerUI/VideoShimmer'
 import CategoryList from '../Components/CategoryList';
 
-const SubScriptionPage = () => {
-
+const ExploreVideoPage = () => {
   const [videos, setVideos] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   const [searchParam] = useSearchParams();
-  const channel = searchParam.get('cId');
+  const explore = searchParam.get('eq');
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -27,12 +26,12 @@ const SubScriptionPage = () => {
 
   useEffect(() => {
     getSearchResults();
-  }, [channel]);
+  }, [explore]);
 
   const getSearchResults = async () => {
     try {
-      if (!channel) return;
-      const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${channel}&regionCode=IN&type=video`);
+      if (!explore) return;
+      const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${explore}&regionCode=IN&type=video`);
       if (!response.ok) {
         throw new Error(`Failed to fetch search results. Status: ${response.status}`);
       }
@@ -62,7 +61,7 @@ const SubScriptionPage = () => {
             ) : (
               videos.map((video) => (
                 <NavLink to={"/watch?v=" + video?.id?.videoId} key={video?.id?.videoId}>
-                  <ChannelVideoPage info={video} videoId={video?.id?.videoId} />
+                  <ExploreVideos info={video} videoId={video?.id?.videoId} />
                 </NavLink>
               ))
             )
@@ -73,4 +72,4 @@ const SubScriptionPage = () => {
   );
 };
 
-export default SubScriptionPage;
+export default ExploreVideoPage;
