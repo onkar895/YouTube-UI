@@ -259,6 +259,14 @@ const comments = [
 
 ]
 
+export const truncateText = (text, maxLength) => {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return text.slice(0, maxLength) + "...";
+  }
+};
+
 export const generateRandomName = () => {
   var finalName = nameList[Math.floor(Math.random() * nameList.length)];
   return finalName

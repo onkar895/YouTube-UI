@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from 'react';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
 import { formatNumberWithSuffix, formatTime, timeDuration } from '../utils/constants';
+import { truncateText } from '../utils/helper'
 
 const RelatedVideos = ({ info, videoId }) => {
   const [videos, setVideos] = useState([]);
@@ -84,7 +85,7 @@ const RelatedVideos = ({ info, videoId }) => {
       </div>
       <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:my-2  md:space-y-6 md:my-2 lg:space-y-2 max-sm:space-y-3 lg:my-0 max-sm:mx-2'>
         <div className='text-xs flex flex-col gap-2 lg:gap-1'>
-          <h1 className='font-bold'>{title}</h1>
+          <h1 className='font-bold'>{truncateText(title, 90)}</h1>
           <div className='flex items-center gap-2'>
             <span className='text-xs'>{channelTitle}</span>
           </div>

@@ -9,7 +9,7 @@ const ChatMessage = ({ name, message }) => {
       <FaCircleUser className='text-2xl text-gray-600' />
       <div className='flex flex-col'>
         <span className='text-sm'>{name}</span>
-        <span className='text-xs text-gray-500'>{message}</span>
+        <span className='text-xs text-gray-500 overflow-x-hidden'>{message}</span>
       </div>
     </div>
   )
