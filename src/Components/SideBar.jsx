@@ -125,7 +125,7 @@ const SideBar = () => {
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
         <div className='flex flex-col gap-y-1 md:pl-4 mt-[67.5px] h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
-          <div>
+          <ul>
             {
               Home.map(({ icon, name }) => {
                 return (
@@ -140,14 +140,14 @@ const SideBar = () => {
                 )
               })
             }
-          </div>
+          </ul>
 
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div>
+          <ul>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>SubScriptions</h1>
             {
               Subscriptions.map(({ src, profileId, fullname }) => {
@@ -164,62 +164,62 @@ const SideBar = () => {
                 )
               })
             }
-          </div>
+          </ul>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div>
+          <ul>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>Explore</h1>
             {
               Explore.map(({ icon, name }) => {
                 return (
                   <div key={name}>
                     <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleExploreButtonClick(name)}>
-                      <button className='flex items-center gap-5' >
+                      <div className='flex items-center gap-5' >
                         {icon}
                         <span>{name}</span>
-                      </button>
+                      </div>
                     </li>
                   </div>
                 )
               })
             }
-          </div>
+          </ul>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div>
+          <ul>
             <h1 className='md:font-bold ml-3 mb-2 md:text-lg text-md font-bold'>More from YouTube</h1>
             {
               Premium.map(({ icon, name }) => {
                 return (
                   <div key={name}>
                     <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw] ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`} onClick={() => handleExploreButtonClick(name)}>
-                      <button className='flex items-center gap-5'>
+                      <div className='flex items-center gap-5'>
                         <span className='text-red-600'>{icon}</span>
                         <span>{name}</span>
-                      </button>
+                      </div>
                     </li>
                   </div>
                 )
               })
             }
-          </div>
+          </ul>
 
           <div className='mt-3 pl-3 w-56'>
             <hr />
           </div>
 
-          <div>
+          <ul>
             {
               Setting.map(({ icon, name }) => {
                 return (
                   <div key={name}>
-                    <li className='list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw]  hover:w-[58.5vw}'>
+                    <li className={`list-none pl-[13px] rounded-lg cursor-pointer hover:bg-gray-100 hover:rounded-lg lg:hover:w-[16.2vw] md:hover:w-[25.5vw] hover:w-[58.5vw} ${selectedButton === name ? 'bg-gray-100 lg:w-[16.2vw] md:w-[25.5vw] max-sm:w-[58.5vw]' : ''}`}>
                       <button className='flex items-center gap-5'>
                         {icon}
                         <span>{name}</span>
@@ -229,7 +229,7 @@ const SideBar = () => {
                 )
               })
             }
-          </div>
+          </ul>
         </div>
       </div>
     </>

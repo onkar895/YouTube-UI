@@ -41,11 +41,15 @@ const CategoryList = () => {
   const fetchTags = async () => {
     try {
       const res = await fetch(fetchTagsUrl);
-      const { items } = await res.json();
-      setTags(items || []);
+      const data = await res.json();
+      const items = data.items || []; // Extract items array from the response
+      const tags = items.map(item => item.snippet.title); // Extract titles from items
+      setTags(tags);
+      setLoading(false); // Set loading to false after fetching tags
     } catch (error) {
       console.error('Error fetching tags:', error);
       setError('Failed to fetch tags. Please try again later.');
+      setLoading(false); // Set loading to false on error
     }
   };
 

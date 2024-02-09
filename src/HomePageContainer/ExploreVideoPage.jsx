@@ -50,7 +50,7 @@ const ExploreVideoPage = () => {
         <div>
           <CategoryList />
         </div>
-        <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-14 max-sm:mt-16'>
+        <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 md:gap-y-10 max-sm:gap-y-10 md:mt-14 max-sm:mt-10'>
           {
             isLoading ? (
               <VideoShimmer />

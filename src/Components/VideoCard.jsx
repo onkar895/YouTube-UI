@@ -9,7 +9,7 @@ import VideoShimmer from './ShimmerUI/VideoShimmer';
 
 const VideoCard = ({ info }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [profilePicture, setProfilePicture] = useState("");
+  const [profilePicture, setProfilePicture] = useState([]);
 
   useEffect(() => {
     const fetchProfilePicture = async () => {

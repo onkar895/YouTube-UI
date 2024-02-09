@@ -8,7 +8,7 @@ import { formatTime, formatNumberWithSuffix, timeDuration } from '../utils/const
 const SearchVideoPage = ({ info, videoId }) => {
 
   const [videos, setVideos] = useState([]);
-  const [channelPicture, setChannelPicture] = useState('');
+  const [channelPicture, setChannelPicture] = useState([]);
   const [channelInfo, setChannelInfo] = useState([])
   const [isHovered, setIsHovered] = useState(false);
   const { snippet } = info;
@@ -82,7 +82,7 @@ const SearchVideoPage = ({ info, videoId }) => {
           </div>
         </div>
       </div>
-      <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:space-y-2 max-sm:my-1 md:space-y-2 lg:space-y-6 md:my-1'>
+      <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:space-y-2 max-sm:my-2 max-sm:gap-y-2 md:space-y-2 lg:space-y-6 md:my-1 max-sm:mx-[0.85rem]'>
         <div className='md:flex md:flex-col gap-1 max-sm:flex max-sm:flex-col'>
           <h1 className='font-bold md:text-sm lg:text-md'>{title}</h1>
           <div className='md:flex md:gap-1 text-xs max-sm:flex max-sm:gap-1'>
