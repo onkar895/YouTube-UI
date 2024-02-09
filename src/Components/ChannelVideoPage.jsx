@@ -62,7 +62,7 @@ const ChannelVideoPage = ({ info, videoId }) => {
 
   return (
     <>
-      <div className='flex items-center gap-3'>
+      <div className='flex items-center gap-3 w-[52vw]'>
         <div className='flex flex-col gap-2'>
           <div>
             <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-24' />
