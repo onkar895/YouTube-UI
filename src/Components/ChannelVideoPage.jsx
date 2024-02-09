@@ -62,13 +62,13 @@ const ChannelVideoPage = ({ info, videoId }) => {
 
   return (
     <>
-      <div className='flex items-center gap-3 w-[52vw]'>
-        <div className='flex flex-col gap-2'>
+      <div className='flex items-center md:gap-3 max-sm:gap-2 md:w-[52vw] max-sm:w-[100%]'>
+        <div className='flex flex-col gap-2 max-sm:gap-1'>
           <div>
-            <img src={channelPicture} alt='ChannelProfile' className='rounded-full w-24' />
+            <img src={channelPicture} alt='ChannelProfile' className='rounded-full md:w-24 max-sm:w-14' />
           </div>
           <div>
-            <span className='text-xl font-bold'>{channelTitle}</span>
+            <span className='md:text-xl max-sm:lg font-bold'>{channelTitle}</span>
             <div className='text-sm text-gray-500'>
               <span className='text-sm'>@{RemoveSpaces}</span>
               <span>{subscriberCount} subscribers</span>
