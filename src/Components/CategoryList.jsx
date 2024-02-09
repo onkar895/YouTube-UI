@@ -47,7 +47,7 @@ const CategoryList = () => {
     }
   };
 
-  const handleVideosByKeyword = (keyword) => {
+  const handleVideosByCategory = (keyword) => {
     if (selectedButton !== keyword) {
       dispatch(changeCategory(keyword));
       setSelectedButton(keyword);
@@ -89,7 +89,7 @@ const CategoryList = () => {
                     <section className='space-x-2'>
                       {
                         TagNames.map((item, index) => (
-                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByKeyword(item)}>
+                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByCategory(item)}>
                             {item}
                           </button>
                         ))
@@ -108,7 +108,7 @@ const CategoryList = () => {
                     {
                       tags.map((name, index) => {
                         return (
-                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByKeyword(name)}>
+                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByCategory(name)}>
                             {name}
                           </button>
                         )

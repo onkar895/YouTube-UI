@@ -19,8 +19,6 @@ export const YOUTUBE_SEARCH_API = "https://youtube.googleapis.com/youtube/v3/sea
 
 export const YOUTUBE_SEARCHCATEGORY_API = "https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&type=video&videoCategoryId=&q=&key=" + API_KEY;
 
-export const RELATED_VIDEO_API = `https://www.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=50&regionCode=IN&key=${API_KEY}`
-
 export const fetchTagsUrl =
   "https://youtube.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=IN&key=" +
   API_KEY;

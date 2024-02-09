@@ -25,10 +25,10 @@ const ExploreVideoPage = () => {
   }, []);
 
   useEffect(() => {
-    getSearchResults();
+    getExploreResults();
   }, [explore]);
 
-  const getSearchResults = async () => {
+  const getExploreResults = async () => {
     try {
       if (!explore) return;
       const response = await fetch(`${YOUTUBE_SEARCH_API}&q=${explore}&regionCode=IN&type=video`);

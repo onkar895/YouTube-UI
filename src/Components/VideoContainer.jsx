@@ -27,11 +27,11 @@ const VideoContainer = () => {
     if (category === 'All') {
       getVideos();
     } else {
-      fetchVideosByKeyword(category)
+      fetchVideosByCategory(category)
     }
   }, [category]);
 
-  const fetchVideosByKeyword = async (keyword, videoId) => {
+  const fetchVideosByCategory = async (keyword, videoId) => {
     try {
       const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${encodeURIComponent(keyword)}&videoCategoryId=${(videoId)}`);
       if (!response.ok) {
@@ -51,11 +51,9 @@ const VideoContainer = () => {
   const getVideos = async () => {
     try {
       const response = await fetch(YOUTUBE_VIDEO_API);
-
       if (!response.ok) {
         throw new Error(`Failed to fetch videos. Status: ${response.status}`);
       }
-
       const data = await response.json();
       setVideos(data.items);
       setError(null);
