@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
-import { timeDuration, formatTime, formatNumberWithSuffix } from '../../utils/constants'
+import { formatNumberWithSuffix, formatTime, timeDuration } from '../utils/constants';
 
 const RelatedVideos = ({ info, videoId }) => {
   const [videos, setVideos] = useState([]);
