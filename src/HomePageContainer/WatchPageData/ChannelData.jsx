@@ -84,7 +84,7 @@ const ChannelData = ({ videoId }) => {
             </div>
           </div>
           <button className='rounded-full'
-            onClick={() => setSubscribe(!subscribe)} // Toggle subscribe state on each click
+            onClick={() => setSubscribe(!subscribe)}
           >
             {subscribe ? (
               <div className='flex items-center gap-1 max-sm:gap-2 py-[5px] max-sm:py-[7px] px-2 max-sm:px-5 bg-gray-100 rounded-full'>
