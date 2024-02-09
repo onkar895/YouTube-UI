@@ -23,29 +23,30 @@ const VideoContainer = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const fetchVideosByKeyword = async (keyword, videoId) => {
-    try {
-      const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${(keyword)}&videoCategoryId=${(videoId)}`);
-      if (!response.ok) {
-        throw new Error('Failed to fetch videos');
-      }
-      const data = await response.json();
-      return data.items;
-    } catch (error) {
-      throw new Error(error.message);
-    }
-  };
-
   useEffect(() => {
     if (category === 'All') {
       getVideos();
     } else {
-      fetchVideosByKeyword(category).then(setVideos).catch((error) => {
-        console.error('Error while fetching the videos:', error);
-        setError('Failed to fetch videos. Please try again later.');
-      });
+      fetchVideosByKeyword(category)
     }
   }, [category]);
+
+  const fetchVideosByKeyword = async (keyword, videoId) => {
+    try {
+      const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${encodeURIComponent(keyword)}&videoCategoryId=${(videoId)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
+      }
+      const data = await response.json();
+      console.log(data.items)
+      setVideos(data.items)
+      setError(null);
+    } catch (error) {
+      console.error('Error while fetching the videos:', error);
+      setError('Failed to fetch videos. Please try again later.');
+      setLoading(false);
+    }
+  };
 
   const getVideos = async () => {
     try {
@@ -57,10 +58,12 @@ const VideoContainer = () => {
 
       const data = await response.json();
       setVideos(data.items);
-      setError(null); // Clear error state on successful fetch
+      setError(null);
+      setLoading(false);
     } catch (error) {
       console.error('Error while fetching the videos:', error);
       setError('Failed to fetch videos. Please try again later.');
+      setLoading(false);
     }
   };
 

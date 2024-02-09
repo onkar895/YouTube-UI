@@ -124,7 +124,7 @@ const SideBar = () => {
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
-        <div className='flex flex-col gap-y-1 md:pl-4 mt-[67.5px] h-screen overflow-y-auto max-sm:mt-[74px] pb-16 sidebar'>
+        <div className='flex flex-col gap-y-1 md:px-4 mt-[35px] h-screen overflow-y-auto max-sm:mt-[74px] py-8 sidebar'>
           <ul>
             {
               Home.map(({ icon, name }) => {
@@ -142,8 +142,7 @@ const SideBar = () => {
             }
           </ul>
 
-
-          <div className='mt-3 pl-3 w-56'>
+          <div className='my-2 w-52'>
             <hr />
           </div>
 
@@ -166,7 +165,7 @@ const SideBar = () => {
             }
           </ul>
 
-          <div className='mt-3 pl-3 w-56'>
+          <div className='my-2 w-52'>
             <hr />
           </div>
 
@@ -188,7 +187,7 @@ const SideBar = () => {
             }
           </ul>
 
-          <div className='mt-3 pl-3 w-56'>
+          <div className='my-2 w-52'>
             <hr />
           </div>
 
@@ -210,7 +209,7 @@ const SideBar = () => {
             }
           </ul>
 
-          <div className='mt-3 pl-3 w-56'>
+          <div className='my-2 w-52'>
             <hr />
           </div>
 
