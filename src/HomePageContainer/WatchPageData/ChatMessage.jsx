@@ -3,13 +3,13 @@
 import React from 'react'
 import { FaCircleUser } from "react-icons/fa6";
 
-const ChatMessage = ({ name, message }) => {
+const ChatMessage = ({ info }) => {
   return (
     <div className='flex items-center gap-3 shadow-md py-2 px-2 cursor-pointer hover:bg-gray-200 border'>
-      <FaCircleUser className='text-2xl text-gray-600' />
+      <img src={info.imgUrl} alt="UserImage" className='w-6 rounded-full' />
       <div className='flex flex-col'>
-        <span className='text-sm'>{name}</span>
-        <span className='text-xs text-gray-500 overflow-x-hidden'>{message}</span>
+        <span className='text-sm'>{info.name}</span>
+        <span className='text-xs text-gray-500 overflow-x-hidden'>{info.message}</span>
       </div>
     </div>
   )

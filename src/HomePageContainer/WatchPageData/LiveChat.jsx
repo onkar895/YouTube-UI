@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import ChatMessage from './ChatMessage';
@@ -6,7 +7,6 @@ import { addMessage } from '../../utils/chatSlice';
 import { generateRandomComment, generateRandomName } from '../../utils/helper';
 import MyPic from '../../assets/MyPic.jpg';
 import { VscSend } from 'react-icons/vsc';
-import { SlEmotsmile } from "react-icons/sl";
 import { FaRegFaceSmile } from "react-icons/fa6";
 
 const LiveChat = () => {
@@ -20,25 +20,30 @@ const LiveChat = () => {
 
   const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[30vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
 
+  let count = 0;
+
   useEffect(() => {
     const timer = setInterval(() => {
       // API Polling
       dispatch(
         addMessage({
+          imgUrl: `https://source.unsplash.com/random/200x200?${count}`,
           name: generateRandomName(),
           message: generateRandomComment() + "...✨",
         })
       );
+      count++;
     }, 2000);
 
     return () => clearInterval(timer);
-  },);
+  }, []);
 
   const handleChat = (e) => {
     e.preventDefault();
 
     dispatch(
       addMessage({
+        imgUrl: MyPic,
         name: 'Omkar Karale',
         message: message,
       })
@@ -72,7 +77,7 @@ const LiveChat = () => {
         isChatVisible && (
           <div className={ChatBoxStyle}>
             {chatMessage.map((chat, index) => (
-              <ChatMessage key={index} name={chat.name} message={chat.message} />
+              <ChatMessage key={index} info={chat} />
             ))}
           </div>
         )
