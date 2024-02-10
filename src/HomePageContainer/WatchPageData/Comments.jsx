@@ -89,12 +89,12 @@ const Comments = ({ info, isReply }) => {
                     showReply ? (
                       <div className='flex items-center gap-2'>
                         <span>Hide replies</span>
-                        <FaCaretUp className='text-xl' />
+                        <FaCaretUp className='text-xl text-blue-500' />
                       </div>
                     ) : (
                       <div className='flex items-center gap-2'>
                         <span>Show replies</span>
-                        <FaCaretDown className='text-xl' />
+                        <FaCaretDown className='text-xl text-blue-500' />
                       </div>
                     )
                   }
