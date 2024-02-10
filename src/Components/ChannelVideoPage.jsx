@@ -15,6 +15,7 @@ const ChannelVideoPage = ({ info, videoId }) => {
   const [subScribers, setSubScribers] = useState(0)
   const [subscribe, setSubscribe] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  
   const { snippet } = info;
   const { title, thumbnails, publishedAt, description, channelTitle } = snippet;
 
@@ -62,37 +63,8 @@ const ChannelVideoPage = ({ info, videoId }) => {
 
   return (
     <>
-      <div className='flex items-center md:gap-3 max-sm:gap-2 md:w-[52vw] max-sm:w-[100%]'>
-        <div className='flex flex-col gap-2 max-sm:gap-1'>
-          <div>
-            <img src={channelPicture} alt='ChannelProfile' className='rounded-full md:w-24 max-sm:w-14' />
-          </div>
-          <div>
-            <span className='md:text-xl max-sm:lg font-bold'>{channelTitle}</span>
-            <div className='text-sm text-gray-500'>
-              <span className='text-sm'>@{RemoveSpaces}</span>
-              <span>{subscriberCount} subscribers</span>
-            </div>
-            <span className='text-sm'>{description}</span>
-            <button className='rounded-full'
-              onClick={() => setSubscribe(!subscribe)}
-            >
-              {subscribe ? (
-                <div className='flex items-center gap-1 max-sm:gap-2 py-[5px] max-sm:py-[7px] px-2 max-sm:px-5 bg-gray-100 rounded-full'>
-                  <CiBellOn className='text-black text-2xl animate-pulse' />
-                  <span className='max-sm:hidden text-sm'>Subscribed</span>
-                  <HiOutlineChevronDown className='text-black text-xl ' />
-                </div>
-              ) : (
-                <div className='flex py-[7px] max-sm:py-[8px] px-5 bg-black text-white rounded-full'>
-                  <span className='max-sm:text-sm text-sm'>Subscribe</span>
-                </div>
-              )}
-            </button>
-          </div>
-        </div>
-      </div>
-      <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]' onMouseOver={() => setIsHovered(true)}
+      <div className='cursor-pointer md:w-[40.4vw] lg:w-[29vw] max-sm:w-[100%]'
+        onMouseOver={() => setIsHovered(true)}
         onMouseOut={() => setIsHovered(false)}>
         <div className='relative'>
           {

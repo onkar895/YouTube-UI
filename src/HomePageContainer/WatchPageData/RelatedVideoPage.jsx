@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { YOUTUBE_SEARCH_API, YOUTUBE_VIDEO_API } from '../../utils/APIList'
-import RelatedVideos from '../../Components/RelatedVideos'
+import { YOUTUBE_VIDEO_API } from '../../utils/APIList'
+import RelatedVideos from './RelatedVideos'
 import { NavLink } from 'react-router-dom'
 
-const RelatedVideoPage = ({ info, videoId }) => {
+const RelatedVideoPage = () => {
 
   const [videos, setVideos] = useState([])
   const [loading, setLoading] = useState(true);
@@ -25,7 +25,7 @@ const RelatedVideoPage = ({ info, videoId }) => {
 
   const getRelatedVideos = async () => {
     try {
-      const data = await fetch(`${YOUTUBE_SEARCH_API}&regionCode=IN&type=video`)
+      const data = await fetch(YOUTUBE_VIDEO_API)
       if (!data.ok) {
         throw new Error(`Failed to fetch videos. Status: ${data.status}`);
       }
@@ -41,8 +41,8 @@ const RelatedVideoPage = ({ info, videoId }) => {
     <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 max-sm:mt-8 md:gap-y-10 lg:gap-y-6  max-sm:gap-y-10 my-5'>
       {
         videos.map((video) => (
-          <NavLink to={`/watch?v=${video.id.videoId}`} key={video.id.videoId}>
-            <RelatedVideos info={video} videoId={video?.id?.videoId} />
+          <NavLink to={`/watch?v=${video.id}`} key={video.id}>
+            <RelatedVideos info={video} videoId={video.id} />
           </NavLink>
         ))
       }

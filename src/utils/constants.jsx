@@ -47,9 +47,9 @@ export const Subscriptions = [
     fullname: "Akshay Saini",
   },
   {
-    src: "https://yt3.googleusercontent.com/nfrP94TD-7CC2pSqLXjeluf0SRIloELxGvCf9nL4DeJqBeonHcgwm0IePafovV8MzCWeQ9qhpA=s176-c-k-c0x00ffffff-no-rj",
-    profileId: "UC6vd-JCD7Z_FuF8N5LTydPA",
-    fullname: "Shark Tank India",
+    src: "https://yt3.googleusercontent.com/XE7Iq8jvJ07ptMc-HxZR_V-2XgXCb0i06i4E_dypl7xSR655WXaQeglfqNuEeuwH3oM9RKVodQ=s176-c-k-c0x00ffffff-no-rj",
+    profileId: "UCq-Fj5jknLsUf-MWSy4_brA",
+    fullname: "T-Series",
   },
   {
     src: "https://yt3.googleusercontent.com/ytc/AIf8zZTDkajQxPa4sjDOW-c3er1szXkSAO-H9TiF4-8u_Q=s176-c-k-c0x00ffffff-no-rj",

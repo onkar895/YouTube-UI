@@ -2,7 +2,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import ChatMessage from './ChatMessage';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
+import { AvatarGenerator } from 'random-avatar-generator'
 import { addMessage } from '../../utils/chatSlice';
 import { generateRandomComment, generateRandomName } from '../../utils/helper';
 import MyPic from '../../assets/MyPic.jpg';
@@ -21,13 +22,16 @@ const LiveChat = () => {
   const ChatBoxStyle = 'shadow-gray-300 shadow-2xl md:h-[50vh] md:w-[92.5vw] lg:w-[30vw] lg:h-[58vh] max-sm:h-[50vh] bg-gray-100 flex flex-col-reverse md:overflow-y-scroll overflow-x-hidden chatScroll'
 
   let count = 0;
+  const generator = new AvatarGenerator();
+  generator.generateRandomAvatar();
 
   useEffect(() => {
     const timer = setInterval(() => {
       // API Polling
       dispatch(
         addMessage({
-          imgUrl: `https://source.unsplash.com/random/200x200?${count}`,
+          imgUrl: `${generator.generateRandomAvatar(count)
+            }`,
           name: generateRandomName(),
           message: generateRandomComment() + "...✨",
         })
@@ -59,9 +63,7 @@ const LiveChat = () => {
     const handleResize = () => {
       setIsChatVisible(window.innerWidth >= 768); // Set to false for screen width less than 768px
     };
-
     handleResize();
-
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
@@ -86,7 +88,7 @@ const LiveChat = () => {
         <div className='shadow-gray-300 shadow-2xl border md:w-[92.5vw] lg:w-[30vw] bg-gray-100 py-3 max-sm:py-6 flex flex-col lg:gap-2 md:gap-2 max-sm:gap-2'>
           <div className='flex items-center justify-between mx-2'>
             <div className='flex items-center gap-3'>
-              <div className={`w-6 hover:cursor-pointer`}>
+              <div className={`w-7 hover:cursor-pointer`}>
                 <img className='rounded-full' src={MyPic} alt='Mypic' />
               </div>
               <div className='text-sm cursor-pointer'>

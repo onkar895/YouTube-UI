@@ -33,7 +33,7 @@ const WatchPage = () => {
             <ChannelData videoId={videoId} />
           </div>
           <div className='md:hidden max-sm:hidden lg:block'>
-            <CommentsData />
+            <CommentsData videoId={videoId} />
           </div>
         </div>
         <div>

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
@@ -12,25 +13,21 @@ const VideoCard = ({ info }) => {
   const [profilePicture, setProfilePicture] = useState([]);
 
   useEffect(() => {
-    const fetchProfilePicture = async () => {
-      try {
-        const data = await fetch(CHANNEL_INFO_API + "&id=" + info.snippet.channelId);
-        const response = await data.json();
-        const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
-        setProfilePicture(profilePictureUrl);
-      } catch (error) {
-        console.error("Couldn't fetch channel profile picture", error);
-      }
-    };
-
     if (info) {
       fetchProfilePicture();
     }
   }, [info]);
 
-  if (!info) {
-    return <VideoShimmer />;
-  }
+  const fetchProfilePicture = async () => {
+    try {
+      const data = await fetch(CHANNEL_INFO_API + "&id=" + info.snippet.channelId);
+      const response = await data.json();
+      const profilePictureUrl = response?.items[0]?.snippet?.thumbnails?.default?.url;
+      setProfilePicture(profilePictureUrl);
+    } catch (error) {
+      console.error("Couldn't fetch channel profile picture", error);
+    }
+  };
 
   const { snippet, statistics, contentDetails } = info;
   const { title, channelTitle, thumbnails, publishedAt } = snippet;

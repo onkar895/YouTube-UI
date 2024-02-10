@@ -33,7 +33,7 @@ const VideoContainer = () => {
 
   const fetchVideosByCategory = async (keyword, videoId) => {
     try {
-      const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${encodeURIComponent(keyword)}&videoCategoryId=${(videoId)}`);
+      const response = await fetch(`${YOUTUBE_SEARCHCATEGORY_API}&q=${(keyword)}&videoCategoryId=${(videoId)}`);
       if (!response.ok) {
         throw new Error('Failed to fetch videos');
       }
