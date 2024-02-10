@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-
-import RelatedVideos from './RelatedVideos'
+import RelatedVideos from '../../Components/RelatedVideos'
 import { NavLink } from 'react-router-dom'
 import { YOUTUBE_VIDEO_API } from '../../utils/APIList'
 
