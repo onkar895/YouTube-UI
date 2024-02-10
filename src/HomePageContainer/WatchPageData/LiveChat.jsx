@@ -125,7 +125,7 @@ const LiveChat = () => {
       </div>
       <div onClick={toggleChatVisibility}
         className={`${!isChatVisible ? "rounded-xl bg-gray-800 hover:bg-gray-900 text-white" : ""} flex justify-center cursor-pointer py-3 border rounded-b-2xl bg-gray-800 text-white hover:bg-gray-900`}>
-        <button className={`${isChatVisible ? "" : "animate-pulse"} text-sm lg:w-[28.3vw]`}>
+        <button className={`${isChatVisible ? "" : "animate-pulse lg:w-[29.8vw]"} text-sm lg:w-[28.3vw]`}>
           {isChatVisible ? 'Hide Chat' : 'Show Chat'}
         </button>
       </div>
