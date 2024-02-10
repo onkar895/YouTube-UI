@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react'
-import { timeDuration, formatTime, formatNumberWithSuffix } from '../../utils/constants'
+import { timeDuration, formatTime, formatNumberWithSuffix } from '../utils/constants'
 import { truncateText } from '../utils/helper'
 
 const RelatedVideos = ({ info, videoId }) => {
