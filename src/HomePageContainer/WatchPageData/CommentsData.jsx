@@ -28,7 +28,7 @@ const CommentsData = ({ videoId }) => {
   };
 
   return (
-    <div className='md:mx-[1.82rem] lg:mx-0 max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw] lg:my-3 h-[100vw]  border-2'>
+    <div className='md:mx-[1.82rem] lg:mx-0 max-sm:mx-[0.65rem] max-sm:w-[95vw] md:w-[92.5vw] lg:w-[64.5vw] lg:my-3'>
       <div className='flex items-center gap-x-8'>
         <span className='font-bold text-lg cursor-pointer'>Comments</span>
         <div className='flex items-center gap-1'>
@@ -36,7 +36,7 @@ const CommentsData = ({ videoId }) => {
           <span className='font-bold cursor-pointer'>Sort by</span>
         </div>
       </div>
-      <div>
+      <div className='border border-gray-200 rounded-xl h-[100vh] my-3 py-3 px-5'>
         <ul>
           {
             comments.map((comment, index) => (

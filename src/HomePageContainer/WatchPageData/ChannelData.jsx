@@ -60,27 +60,15 @@ const ChannelData = ({ videoId }) => {
   };
 
   const handleLikeToggle = () => {
-    setVideoData(prevData => ({
-      ...prevData,
-      statistics: {
-        ...prevData.statistics,
-        likeCount: prevData.statistics?.likeCount + (like ? -1 : 1) // Increment or decrement based on current like state
-      }
-    }));
-    setLike(prevLike => !prevLike); // Toggle the like state
-    setDisLike(true)
+    setLike(!like);
+    setDisLike(true);
+    like ? likeCount((prev) => prev - 1) : likeCount((prev) => prev + 1);
   };
 
   const handleDisLikeToggle = () => {
-    setVideoData(prevData => ({
-      ...prevData,
-      statistics: {
-        ...prevData.statistics,
-        likeCount: prevData.statistics?.likeCount + (disLike ? 1 : -1) // Increment or decrement based on current dislike state
-      }
-    }));
-    setDisLike(prevDisLike => !prevDisLike); // Toggle the dislike state
-    setLike(true)
+    setDisLike(!disLike);
+    setLike(true);
+    disLike ? likeCount((prev) => prev + 1) : likeCount((prev) => prev - 1);
   };
 
   return (
