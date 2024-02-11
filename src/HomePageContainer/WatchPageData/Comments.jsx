@@ -1,17 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
-import { BiLike, BiDislike } from 'react-icons/bi'
-import { BiSolidLike, BiSolidDislike } from 'react-icons/bi'
+import React, { useState } from 'react';
+import { BiLike, BiDislike } from 'react-icons/bi';
+import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 
 const Comments = ({ info, isReply }) => {
   const [showReply, setShowReply] = useState(false);
-  const [like, setLike] = useState(true)
-  const [disLike, setDisLike] = useState(true)
-  const [likeCount, setLikeCount] = useState(0)
-
-  const commentItem = getComments(info, isReply);
+  const [like, setLike] = useState(true);
+  const [disLike, setDisLike] = useState(true);
+  const [likeCount, setLikeCount] = useState(0);
 
   const getComments = (item, isReply) => {
     if (isReply) {
@@ -21,13 +19,15 @@ const Comments = ({ info, isReply }) => {
       const { snippet: { topLevelComment: { snippet } } } = item;
       return snippet;
     }
-  }
+  };
 
   const handleLike = () => {
     setLike(!like);
     setDisLike(false);
     like ? setLikeCount((prev) => prev - 1) : setLikeCount((prev) => prev + 1);
   };
+
+  const commentItem = getComments(info, isReply);
 
   const handleDislike = () => {
     setDisLike(!disLike);
@@ -37,7 +37,7 @@ const Comments = ({ info, isReply }) => {
   };
 
   return (
-    <div className={`flex flex-col gap-2 ${isReply && "pl-4"}`}>
+    <div className='flex flex-col my-5'>
       <div className='flex items-center gap-2'>
         <div>
           <img
@@ -50,67 +50,72 @@ const Comments = ({ info, isReply }) => {
           <p className="text-sm text-gray-600">{commentItem?.textOriginal}</p>
         </div>
       </div>
-      <div className='flex flex-col gap-2'>
-        <div className='flex items-center gap-3'>
-          <div className='flex items-center gap-2'>
-            <div className='flex items-center gap-1'>
-              <button className='hover:rounded-full bg-gray-200' onClick={handleLike}>
+      <div className='flex flex-col'>
+        <div className='flex items-center'>
+          <div className='flex flex-col items-center px-6 cursor-pointer'>
+            <div className='flex'>
+              <div className='flex items-center hover:bg-gray-200 rounded-full px-1'>
+                <button className='hover:rounded-full' onClick={handleLike}>
+                  {
+                    like ? (
+                      <BiLike className='text-xl' />
+                    ) : (
+                      <BiSolidLike className='text-xl' />
+                    )
+                  }
+                </button>
+                <span>{likeCount > 0 && likeCount}</span>
+              </div>
+              <button className='hover:rounded-full hover:bg-gray-200 rounded-full p-2' onClick={handleDislike}>
                 {
-                  like ? (
-                    <BiLike className='text-xl' />
+                  disLike ? (
+                    <BiDislike className='text-xl' />
                   ) : (
-                    <BiSolidLike className='text-xl' />
+                    <BiSolidDislike className='text-xl' />
                   )
                 }
               </button>
-              <span>{likeCount > 0 && likeCount}</span>
+              <div className='hover:rounded-full hover:bg-gray-200 p-2'>
+                <span className='text-sm font-bold'>Reply</span>
+              </div>
             </div>
-            <button className='hover:rounded-full bg-gray-200' onClick={handleDislike}>
+            <div className='px-10'>
               {
-                disLike ? (
-                  <BiDislike className='text-xl' />
-                ) : (
-                  <BiSolidDislike className='text-xl' />
+                info.replies && (
+                  <>
+                    <h2 className={`${isReply && 'hidden'}  text-sm text-blue-500 font-semibold cursor-pointer`}
+                      onClick={() => setShowReply(!showReply)}>
+                      {
+                        showReply ? (
+                          <div className='flex items-center gap-2'>
+                            <span>Hide replies</span>
+                            <FaCaretUp className='text-xl text-blue-500' />
+                          </div>
+                        ) : (
+                          <div className='flex items-center gap-2'>
+                            <span>Show replies</span>
+                            <FaCaretDown className='text-xl text-blue-500' />
+                          </div>
+                        )
+                      }
+                    </h2>
+                    {
+                      showReply && info.replies.comments && info.replies.comments.map((item) => {
+                        return <Comments key={item?.id} info={item} isReply={true} />;
+                      })
+                    }
+                  </>
                 )
               }
-            </button>
+            </div>
+
           </div>
-          <div className='hover:rounded-full bg-gray-200 p-2'>
-            <span className='text-sm font-bold'>Reply</span>
-          </div>
+
         </div>
-        <div>
-          {
-            info.replies && (
-              <>
-                <h2 className={`${isReply && 'hidden'}  text-sm text-blue-500 font-semibold cursor-pointer`}
-                  onClick={() => setShowReply(!showReply)}>
-                  {
-                    showReply ? (
-                      <div className='flex items-center gap-2'>
-                        <span>Hide replies</span>
-                        <FaCaretUp className='text-xl text-blue-500' />
-                      </div>
-                    ) : (
-                      <div className='flex items-center gap-2'>
-                        <span>Show replies</span>
-                        <FaCaretDown className='text-xl text-blue-500' />
-                      </div>
-                    )
-                  }
-                </h2>
-                {
-                  showReply && info.replies.comments.map((item) => {
-                    return <Comments key={item?.id} comment={item} isReply={true} />;
-                  })
-                }
-              </>
-            )
-          }
-        </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Comments
+export default Comments;
