@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { BiLike, BiDislike } from 'react-icons/bi';
-import { BiSolidLike, BiSolidDislike } from 'react-icons/bi';
+import { BiLike, BiDislike, BiSolidLike, BiSolidDislike } from 'react-icons/bi';
 import { FaCaretUp, FaCaretDown } from "react-icons/fa";
 
 const Comments = ({ info, isReply }) => {
@@ -51,68 +50,63 @@ const Comments = ({ info, isReply }) => {
         </div>
       </div>
       <div className='flex flex-col'>
-        <div className='flex items-center'>
-          <div className='flex flex-col items-center px-6 cursor-pointer'>
-            <div className='flex'>
-              <div className='flex items-center hover:bg-gray-200 rounded-full px-1'>
-                <button className='hover:rounded-full' onClick={handleLike}>
-                  {
-                    like ? (
-                      <BiLike className='text-xl' />
-                    ) : (
-                      <BiSolidLike className='text-xl' />
-                    )
-                  }
-                </button>
-                <span>{likeCount > 0 && likeCount}</span>
-              </div>
-              <button className='hover:rounded-full hover:bg-gray-200 rounded-full p-2' onClick={handleDislike}>
+        <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-2'>
+            <div className='flex items-center  rounded-full px-1'>
+              <button className='hover:rounded-full hover:bg-gray-200 p-2' onClick={handleLike}>
                 {
-                  disLike ? (
-                    <BiDislike className='text-xl' />
+                  like ? (
+                    <BiLike className='text-xl' />
                   ) : (
-                    <BiSolidDislike className='text-xl' />
+                    <BiSolidLike className='text-xl' />
                   )
                 }
               </button>
-              <div className='hover:rounded-full hover:bg-gray-200 p-2'>
-                <span className='text-sm font-bold'>Reply</span>
-              </div>
+              <span>{likeCount > 0 && likeCount}</span>
             </div>
-            <div className='px-10'>
+            <button className='hover:rounded-full hover:bg-gray-200 rounded-full p-2' onClick={handleDislike}>
               {
-                info.replies && (
-                  <>
-                    <h2 className={`${isReply && 'hidden'}  text-sm text-blue-500 font-semibold cursor-pointer`}
-                      onClick={() => setShowReply(!showReply)}>
-                      {
-                        showReply ? (
-                          <div className='flex items-center gap-2'>
-                            <span>Hide replies</span>
-                            <FaCaretUp className='text-xl text-blue-500' />
-                          </div>
-                        ) : (
-                          <div className='flex items-center gap-2'>
-                            <span>Show replies</span>
-                            <FaCaretDown className='text-xl text-blue-500' />
-                          </div>
-                        )
-                      }
-                    </h2>
-                    {
-                      showReply && info.replies.comments && info.replies.comments.map((item) => {
-                        return <Comments key={item?.id} info={item} isReply={true} />;
-                      })
-                    }
-                  </>
+                disLike ? (
+                  <BiDislike className='text-xl' />
+                ) : (
+                  <BiSolidDislike className='text-xl' />
                 )
               }
-            </div>
-
+            </button>
           </div>
-
+          <div className='hover:rounded-full hover:bg-gray-200 px-4 py-1 cursor-pointer'>
+            <span className='text-sm font-bold'>Reply</span>
+          </div>
         </div>
-
+        <div className='px-10'>
+          {
+            info.replies && (
+              <>
+                <h2 className={`${isReply && 'hidden'}  text-sm text-blue-500 font-semibold cursor-pointer`}
+                  onClick={() => setShowReply(!showReply)}>
+                  {
+                    showReply ? (
+                      <div className='flex items-center gap-2'>
+                        <span>Hide replies</span>
+                        <FaCaretUp className='text-xl text-blue-500' />
+                      </div>
+                    ) : (
+                      <div className='flex items-center gap-2'>
+                        <span>Show replies</span>
+                        <FaCaretDown className='text-xl text-blue-500' />
+                      </div>
+                    )
+                  }
+                </h2>
+                {
+                  showReply && info.replies.comments && info.replies.comments.map((item) => {
+                    return <Comments key={item?.id} info={item} isReply={true} />;
+                  })
+                }
+              </>
+            )
+          }
+        </div>
       </div>
     </div>
   );

@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { fetchTagsUrl, YOUTUBE_SEARCH_API } from '../utils/APIList';
 import { BiSolidChevronLeftCircle, BiSolidChevronRightCircle } from "react-icons/bi";
 import ButtonsShimmer from './ShimmerUI/ButtonsShimmer';
-import { changeCategory } from '../utils/CategorySlice'
 import { TagNames } from '../utils/constants';
 
 const CategoryList = () => {
@@ -16,6 +15,8 @@ const CategoryList = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [tags, setTags] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const dispatch = useDispatch()
 
@@ -47,10 +48,16 @@ const CategoryList = () => {
     }
   };
 
-  const handleVideosByCategory = (keyword) => {
-    if (selectedButton !== keyword) {
-      dispatch(changeCategory(keyword));
-      setSelectedButton(keyword);
+
+
+  const handleExploreButtonClick = (ExploreName) => {
+    const newQuery = ExploreName.replace(" ", "+");
+    setSelectedButton(newQuery);
+    setIsLoading(true); // Start loading
+    if (newQuery === "All") {
+      navigate("/");
+    } else {
+      navigate(`/explore?eq=${newQuery}`);
     }
   };
 
@@ -89,7 +96,7 @@ const CategoryList = () => {
                     <section className='space-x-2'>
                       {
                         TagNames.map((item, index) => (
-                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByCategory(item)}>
+                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === item ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleExploreButtonClick(name)}>
                             {item}
                           </button>
                         ))
@@ -108,7 +115,7 @@ const CategoryList = () => {
                     {
                       tags.map((name, index) => {
                         return (
-                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleVideosByCategory(name)}>
+                          <button key={index} className={`bg-gray-100 hover:bg-gray-900 hover:text-white hover:transition duration-500 px-[12px] py-[6px] rounded-lg ${selectedButton === name ? 'bg-gray-900 text-white' : ''}`} onClick={() => handleExploreButtonClick(name)}>
                             {name}
                           </button>
                         )
