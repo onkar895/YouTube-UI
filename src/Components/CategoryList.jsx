@@ -48,8 +48,6 @@ const CategoryList = () => {
     }
   };
 
-
-
   const handleExploreButtonClick = (ExploreName) => {
     const newQuery = ExploreName.replace(" ", "+");
     setSelectedButton(newQuery);
