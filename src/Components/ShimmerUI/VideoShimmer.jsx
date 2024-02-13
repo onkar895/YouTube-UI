@@ -5,7 +5,7 @@ const VideoShimmer = () => {
   return (
     <div className='md:flex md:flex-wrap max-sm:flex max-sm:flex-col md:gap-x-5 md:gap-y-16 max-sm:gap-y-16 max-sm:mx-3'>
       {
-        // creating a new Array instance using Array() constructor and map through every element of array 
+        // creating the new Array instance using Array() constructor and map through every element of array 
         Array(50)
           .fill("")
           .map((_, index) => (
