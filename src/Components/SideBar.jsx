@@ -124,7 +124,7 @@ const SideBar = () => {
           </div>
           <img src={YouTubeLogo} alt="YouTubeLogo" className='w-22 h-8 cursor-pointer' onClick={handleClick} />
         </div>
-        <div className='flex flex-col gap-y-1 md:px-4 mt-[35px] h-screen overflow-y-auto max-sm:mt-[74px] py-8 sidebar'>
+        <div className='flex flex-col gap-y-1 md:px-4 mt-[35px] h-screen overflow-y-auto max-sm:mt-[38px] py-8 sidebar'>
           <ul>
             {
               Home.map(({ icon, name }) => {
