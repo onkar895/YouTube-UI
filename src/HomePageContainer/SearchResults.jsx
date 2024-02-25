@@ -49,7 +49,7 @@ const SearchResults = () => {
         <div>
           <CategoryList />
         </div>
-        <div className='text-center text-lg md:mt-12 max-sm:mt-6 max-sm:mx-[0.68rem]'>
+        <div className='text-center text-lg md:mt-12 max-sm:mt-6 max-sm:mx-auto'>
           {
             !error ? (
               <h1>Showing Results for : <span className='font-bold'>{searchQuery}</span> </h1>

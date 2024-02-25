@@ -4,6 +4,8 @@
 import React, { useState, useEffect } from 'react';
 import { CHANNEL_INFO_API, VIDEO_DETAILS_API } from '../utils/APIList';
 import { formatTime, formatNumberWithSuffix, timeDuration } from '../utils/constants';
+import { truncateText } from '../utils/helper'
+
 
 const SearchVideoPage = ({ info, videoId }) => {
 
@@ -84,7 +86,7 @@ const SearchVideoPage = ({ info, videoId }) => {
       </div>
       <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col max-sm:space-y-2 max-sm:my-2 max-sm:gap-y-2 md:space-y-2 lg:space-y-6 md:my-1 max-sm:mx-[0.85rem]'>
         <div className='md:flex md:flex-col gap-1 max-sm:flex max-sm:flex-col'>
-          <h1 className='font-bold md:text-sm lg:text-md'>{title}</h1>
+          <h1 className='font-bold md:text-sm lg:text-md'>{truncateText(title, 60)}</h1>
           <div className='md:flex md:gap-1 text-xs max-sm:flex max-sm:gap-1'>
             <span>{viewCount} Views</span>
             <span >•</span>
@@ -96,7 +98,7 @@ const SearchVideoPage = ({ info, videoId }) => {
           <span className='text-sm'>{channelTitle}</span>
         </div>
         <div className='text-sm'>
-          <span>{description}</span>
+          <span>{truncateText(description, 90)}</span>
         </div>
       </div>
     </div>
