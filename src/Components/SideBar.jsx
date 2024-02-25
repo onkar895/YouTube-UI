@@ -100,15 +100,15 @@ const SideBar = () => {
         </div>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
           <SiYoutubeshorts className="w-5 h-8" />
-          <span>Shorts</span>
+          <span className="font-bold text-black/50">Shorts</span>
         </div>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
           <MdSubscriptions className="w-5 h-8 " />
-          <span>Subscriptions</span>
+          <span className="font-bold text-black/50">Subscriptions</span>
         </div>
         <div className="hover:bg-gray-100 hover:rounded-lg cursor-pointer flex flex-col items-center gap-1">
           <FaSquareYoutube className="w-4 h-8 text-black" />
-          <span>You</span>
+          <span className="font-bold text-black/50">You</span>
         </div>
       </div>
     );
