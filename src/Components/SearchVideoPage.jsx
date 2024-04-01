@@ -54,7 +54,7 @@ const SearchVideoPage = ({ info, videoId }) => {
   };
 
   return (
-    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[100%] md:mx-auto md:gap-x-3' onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+    <div className='md:flex max-sm:flex-col cursor-pointer lg:w-[90vw] md:w-[84.2vw] max-sm:w-[80%] md:mx-auto md:gap-x-3' onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
       <div className='relative'>
         {
           isHovered && (

@@ -49,7 +49,7 @@ const SearchResults = () => {
         <div>
           <CategoryList />
         </div>
-        <div className='text-center text-lg max-sm:text-sm md:mt-12 max-sm:mt-6 max-sm:flex-wrap max-sm:mx-[0.68rem]'>
+        {/* <div className='text-center text-lg max-sm:text-sm md:mt-12 max-sm:mt-6 max-sm:flex-wrap max-sm:mx-[0.68rem]'>
           {
             !error ? (
               <h1>Showing Results for : <span className='font-bold'>{searchQuery}</span> </h1>
@@ -57,8 +57,8 @@ const SearchResults = () => {
               <h1>Unable to show any Results for : <span className='font-bold'>{searchQuery}</span></h1>
             )
           }
-        </div>
-        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 max-sm:mt-2 md:gap-y-10 max-sm:gap-y-10'>
+        </div> */}
+        <div className='md:flex md:flex-col max-sm:flex max-sm:flex-col lg:gap-x-5 md:gap-x-6 max-sm:mt-10 md:gap-y-10 max-sm:gap-y-10'>
           {
             isLoading ? (
               <SearchVideoShimmer />
