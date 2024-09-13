@@ -1,22 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Page Not Found</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Not Found</title>
     <style>
-      #error {
-        background-color: lightgrey;
-        display: block;
-        margin: auto;
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .error {
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        background-color: rgb(0, 0, 0);
         text-align: center;
-        margin-top: 25%;
+        border-radius: 10px;
+        padding: 10px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        font-weight: bold;
+        color: whitesmoke;
+      }
+
+      p {
+        letter-spacing: 0.1rem;
+      }
+
+      p > a {
+        color: rgb(56, 172, 244);
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.5s;
+        word-spacing: 0.1rem;
+      }
+
+      p > a:hover {
+        transform: translateY(-1px);
       }
     </style>
   </head>
   <body>
-    <div id="error">
-      h1>404 - Page Not Found</h1>
-    <p>The page you requested could not be found.</p>
-    <p>Visit our <a href="/">homepage</a>.</p>
+    <div class="error">
+      <h1>404 - Page Not Found</h1>
+      <p>The page you requested could not be found.</p>
+      <p>Visit the <a href="/">homepage</a></p>
     </div>
   </body>
 </html>
