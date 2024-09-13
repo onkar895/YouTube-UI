@@ -10,5 +10,5 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: isGitHubPages ? '/my-repo/' : '/'
+  base: isGitHubPages ? '/YouTube-UI/' : '/'
 })
