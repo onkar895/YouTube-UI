@@ -58,7 +58,7 @@ const SearchBar = ({ showSearch, setShowSearch }) => {
   const getSearchSuggestions = async () => {
     try {
       console.log('API CALL - ' + searchQuery);
-      const data = await fetch(`${YOUTUBE_SEARCH_SUGGESTION_API}q=${searchQuery}`);
+      const data = await fetch(YOUTUBE_SEARCH_SUGGESTION_API + searchQuery);
       const response = await data.json();
       setSuggestions(response[1]);
 
