@@ -6,5 +6,8 @@ dotenv.config()
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()]
+  plugins: [react()],
+  build: {
+    publicPath: '/YouTube-UI/'
+  }
 })
