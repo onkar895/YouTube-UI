@@ -4,7 +4,7 @@
 
 Developed a highly optimized and scalable video streaming application, leveraging YouTube's Live API to deliver seamless live streaming experiences. The application focuses on enhancing user engagement through various optimization techniques and features.
 
-### Live Demo : https://you-tube-ui-six.vercel.app/
+### Live Demo : https://my-youtube-ui.netlify.app/
 
 ### Key Features
 
